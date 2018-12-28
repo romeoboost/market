@@ -1,0 +1,79 @@
+body
+{
+	padding: 0;
+	margin: 0;
+	font-family: sans-serif;
+	background: url('autocollant-sticker-drapeau-carte-cote-d-ivoire.jpg') 
+	center center/cover no-repeat local;
+	background-size: cover;
+}
+
+.box
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 400px;
+	background: rgba(0,0,0,.7);
+	padding: 40px;
+	box-sizing: border-box;
+	box-shadow: 0 15px 25px 3px rgba(0,0,0,.5);
+	border-radius: 10px;
+}
+.box h2
+{
+	color: #fff;
+	margin: 0 0 30px;
+	padding: 0px;
+    text-align: center;
+}
+.box .inputBox
+{
+	position: relative;
+}
+.box .inputBox input
+{
+	width: 100%;
+	color: #fff;
+	padding: 10px 0;
+	margin-bottom: 30px;
+	letter-spacing: 1px;
+	border: none;
+	outline: none;
+	font-size: 16px;
+	background: transparent;
+	border-bottom: 1px solid #fff;
+}
+
+.box .inputBox label
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	letter-spacing: 1px;	
+	color: #fff;
+	padding: 10px 0;
+	margin-bottom: 30px;
+	pointer-events: none; /* permet de rendre un element non pointable*/
+	transition: .5s;
+}
+
+.box .inputBox input:focus ~ label,
+.box .inputBox input:valid ~ label
+{
+	top: -18px;
+	font-size: 12px;
+	color: #0f6dc4;
+	left: 0;
+}
+.box input[type="submit"]
+{
+	background: #0f6dc4;
+	border: none;
+	color: #fff;
+	padding: 10px 20px;
+	outline: none;
+	border-radius: 5px;
+	cursor: pointer;
+}

@@ -1,0 +1,145 @@
+<div class="section mt-2">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="organik-icon">
+						<i class="organik-leaves"></i>
+					</div>
+					<h2 class="text-center section-title mtn-2">Welcome to organik</h2>
+					<p class="text-center">From our family farm right to your doorstep.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section mt-10 mb-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="organik-about">
+						<div class="image circle" data-bg-color="#f5e9e2">
+							<img src="images/about/about_1.png" alt="" />
+						</div>
+						<div class="content">
+							<h5>Who we are?</h5>
+							<p>Understanding the sometimes harmful methods of modern agriculture, we started a niche for quality organic produce grown.</p>
+							<a class="link" href="#">
+								<i class="ion-plus-round"></i> Read more
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="organik-about">
+						<div class="image circle" data-bg-color="#e7f2d8">
+							<img src="images/about/about_2.png" alt="" />
+						</div>
+						<div class="content">
+							<h5>How we work?</h5>
+							<p>We believe it’s the best way to inspire our community to relish in the taste of real, seasonal produce and keep connected to the land.</p>
+							<a class="link" href="#">
+								<i class="ion-plus-round"></i> Read more
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="organik-about">
+						<div class="image circle" data-bg-color="#f6edd0">
+							<img src="images/about/about_3.png" alt="" />
+						</div>
+						<div class="content">
+							<h5>What we grow?</h5>
+							<p>We take special care to select and grow specific crop varieties where exceptional flavor is the focus, with a determination to bring the best-tasting produce.</p>
+							<a class="link" href="#">
+								<i class="ion-plus-round"></i> Read more
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</div>
+	</div>
+
+	process height = 225
+	welcome height = 520
+	-----------------------
+				   = 745
+
+	Espace pub height = 625
+	reste 120
+
+
+	<?php $categories = $this->request('Accueil', 'getCategoryProduit'); ?>
+                                                                        <?php foreach ($categories as $c): ?>
+                                                                            <li><a href="#"><?php echo $c->nom; ?> </a></li>
+                                                                        <?php endforeach; ?>
+
+                                                                        <?php die(debug($this)); ?>
+
+
+
+
+                    <!-- <div class="category-carousel-2 mb-3" data-auto-play="true" data-desktop="3" data-laptop="3" data-tablet="2" data-mobile="1">
+                        <div class="cat-item">
+                            <div class="cats-wrap" data-bg-color="#f8c9c2">
+                                <a href="#">
+                                    <img src="<?php echo WEBROOT_URL; ?>images/category/cate_7.png" alt="" />
+                                    <h2 class="category-title"> 
+                                        Dried <mark class="count">(6)</mark>
+                                    </h2>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="cat-item">
+                            <div class="cats-wrap" data-bg-color="#ebd3c3">
+                                <a href="#">
+                                    <img src="<?php echo WEBROOT_URL; ?>images/category/cate_5.png" alt="" />
+                                    <h2 class="category-title"> 
+                                        Fruiy <mark class="count">(5)</mark>
+                                    </h2>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="cat-item">
+                            <div class="cats-wrap" data-bg-color="#c6e6f6">
+                                <a href="#">
+                                    <img src="<?php echo WEBROOT_URL; ?>images/category/cate_9.png" alt="" />
+                                    <h2 class="category-title"> 
+                                        Juice <mark class="count">(6)</mark>
+                                    </h2>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="cat-item">
+                            <div class="cats-wrap" data-bg-color="#e0d1a1">
+                                <a href="#">
+                                    <img src="<?php echo WEBROOT_URL; ?>images/category/cate_6.png" alt="" />
+                                    <h2 class="category-title"> 
+                                        Vegetables <mark class="count">(6)</mark>
+                                    </h2>
+                                </a>
+                            </div>
+                        </div>
+                    </div> -->
+
+
+// ficheir ../../controllers/application_controller.rb
+if @operation.blank?
+  redirect_to error_page_path(error_code: "502") unless @current_plateform
+end
+
+//fichier /var/www/HubsBackOffice/app/controllers/errors_handling_controller.rb
+
+when "502"
+      @title = "Gateway Monétique"
+      @error_message = "Le service est momentanément indisponible."
+      @description_message = "Veuillez reessayer plus tard."
+
+lieun tuto load content on scroll : https://www.youtube.com/watch?v=eziREnZPml4
