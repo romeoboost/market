@@ -560,10 +560,10 @@ function RevolutionInit2() {
 				}
 			}
 		},
-		responsiveLevels:[1240,1024,778,480],
-		visibilityLevels:[1240,1024,778,480],
+		responsiveLevels:[1240,1024,778,500], //[1240,1024,778,480]
+		visibilityLevels:[1240,1024,778,500],
 		gridwidth:[1200,1024,778,480],
-		gridheight:[910,768,960,720],
+		gridheight:[600,668,520,350],
 		lazyType:"none",
 		parallax: {
 			type:"mouse",
@@ -578,7 +578,7 @@ function RevolutionInit2() {
 		stopAtSlide:-1,
 		shuffle:"off",
 		autoHeight:"off",
-		hideThumbsOnMobile:"off",
+		hideThumbsOnMobile:"on",
 		hideSliderAtLimit:0,
 		hideCaptionAtLimit:0,
 		hideAllCaptionAtLilmit:0,

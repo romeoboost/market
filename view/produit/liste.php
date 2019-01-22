@@ -1,5 +1,5 @@
 <div id="main">
-    <div class="section section-bg-10 pt-7 pb-13">
+    <div class="section section-bg-10 pt-4 pb-10">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -35,7 +35,7 @@
                             <div class="cat-item">
                                 <div class="cats-wrap <?php echo (isset($filter['categorie']) && $filter['categorie']['token']==$c->token) ? 'cat-active' : ''; ?>" 
                                     data-bg-color="#f8c9c2">
-                                    <a href="#">
+                                    <a href="<?php echo BASE_URL.DS.'produit/liste/categorie/'.$c->token; ?>">
                                         <img src="<?php echo WEBROOT_URL; ?>images/category/<?php echo $c->image; ?>.png" alt="" />
                                         <h2 class="category-title"> 
                                             <?php echo ucfirst($c->nom); ?> 

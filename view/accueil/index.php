@@ -9,62 +9,70 @@
 							<li data-transition="fade" data-slotamount="default" 
 							data-hideafterloop="0" data-hideslideonmobile="off" 
 							data-easein="default" data-easeout="default" data-masterspeed="300" 
-							data-rotate="0" data-saveperformance="off" data-title="Slide">
-								<img src="<?php echo WEBROOT_URL; ?>images/slider/slide_bg_1.jpg" 
-								alt="" data-bgposition="center center" data-bgfit="normal" 
-								data-bgrepeat="repeat-x" data-bgparallax="off" class="rev-slidebg" />
+							data-rotate="0" data-saveperformance="off" data-title="Slide" >
+								<img src="<?php echo WEBROOT_URL; ?>images/slider/mobile/slide_bg_1-5.jpg" 
+								alt="" data-bgposition="center top" data-bgfit="normal" 
+								data-bgrepeat="repeat-x" data-bgparallax="off" class="rev-slidebg slide-element-responsive" />
 
-								<!-- LAYER NR. 1 -->
+								<img src="<?php echo WEBROOT_URL; ?>images/slider/slide_bg_1-4.jpg" 
+								alt="" data-bgposition="center top" data-bgfit="normal" 
+								data-bgrepeat="repeat-x" data-bgparallax="off" class="rev-slidebg slide-element" />
+
+								<!-- LAYER NR. 1  
+									 data-width="none" data-height="none" data-whitespace="nowrap" data-type="image"  -->
 								<div class="tp-caption rs-parallaxlevel-1"
 									 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-									 data-y="['bottom','bottom','bottom','bottom']" data-voffset="['100','100','100','100']"
-									 data-width="none" data-height="none" data-whitespace="nowrap" data-type="image"
-									 data-responsive_offset="on"
-									 data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":500,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
+									 data-y="['bottom','bottom','bottom','bottom']" data-voffset="['0','50','100','0']"
+									data-width="none" data-height="none" data-whitespace="nowrap" data-type="image"
+									 data-responsive_offset="on" 
+									 data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":500,"ease":"Power2.easeInOut"},
+									 {"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
 									 data-textAlign="['left','left','left','left']"
 									 data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
 									 data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
-									 	<img src="<?php echo WEBROOT_URL; ?>images/slider/slide_1.png" alt="" />
+									 	<img class="slide-element" src="<?php echo WEBROOT_URL; ?>images/slider/slide_1-3.png" alt="" />
+									 	<img class="slide-element-responsive" src="<?php echo WEBROOT_URL; ?>images/slider/mobile/slide_1-3.png" alt="" />
 								</div>
 
 								<!-- LAYER NR. 2 -->
 								<div class="tp-caption Lato-110-900 rs-parallaxlevel-2"
 									 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-									 data-y="['top','top','top','top']" data-voffset="['100','100','100','100']"
+									 data-y="['top','top','top','top']" data-voffset="['100','100','100','25']"
 									 data-fontsize="['110','110','90','50']" data-width="none" data-height="none"
 									 data-whitespace="nowrap" data-type="text" data-responsive_offset="on"
 									 data-frames='[{"from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","speed":1500,"to":"o:1;","delay":500,"ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
 									 data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
 									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
-									 data-paddingleft="[0,0,0,0]">ORGANIC STORE 
+									 data-paddingleft="[0,0,0,0]">BABI MARKET 
 								</div>
 
 								<!-- LAYER NR. 3 -->
 								<div class="tp-caption Lato-34-900 black rs-parallaxlevel-1"
 									 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
-									 data-y="['top','top','top','top']" data-voffset="['165','165','165','165']"
-									 data-fontsize="['34','34','34','30']" data-width="none" data-height="none"
+									 data-y="['top','top','top','top']" data-voffset="['165','165','165','90']"
+									 data-fontsize="['34','34','16','20']" data-width="none" data-height="none"
 									 data-whitespace="nowrap" data-type="text" data-responsive_offset="on"
-									 data-frames='[{"from":"x:right;","speed":1110,"to":"o:1;","delay":1100,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
+									 data-frames='[{"from":"x:right;","speed":1110,"to":"o:1;","delay":1100,"ease":"Power2.easeInOut"},
+									 {"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
 									 data-textAlign="['left','left','left','left']"
 									 data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
-									 data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">TRUST THE NATURE! 
+									 data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">Faites votre marché en ligne !
 								</div>
 
 								<!-- LAYER NR. 4 -->
 								<div class="tp-caption GreatVibes-90 rs-parallaxlevel-1"
 									 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
-									 data-y="['top','top','top','top']" data-voffset="['70','70','70','70']"
+									 data-y="['top','top','top','top']" data-voffset="['70','70','70','5']"
 									 data-fontsize="['90','90','60','40']" data-width="none" data-height="none"
 									 data-whitespace="nowrap" data-type="text" data-responsive_offset="on"
 									 data-frames='[{"from":"x:left;","speed":1100,"to":"o:1;","delay":1100,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
 									 data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
 									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
-									 	Live organic - Live healthy 
+									 	Plus Simple - Plus éfficace 
 								</div>
 
 								<!-- LAYER NR. 5 -->
-								<a  class="tp-caption btn-2" href="#"
+								<a  class="tp-caption btn-2" href="<?php echo BASE_URL.DS.'produit/liste'; ?>"
 									data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
 									data-y="['top','top','top','top']" data-voffset="['270','270','270','270']"
 									data-width="none" data-height="none" data-whitespace="nowrap" data-type="text"
@@ -72,7 +80,7 @@
 									data-frames='[{"from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","speed":1500,"to":"o:1;","delay":1460,"ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"},{"frame":"hover","speed":"300","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255,255,255,1);bg:transparent;bc:rgba(255,255,255,1);bw:2px 2px 2px 2px;"}]'
 									data-textAlign="['left','left','left','left']" data-paddingtop="[15,15,15,15]"
 									data-paddingright="[30,30,30,30]" data-paddingbottom="[15,15,15,15]" data-paddingleft="[30,30,30,30]">
-									SHOP NOW 
+									Voir les produits
 								</a>
 							</li>
 
@@ -81,39 +89,40 @@
 							 data-hideslideonmobile="off" data-easein="default" data-easeout="default"
 							  data-masterspeed="300" data-rotate="0" data-saveperformance="off"
 							   data-title="Slide">
-								<img src="<?php echo WEBROOT_URL; ?>images/slider/slide_bg_2.jpg" alt=""
-								 data-bgposition="center center" data-bgfit="normal" data-bgrepeat="repeat-x"
+								<img src="<?php echo WEBROOT_URL; ?>images/slider/slide_bg_2-2.jpg" alt=""
+								 data-bgposition="center top" data-bgfit="normal" data-bgrepeat="repeat-x"
 								  data-bgparallax="off" class="rev-slidebg" />
 
 								<!-- LAYER NR. 6 -->
 								<div class="tp-caption rs-parallaxlevel-1"
 									 data-x="['right','right','right','center']" data-hoffset="['-60','-60','-60','0']" 
-									 data-y="['bottom','bottom','bottom','bottom']" data-voffset="['80','80','80','80']"
+									 data-y="['top','bottom','bottom','bottom']" data-voffset="['-75','80','80','0']"
 									 data-width="none" data-height="none" data-whitespace="nowrap" data-type="image"
 									 data-responsive_offset="on"
 									 data-frames='[{"from":"y:-50px;opacity:0;","speed":720,"to":"o:1;","delay":0,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
 									 data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
 									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
-									 	<img src="<?php echo WEBROOT_URL; ?>images/slider/slide_2.png" alt="" />
+									 	<img src="<?php echo WEBROOT_URL; ?>images/slider/slide_2-1.png" alt="" />
 								</div>
 
 								<!-- LAYER NR. 7 -->
 								<div class="tp-caption GreatVibes-90 rs-parallaxlevel-2"
-									 data-x="['center','center','center','center']" data-hoffset="['-425','-325','1','-6']" 
-									 data-y="['top','top','top','top']" data-voffset="['102','104','14','29']"
-									 data-fontsize="['120','120','60','40']" data-lineheight="['120','120','90','90']"
+									 data-x="['center','center','center','center']" data-hoffset="['-150','-250','1','-6']" 
+									 data-y="['top','top','top','top']" data-voffset="['102','104','14','0']"
+									 data-fontsize="['120','120','30','32']" data-lineheight="['120','120','40','90']"
 									 data-width="none" data-height="none" data-whitespace="nowrap"
 									 data-type="text" data-responsive_offset="on"
 									 data-frames='[{"from":"x:-50px;opacity:0;","speed":700,"to":"o:1;","delay":310,"ease":"Power3.easeOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
-									 data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
+									 data-textAlign="['left','left','center','center']" data-paddingtop="[0,0,0,0]"
 									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
-									 	Organic 
+									 	
+									 <span class="fw-600"> Votre Marché en ligne  </span> 
 								</div>
 
 								<!-- LAYER NR. 8 -->
 								<div class="tp-caption tp-shape tp-shapewrapper rs-parallaxlevel-2"
-									 data-x="['center','center','center','center']" data-hoffset="['-521','-521','-521','-521']" 
-									 data-y="['top','top','top','top']" data-voffset="['375','375','375','375']"
+									 data-x="['left','center','center','center']" data-hoffset="['330','-521','-521','-521']" 
+									 data-y="['top','top','top','top']" data-voffset="['365','375','375','375']"
 									 data-width="85" data-height="2" data-whitespace="nowrap" data-type="shape"
 									 data-responsive_offset="on"
 									 data-frames='[{"from":"x:-50px;opacity:0;","speed":500,"to":"o:1;","delay":560,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
@@ -124,22 +133,22 @@
 
 								<!-- LAYER NR. 9 -->
 								<div class="tp-caption Lato-34-900 alt black rs-parallaxlevel-2"
-									 data-x="['center','center','center','center']" data-hoffset="['-240','-240','13','0']" 
-									 data-y="['top','top','top','top']" data-voffset="['249','249','36','43']"
-									 data-fontsize="['56','56','34','30']" data-lineheight="['56','56','22','22']"
+									 data-x="['center','center','center','center']" data-hoffset="['-90','-90','13','0']" 
+									 data-y="['top','top','top','top']" data-voffset="['249','249','36','160']"
+									 data-fontsize="['40','40','30','18']" data-lineheight="['56','56','22','22']"
 									 data-fontweight="['300','300','900','900']" data-width="none"
 									 data-height="none" data-whitespace="nowrap" data-type="text"
 									 data-responsive_offset="on"
 									 data-frames='[{"from":"x:50px;opacity:0;","speed":530,"to":"o:1;","delay":890,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
 									 data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
 									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
-									 	<span class="fw-900">Snack</span> foods 
+									 	<span class="fw-900"> Tous vos produits en un click </span> 
 								</div>
 
 								<!-- LAYER NR. 10 -->
 								<div class="tp-caption Lato-34-900 alt-2 white rs-parallaxlevel-2"
 									 data-x="['center','center','center','center']" data-hoffset="['-240','-240','16','3']" 
-									 data-y="['top','top','top','top']" data-voffset="['320','320','82','78']"
+									 data-y="['top','top','top','top']" data-voffset="['320','320','82','85']"
 									 data-fontsize="['18','18','20','15']" data-lineheight="['18','18','22','22']"
 									 data-fontweight="['700','700','900','900']"
 									 data-color="['rgba(255,255,255,1)','rgba(255,255,255,1)','rgba(57,42,37,1)','rgba(57,42,37,1)']"
@@ -148,87 +157,106 @@
 									 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":520,"to":"o:1;","delay":1100,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
 									 data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
 									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
-									  data-paddingleft="[0,0,0,0]">good for nature, good for you 
+									  data-paddingleft="[0,0,0,0]">Faites plus simple, gagnez du temps 
 								</div>
 
 								<!-- LAYER NR. 11 -->
-								<a  class="tp-caption btn-2" href="#"
+								<a  class="tp-caption btn-2" href="<?php echo BASE_URL.DS.'produit/liste'; ?>"
 									data-x="['center','center','center','center']" data-hoffset="['-392','-392','14','1']"
-									data-y="['top','top','top','top']" data-voffset="['383','383','163','136']"
+									data-y="['top','top','top','bottom']" data-voffset="['383','383','163','50']"
 									data-width="none" data-height="none" data-whitespace="nowrap"
 									data-type="text" data-actions='' data-responsive_offset="on"
 									data-frames='[{"from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","speed":610,"to":"o:1;","delay":1400,"ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"},{"frame":"hover","speed":"300","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255,255,255,1);bg:transparent;bc:rgba(255,255,255,1);bw:2px 2px 2px 2px;"}]'
 									data-textAlign="['left','left','left','left']" data-paddingtop="[15,15,15,15]"
 									data-paddingright="[30,30,30,30]" data-paddingbottom="[15,15,15,15]"
-									data-paddingleft="[30,30,30,30]">SHOP NOW 
+									data-paddingleft="[30,30,30,30]">Le Marché 
 								</a>
 							</li>
 
 							<!-- SLIDE  -->
-							<li data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-rotate="0" data-saveperformance="off" data-title="Slide">
-								<img src="<?php echo WEBROOT_URL; ?>images/slider/slide_bg_3.jpg"  alt="" data-bgposition="center center" data-bgfit="normal" data-bgrepeat="repeat-x" data-bgparallax="off" class="rev-slidebg" />
+							<li data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" 
+							data-easein="default" data-easeout="default" data-masterspeed="300" data-rotate="0" data-saveperformance="off" data-title="Slide">
+								<img src="<?php echo WEBROOT_URL; ?>images/slider/slide_bg_3-1.jpg"  alt="" data-bgposition="center top" 
+								data-bgfit="normal" data-bgrepeat="repeat-x" data-bgparallax="off" class="rev-slidebg" />
 
 								<!-- LAYER NR. 12 -->
 								<div class="tp-caption Lato-34-900 alt-3 rs-parallaxlevel-3"
 									 data-x="['center','center','center','center']" data-hoffset="['0','0','4','2']" 
-									 data-y="['middle','middle','top','top']" data-voffset="['0','0','107','88']"
-									 data-fontsize="['200','200','100','100']" data-lineheight="['200','200','100','100']"
+									 data-y="['top','top','top','top']" data-voffset="['200','0','50','50']"
+									 data-fontsize="['160','160','100','70']" data-lineheight="['200','200','100','100']"
 									 data-width="none" data-height="none" data-whitespace="nowrap"
 									 data-type="text" data-responsive_offset="on"
 									 data-frames='[{"from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","speed":590,"to":"o:1;","delay":300,"ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
 									 data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
-									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">organic food 
+									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+									 BABI MARKET
 								</div>
 
 								<!-- LAYER NR. 13 -->
 								<div class="tp-caption rs-parallaxlevel-1"
 									 data-x="['right','right','right','center']" data-hoffset="['0','0','27','22']" 
-									 data-y="['bottom','bottom','bottom','bottom']" data-voffset="['-1','-1','11','-256']"
+									 data-y="['bottom','bottom','bottom','bottom']" data-voffset="['100','50','200','-150']"
 									 data-width="none" data-height="none" data-whitespace="nowrap" data-type="image"
 									 data-responsive_offset="on"
-									 data-frames='[{"from":"y:-50px;opacity:0;","speed":400,"to":"o:1;","delay":500,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
+									 data-frames='[{"from":"y:-50px;opacity:0;","speed":400,"to":"o:1;","delay":500,"ease":"Power2.easeInOut"},
+									 {"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
 									 data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
 									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
-									 	<img src="<?php echo WEBROOT_URL; ?>images/slider/slide_3.png" alt="" />
+									 	<img src="<?php echo WEBROOT_URL; ?>images/slider/slide_3-1.png" alt="" />
+								</div>
+
+								<!-- LAYER NR. 13 -->
+								<div class="tp-caption rs-parallaxlevel-1"
+									 data-x="['left','left','right','center']" data-hoffset="['80','50','27','22']" 
+									 data-y="['bottom','bottom','bottom','bottom']" data-voffset="['30','50','200','-200']"
+									 data-width="none" data-height="none" data-whitespace="nowrap" data-type="image"
+									 data-responsive_offset="on"
+									 data-frames='[{"from":"y:-50px;opacity:0;","speed":400,"to":"o:1;","delay":500,"ease":"Power2.easeInOut"},
+									 {"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
+									 data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
+									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
+									 	<img src="<?php echo WEBROOT_URL; ?>images/slider/slide_5-3.png" alt="" />
 								</div>
 
 								<!-- LAYER NR. 14 -->
 								<div class="tp-caption rs-parallaxlevel-1"
-									 data-x="['left','left','left','left']" data-hoffset="['624','624','624','624']" 
-									 data-y="['top','top','top','top']" data-voffset="['368','368','368','368']"
+									 data-x="['left','left','left','right']" data-hoffset="['524','624','624','-500']" 
+									 data-y="['top','top','top','bottom']" data-voffset="['250','200','200','-100']"
 									 data-width="none" data-height="none" data-whitespace="nowrap"
 									 data-type="image" data-responsive_offset="on"
-									 data-frames='[{"from":"opacity:0;","speed":380,"to":"o:1;","delay":790,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
+									 data-frames='[{"from":"opacity:0;","speed":380,"to":"o:1;","delay":790,"ease":"Power2.easeInOut"},
+									 {"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
 									 data-textAlign="['left','left','left','left']"
 									 data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
 									 data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
-									 	<img src="<?php echo WEBROOT_URL; ?>images/slider/slide_4.png" alt="" />
+									 	<img src="<?php echo WEBROOT_URL; ?>images/slider/slide_4-2.png" alt="" />
 								</div>
 
 								<!-- LAYER NR. 15 -->
 								<div class="tp-caption GreatVibes-90 alt rs-parallaxlevel-2"
-									 data-x="['center','center','center','center']" data-hoffset="['-331','-323','-62','-61']" 
-									 data-y="['middle','top','top','top']" data-voffset="['-191','99','28','7']"
-									 data-fontsize="['140','140','60','40']" data-lineheight="['140','140','90','90']"
+									 data-x="['center','center','center','center']" data-hoffset="['-200','-200','-62','-61']" 
+									 data-y="['top','top','top','top']" data-voffset="['50','99','28','7']"
+									 data-fontsize="['100','100','60','40']" data-lineheight="['140','140','90','90']"
 									 data-width="none" data-height="none" data-whitespace="nowrap" data-type="text"
 									 data-responsive_offset="on"
-									 data-frames='[{"from":"x:-50px;opacity:0;","speed":490,"to":"o:1;","delay":910,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
+									 data-frames='[{"from":"x:-50px;opacity:0;","speed":490,"to":"o:1;","delay":910,"ease":"Power2.easeInOut"},
+									 {"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
 									 data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
 									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
-									 data-paddingleft="[0,0,0,0]">Fresh  
+									 data-paddingleft="[0,0,0,0]">Des produits Bio  
 								</div>
 
 								<!-- LAYER NR. 16 -->
 								<div class="tp-caption GreatVibes-90 alt rs-parallaxlevel-2"
-									 data-x="['center','center','center','center']" data-hoffset="['-239','-240','61','21']" 
-									 data-y="['middle','top','top','top']" data-voffset="['-106','189','27','8']"
-									 data-fontsize="['140','140','60','40']" data-lineheight="['140','140','90','90']"
+									 data-x="['center','center','center','center']" data-hoffset="['-100','-180','61','21']" 
+									 data-y="['top','top','top','top']" data-voffset="['160','189','27','32']"
+									 data-fontsize="['100','100','60','40']" data-lineheight="['140','140','90','90']"
 									 data-width="none" data-height="none" data-whitespace="nowrap"
 									 data-type="text" data-responsive_offset="on"
 									 data-frames='[{"from":"x:50px;opacity:0;","speed":510,"to":"o:1;","delay":960,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
 									 data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
 									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
-									 data-paddingleft="[0,0,0,0]">juice 
+									 data-paddingleft="[0,0,0,0]">Des produits de toutes sortes 
 								</div>
 
 								<!-- LAYER NR. 17 -->
@@ -242,13 +270,13 @@
 									 data-frames='[{"from":"opacity:0;","speed":610,"to":"o:1;","delay":1300,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
 									 data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
 									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
-									 data-paddingleft="[0,0,0,0]">good for nature, good for you 
+									 data-paddingleft="[0,0,0,0]">Vivrier, Viandes, Poissons, ...  
 								</div>
 
 								<!-- LAYER NR. 18 -->
 								<div class="tp-caption rs-parallaxlevel-2"
 									 data-x="['left','left','left','left']" data-hoffset="['456','456','456','456']" 
-									 data-y="['top','top','top','top']" data-voffset="['143','143','143','143']"
+									 data-y="['top','top','top','top']" data-voffset="['0','0','0','0']"
 									 data-width="none" data-height="none" data-whitespace="nowrap" data-type="image"
 									 data-responsive_offset="on"
 									 data-frames='[{"from":"opacity:0;","speed":920,"to":"o:1;","delay":1250,"ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
@@ -259,7 +287,7 @@
 								</div>
 
 								<!-- LAYER NR. 19 -->
-								<div class="tp-caption rs-parallaxlevel-2"
+								<!-- <div class="tp-caption rs-parallaxlevel-2"
 									 data-x="['left','left','left','left']" data-hoffset="['103','103','103','103']" 
 									 data-y="['top','top','top','top']" data-voffset="['131','131','131','131']"
 									 data-width="none" data-height="none" data-whitespace="nowrap"
@@ -269,17 +297,17 @@
 									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
 									 data-paddingleft="[0,0,0,0]">
 									 	<img src="<?php echo WEBROOT_URL; ?>images/slider/slide_5.png" alt="" /> 
-								</div>
+								</div> -->
 
 								<!-- LAYER NR. 20 -->
-								<a  class="tp-caption btn-3 rs-parallaxlevel-2" href="#" 
+								<a  class="tp-caption btn-3 rs-parallaxlevel-2" href="<?php echo BASE_URL.DS.'produit/liste'; ?>" 
 									data-x="['center','center','center','center']" data-hoffset="['-318','-318','-6','-8']"
-									data-y="['top','top','top','top']" data-voffset="['558','558','231','217']"
+									data-y="['top','top','top','top']" data-voffset="['350','350','231','217']"
 									data-width="none" data-height="none" data-whitespace="nowrap" data-type="text" 
 									data-actions='' data-responsive_offset="on"
 									data-frames='[{"from":"opacity:0;","speed":650,"to":"o:1;","delay":1760,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"},{"frame":"hover","speed":"300","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255,255,255,1);bg:transparent;bw:2px 2px 2px 2px;"}]'
 									data-textAlign="['left','left','left','left']" data-paddingtop="[15,15,15,15]" data-paddingright="[30,30,30,30]"
-									data-paddingbottom="[15,15,15,15]" data-paddingleft="[30,30,30,30]">SHOP NOW 
+									data-paddingbottom="[15,15,15,15]" data-paddingleft="[30,30,30,30]">Le marché
 								</a>
 							</li>
 						</ul>
@@ -293,14 +321,21 @@
 		<div class="col-md-10">
 			<div class="section section-bg-1 section-cover pt-3 pb-3 ">				
 				<div class="row">
-						<div class="col-sm-6">
+						<div class="col-sm-6 home-description-title desktop-shit">
 							<div class="mt-3 mb-3">
-								<img src="<?php echo WEBROOT_URL; ?>images/oranges.png" alt="" />
+								<img src="<?php echo WEBROOT_URL; ?>images/about_pic.png" alt="" />
 							</div>
 						</div>
 						<div class="col-sm-6">
-							<div class="mb-1 section-pretitle default-left">Bienvenu à</div>
-							<h2 class="section-title mtn-2 mb-3">BABI MARKET</h2>
+							<div class="mobile-about-pic responsive-shit">
+								<img src="<?php echo WEBROOT_URL; ?>images/mobile/about_pic.png" alt="" />
+							</div>
+							<div class="mb-1 desktop-shit section-pretitle default-left">Bienvenu à</div>
+							<div class="mb-1 section-pretitle responsive-shit">Bienvenu à</div>
+							<h2 class="section-title mtn-2 mb-3 desktop-shit"><?php echo APPLI_NAME; ?></h2>
+							<h2 class="section-title mtn-2 responsive-shit">
+								<?php echo APPLI_NAME; ?>
+							</h2>
 							<p class="mb-4">
 								Organic store opened its doors in 1990, 
 								it was Renée Elliott's dream to offer the best and widest range
@@ -404,9 +439,10 @@
 				<div class="product-grid masonry-grid-post">
 
 					<?php foreach ($products as $p): ?>
+					
 						<div class="col-md-3 col-sm-6 product-item masonry-item text-center juice">
 							<div class="product-thumb">
-								<a href="shop-detail.html">
+								<a href="<?php echo SITE_BASE_URL.'produit/details/'.$p->slug; ?>">
 									<div class="badges">
 										<?php if($p->isnew==1){ ?>
 											<span class="new">Nouveau</span>
@@ -415,19 +451,23 @@
 											<span class="onsale">Promo</span>
 										<?php } ?>
 									</div>
-									<img src="<?php echo WEBROOT_URL; ?>images/shop/shop_1.jpg" alt="" />
+									<img src="<?php echo WEBROOT_URL; ?>images/shop/<?php echo $p->image; ?>" alt="" />
 								</a>
 								<div class="product-action">
 									<span class="add-to-cart">
-										<a href="#" data-toggle="tooltip" data-placement="top" title="Add to cart"></a>
+										<a href="#" class="add-to-cart-btn" id-product="<?php echo $p->token_produit; ?>" 
+										data-toggle="tooltip" data-placement="top" 
+										title="Ajouter au panier"></a>
 									</span>
 									<span class="quickview">
-										<a href="#" data-toggle="tooltip" data-placement="top" title="Quickview"></a>
+										<a href="<?php echo SITE_BASE_URL.'produit/details/'.$p->slug; ?>" data-toggle="tooltip" 
+											data-placement="top" title="Voir détails">
+										</a>
 									</span>
 								</div>
 							</div>
 							<div class="product-info">
-								<a href="shop-detail.html">
+								<a href="<?php echo SITE_BASE_URL.'produit/details/'.$p->slug; ?>">
 									<h2 class="title"><?php echo ucfirst($p->nom_produit) ?></h2>
 									<span class="price">
 										<?php if($p->ispromo==1){ ?>

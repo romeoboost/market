@@ -13,6 +13,7 @@ $retour = array();
 $retour['connected'] = 'non';
 
 if ($_POST) {
+    
     $post_element_normal = array('user_login', 'user_password');
     $post_element_orig = array();
     $post_element_orig = array_keys($_POST); //nom des inputs venant du form

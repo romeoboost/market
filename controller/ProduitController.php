@@ -90,11 +90,45 @@ class ProduitController extends Controller {
 	public function details($slug=null){
 		$this->loadmodel('Produit');
 		$_SESSION['menu'] = 'Marche';
-		$d['event'] = array();
-		// debug($d['event']);
+		$d['produit'] = current($this->Produit->findJoin(array(
+           'fieldsmain' => array('id AS id','nom AS nom_produit','token AS token_produit','description AS description', 'quantite_unitaire as qtite_unit', 'id_unite as unite',
+            'prix_quantite_unitaire as prix_qtite_unit','slug as slug','nouveau as isnew','promo as ispromo','pourcentage_promo as percent_promo',
+            'image as image'),
+            'fieldstwo' => array('nom AS categorie', 'token AS token_cat'),
+            'fieldsthree' => array('nom AS taille'),
+            'fields' => array(
+              array(
+                'main' => 'id_categorie_produit',
+                'second' => 'id'
+                ),
+              array(
+                'main' => 'id_taille',
+                'third' => 'id'  
+                    )
+              ),
+              'condition' => 'produits.slug="'.$slug.'"'
+            ),'produits','categories_produits','tailles'));
+
+    $unites_from_bd = $this->Produit->find(array(
+          'fields' => array('id','libelle','symbole')
+        ),'unites');
+      $d['unites'] = array();
+      foreach ($unites_from_bd as $u) {
+        $d['unites'][$u->id] = $u->symbole;
+      }
+
+		// debug($d['produit']);
 	 //    die();			
 		$this->set($d);
 	}
+
+  public function panier($numeroPanier=null){
+    $this->loadmodel('Produit');
+    $_SESSION['menu'] = 'Marche';
+    
+    $d['list_shipping_destination'] = $this->Produit->find(array(),'livraison_destinations');
+    $this->set($d);
+  }
 	
 }
 

@@ -1,4 +1,11 @@
 <?php
+
+function debugger($var){
+  print_r($var);
+  die();
+  return true;
+}
+
 function formatdate($date){
     return implode('-', array_reverse(explode('-', $date)));
 }
@@ -34,13 +41,13 @@ function getDuree($date_arrivee, $date_depart){
 
 function getMemberNumber($Nbre_Mbre_Actuel, $Abreviation_Pays){
 
-        $Identifiant = 'AM';
+        $Identifiant = 'CLI';
 
         $Date_Identifiant = date("Ym");
         $Identifiant .= "".$Date_Identifiant;        
         $Numero_Mbre = "".($Nbre_Mbre_Actuel + 1);
         //echo '<pre>';print_r($Identifiant);echo '</pre>';
-        $Taille_Fixe = 6;
+        $Taille_Fixe = 4;
         $Numero_Mbre_Good = str_pad($Numero_Mbre, $Taille_Fixe, "0", STR_PAD_LEFT);
         $Identifiant .= $Numero_Mbre_Good;
 

@@ -5,9 +5,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
     <link rel="shortcut icon" href="<?php echo WEBROOT_URL; ?>images/favicon.ico"/>
-    <title>Babi Market &#8211; Homepage Shop | Organik HTML Template</title>
+    <title><?php echo APPLI_NAME; ?> &#8211; <?php echo isset($_SESSION['menu']) ? strtoupper($_SESSION['menu']) : APPLI_NAME; ?>  
+        
+    </title>
 
     <link rel="stylesheet" href="<?php echo WEBROOT_URL; ?>css/bootstrap.min-1.css" type="text/css" media="all"/>
+    <link rel="stylesheet" href="<?php echo WEBROOT_URL; ?>css/bootstrap_select.min.css" type="text/css" media="all"/>
     <link rel="stylesheet" href="<?php echo WEBROOT_URL; ?>css/font-awesome.min.css" type="text/css" media="all" />
     <link rel="stylesheet" href="<?php echo WEBROOT_URL; ?>css/ionicons.min.css" type="text/css" media="all" />
     <link rel="stylesheet" href="<?php echo WEBROOT_URL; ?>css/owl.carousel.css" type="text/css" media="all"/>
@@ -18,8 +21,12 @@
     <link rel="stylesheet" href="<?php echo WEBROOT_URL; ?>css/style-<?php echo VERSION; ?>.css" type="text/css" media="all"/>
     <link rel="stylesheet" href="<?php echo WEBROOT_URL; ?>css/loading-<?php echo VERSION; ?>.css" type="text/css" media="all"/>
     <link rel="stylesheet" href="<?php echo WEBROOT_URL; ?>css/custom-<?php echo VERSION; ?>.css" type="text/css" media="all"/>
+    <link rel="stylesheet" href="<?php echo WEBROOT_URL; ?>css/sweetalert2.min-<?php echo VERSION; ?>.css" type="text/css" media="all">
+    
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"/>
     <link href="http://fonts.googleapis.com/css?family=Great+Vibes%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet"/>
+    <link rel="stylesheet" href="<?php echo WEBROOT_URL; ?>css/flaticon-<?php echo VERSION; ?>.css" type="text/css" media="all">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -30,6 +37,7 @@
 <body>
     <?php //$categories = $this->request('Accueil', 'getCategoryProduit'); ?>
     <?php //die(debug($categories)); ?>
+    <?php //if(isset($_SESSION['cart'])){ unset($_SESSION['cart']); } ?>
  
     <div class="noo-spinner">
         <div class="spinner">
@@ -42,10 +50,15 @@
             <div class="mobile-menu">
                 <ul id="mobile-menu" class="menu">
                     <li>
-                        <a href="<?php echo BASE_URL.DS.'accueil/index'; ?>">Accueil</a>
+                        <a href="<?php echo BASE_URL.DS.'accueil/index'; ?>"> <i class="fa fa-home" aria-hidden="true"></i>  Accueil</a>
                     </li>
                     <li class="dropdown">
-                        <a href="<?php echo BASE_URL.DS.'produit/liste'; ?>">Le marché</a>
+                        <a href="<?php echo BASE_URL.DS.'produit/liste'; ?>">
+                            <!-- <i class="fa fa-lemon-o" aria-hidden="true"></i>  -->
+                            <i class="glyph-icon flaticon-basket"></i>
+                            Le marché
+                        </a>
+
                         <i class="sub-menu-toggle fa fa-angle-down"></i>
                         <ul class="sub-menu">
                             <?php $categories = $this->request('Accueil', 'getCategoryProduit'); ?>
@@ -59,22 +72,23 @@
                         </ul>
                     </li>
 
-                    <li>
+                    <!-- <li>
                         <a href="shortcodes.html">Panier</a>
                     </li>
 
                     <li>
-                        <a href="shortcodes.html">Paiement</a>
+                        <a href="shortcodes.html">Paiement</a> -->
                     </li>
 
                     <li>
-                        <a href="shortcodes.html">A propos</a>
+                        <a href="shortcodes.html"> <i class="fas fa-arrows-alt"></i> A propos</a>
                     </li>
                     
                     <li>
-                        <a href="contact-us.html">Contacts</a>
+                        <a href="contact-us.html"><i class="fas fa-file-contract"></i> Contacts</a>
                     </li>
                 </ul>
+                
             </div>
         </div>
         
@@ -87,6 +101,11 @@
                         <span id="linkToLogin" class="hidden"><?php echo WEBROOT_URL.'ajax/logIn.php'; ?></span>
                         <span id="linkToAddMember" class="hidden"><?php echo WEBROOT_URL.'ajax/addMember.php'; ?></span>
                         <span id="linkToProductList" class="hidden"><?php echo WEBROOT_URL.'ajax/produitsList.php'; ?></span>
+                        <span id="linkToProductRelated" class="hidden"><?php echo WEBROOT_URL.'ajax/produitsRelated.php'; ?></span>
+                        <span id="linkToAddToCart" class="hidden"><?php echo WEBROOT_URL.'ajax/ajoutPanier.php'; ?></span>
+                        <span id="linkToUpdateToCart" class="hidden"><?php echo WEBROOT_URL.'ajax/modifPanier.php'; ?></span>
+                        <span id="linkToDeleteToCart" class="hidden"><?php echo WEBROOT_URL.'ajax/supprimerPanier.php'; ?></span>
+
                         <?php 
                             $idLoginButton = isset($_SESSION['user']) ? 'dropdownMenuButton' : 'loginButton';
                             //var_dump($_SESSION['user']);
@@ -97,7 +116,8 @@
                                 <ul class="topbar-menu">
                                     <li class="<?php echo isset($_SESSION['user']) ? 'dropdown' : ''; ?> ">
                                         
-                                        <a href="#" class="" role="" data-toggle="modal" data-target="#<?php echo isset($_SESSION['user']) ? '' : 'login-modal'; ?>">
+                                        <a href="#" class="" role="" data-toggle="modal" 
+                                        data-target="#<?php echo isset($_SESSION['user']) ? '' : 'login-modal'; ?>">
                                             <?php echo isset($_SESSION['user']) ? 'Bonjour '.$_SESSION['user']['nom'] : 'Se connecter'; ?>                                           
                                         </a>
                                         <?php if (isset($_SESSION['user'])){ ?>
@@ -108,7 +128,10 @@
                                         <?php } ?>
                                     </li>
                                     <?php if (!isset($_SESSION['user'])){ ?>
-                                    <li><a href="#">S'inscrire</a></li>
+                                    <li><a id="create-account-btn" class="" role="" data-toggle="modal" href="#" 
+                                        data-target="#login-modal" >
+                                        S'inscrire</a>
+                                    </li>
                                     <?php } ?>
                                 </ul>
                             </div>
@@ -147,7 +170,7 @@
                                     </div>
                                 </div>
                             </div> -->
-
+                            <i class="glyph-icon flaticon-basket"></i>
                             <div class="header-center">
                                 <nav class="menu">
                                     <ul class="main-menu">
@@ -192,17 +215,18 @@
                                             </ul>
                                         </li>
 
-                                        <li>
+                                        <!-- <li>
                                             <a href="shortcodes.html">Panier</a>
-                                        </li>
+                                        </li> -->
                                         <li id="branding-logo">
-                                            <a href="index.html" id="logo">
-                                                <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo.png" alt="Organik Logo" />
+                                            <a href="<?php echo BASE_URL.DS.'accueil/index'; ?>" id="logo">
+                                                <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-1.png" 
+                                                alt="logo <?php echo APPLI_NAME; ?>" />
                                             </a>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <a href="shortcodes.html">PAIEMENT</a>
-                                        </li>
+                                        </li> -->
 
                                         <li>
                                             <a href="shortcodes.html">A PROPOS</a>
@@ -221,41 +245,52 @@
                             </div>
                             <div class="header-right mini-cart-wrap">
                                 <div class="mini-cart">
-                                    <div class="mini-cart-icon" data-count="2">
+                                    <?php $NbreCart= isset( $_SESSION['cart']['total_nbre'] ) ? $_SESSION['cart']['total_nbre'] : "0" ?>
+                                    <div class="mini-cart-icon" data-count="<?php echo $NbreCart ?>">
                                         <i class="organik-basket"></i>
                                     </div>
-                                    <!-- <div class="mini-cart-text">
+                                    <div class="mini-cart-text">
                                         Mon panier
-                                        <div class="mini-cart-total">1 000 000 F</div>
-                                    </div> -->
+                                        <div class="mini-cart-total">
+                                            <?php echo isset( $_SESSION['cart']['total_amount'] ) ? $_SESSION['cart']['total_amount'] : "0" ?> F
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="widget-shopping-cart-content">
                                     <ul class="cart-list">
-                                        <li>
-                                            <a href="#" class="remove">×</a>
-                                            <a href="shop-detail.html">
-                                                <img src="<?php echo WEBROOT_URL; ?>images/shop/thumb/shop_1.jpg" alt="" />
-                                                Orange Juice&nbsp;
-                                            </a>
-                                            <span class="quantity">1 × $12.00</span>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="remove">×</a>
-                                            <a href="shop-detail.html">
-                                                <img src="<?php echo WEBROOT_URL; ?>images/shop/thumb/shop_2.jpg" alt="" />
-                                                Aurore Grape&nbsp;
-                                            </a>
-                                            <span class="quantity">1 × $9.00</span>
-                                        </li>
+                                        <?php if( !isset($_SESSION['cart']['products_list']) || empty($_SESSION['cart']['products_list']) ) { ?>
+                                            <div class="empty-cart text-center col-md-12"> 
+                                                Votre panier est vide 
+                                            </div>
+                                        <?php }else{ ?>
+                                            <?php foreach ($_SESSION['cart']['products_list'] as $token => $p): ?>
+                                                <li class="<?php echo $token; ?>" id-product="<?php echo $token; ?>" >
+                                                    <!-- <a href="#" class="remove">×</a> -->
+                                                    <a href="" class="remove remove-product-cart" id-product="<?php echo $token; ?>">×</a>
+                                                    <a href="<?php echo $p['link_to_details']; ?>">
+                                                        <img src="<?php echo $p['link_to_image']; ?>" alt="" />
+                                                        <?php echo $p['nom']; ?> &nbsp;
+                                                    </a>
+                                                    <span class="quantity">
+                                                        <span class="nbre-cart-product"><?php echo $p['qtite_cart']; ?></span> x
+                                                        <span class="amount-cart-product"><?php echo $p['prix_qtite_unit']; ?></span> F
+                                                    </span>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        <?php } ?>
                                     </ul>
                                     <p class="total">
-                                        <strong>Subtotal:</strong> 
-                                        <span class="amount">$21.00</span>
+                                        <strong>Sous Total:</strong> 
+                                        <span class="amount">
+                                            <?php echo isset( $_SESSION['cart']['total_amount'] ) ? $_SESSION['cart']['total_amount'] : "0" ?> F
+                                        </span>
                                     </p>
-                                    <p class="buttons">
-                                        <a href="cart.html" class="view-cart">View cart</a>
-                                        <a href="checkout.html" class="checkout">Checkout</a>
-                                    </p>
+                                    <?php //if( isset($_SESSION['cart']['products_list']) && !empty($_SESSION['cart']['products_list']) ) { ?>
+                                        <p class="buttons">
+                                            <a href="<?php echo BASE_URL.DS.'produit/panier'; ?>" class="view-cart">Le Panier</a>
+                                            <a href="<?php echo BASE_URL.DS.'commande/liste'; ?>" class="checkout">Commander</a>
+                                        </p>
+                                    <?php //} ?>
                                 </div>
                             </div>
                         </div>
@@ -273,17 +308,17 @@
                         </div>
                         <div class="col-xs-8">
                             <div class="header-center">
-                                <a href="index.html" id="logo-2">
-                                    <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo.png" alt="Organik Logo" />
+                                <a href="<?php echo BASE_URL.DS.'accueil/index'; ?>" id="logo-2">
+                                    <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-1.png" alt="logo <?php echo APPLI_NAME; ?>" />
                                 </a>
                             </div>
                         </div>
                         <div class="col-xs-2">
                             <div class="header-right">
                                 <div class="mini-cart-wrap open">
-                                    <a href="cart.html">
+                                    <a href="<?php echo BASE_URL.DS.'produit/panier'; ?>">
                                         <div class="mini-cart">
-                                            <div class="mini-cart-icon" data-count="2">
+                                            <div class="mini-cart-icon" data-count="<?php echo $NbreCart ?>">
                                                 <i class="ion-bag"></i>
                                             </div>
                                         </div>
@@ -320,7 +355,7 @@
                 <div id="div-forms" class="xxauth-modal-content">
                 
                     <!-- Begin # Login Form -->
-                    <form id="login-form" method="POST" action="">
+                    <form id="login-form" method="POST" action="" style="">
                         <div class="modal-body">
 
                             <div class="login-form-title col-md-12 text-center">
@@ -375,17 +410,33 @@
                             <div class="login-form-title col-md-12 text-center">
                                 <i class="fas fa-user-plus"></i> <span> CREER VOTRE COMPTE</span>
                             </div>
-                            <input id="register_name" class="form-control" type="text" placeholder="Nom" required>
-                            <input id="register_username" class="form-control" type="text" placeholder="prenom" required>
-                            <input id="register_tel" class="form-control" type="text" placeholder="Tel" required>
-                            <input id="register_email" class="form-control" type="text" placeholder="E-Mail" required>
-                            <input id="register_password" class="form-control" type="password" placeholder="Mot de passe" required>
-                            <input id="register_confirm_password" class="form-control" type="password" placeholder="Confirmer Mot de passe" required>
+                            <div id="errorRegisterForm" class="col-md-12 text-center"></div>  
+                            <div class="checkbox">
+                                <!-- <span>Sexe*</span><br> -->
+                                <label>
+                                    <input type="radio" class="" name="register_sexe" value="F" checked> Femme*
+                                </label>
+                                <label>
+                                    <input type="radio" name="register_sexe" value="H"> Homme*
+                                </label>
+                            </div>
+                            <!-- .input-error // pour lorsqu'un champs n'a pas la bonne valeur -->
+                            <input id="register_name" name="register_nom" class="form-control" type="text" placeholder="Nom*" required>
+                            <input id="register_username" name="register_prenom" class="form-control" type="text" placeholder="prenom*" required>
+                            <input id="register_tel" name="register_tel" class="form-control" type="text" placeholder="Tel*" maxlength="8" required>
+                            <input id="register_email" name="register_email" class="form-control" type="text" placeholder="E-Mail" >
+                            <input id="register_password" name="register_password" class="form-control" type="password" 
+                            placeholder="Mot de passe*" required>
+                            <input id="register_confirm_password" name="register_confirm_password" class="form-control" type="password" 
+                            placeholder="Confirmer Mot de passe*" required>
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"> conditions générales
+                                    <input type="checkbox" name="register_cond" value="1"> conditions générales
                                 </label>
+                            </div>
+                            <div class="champs-obligatoires">
+                                <span>(*) Champs obligatoires</span>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -479,6 +530,7 @@
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/jquery.min-<?php echo VERSION; ?>.js"></script>
     
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/bootstrap_select.min.js"></script>
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/modernizr-2.7.1.min.js"></script>
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/owl.carousel.min.js"></script>
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/imagesloaded.pkgd.min.js"></script>
@@ -509,6 +561,7 @@
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/slider.min.js"></script>
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/jquery.ui.touch-punch.js"></script>
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/price-slider-<?php echo VERSION; ?>.js"></script>
+    <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/sweetalert2.min.js"></script>
 </body>
 
 </html>

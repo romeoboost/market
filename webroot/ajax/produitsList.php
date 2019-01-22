@@ -2,6 +2,7 @@
 include 'connectDB.php';
 include 'fonction.php';
 define('WEBROOT_URL', 'http://localhost/Market/webroot/');
+define('SITE_BASE_URL', 'http://localhost/Market/');
 if (empty(session_id())) {
     session_start();
     $_SESSION['menu'] = 'Marche';
@@ -104,11 +105,11 @@ if ($_POST) {
 
     //$nombre_produit_total = current($reqCount->fetchAll(PDO::FETCH_OBJ));
 
-    $nombre_produit_total = count($reqCount->rowCount());
+    $nombre_produit_total = $reqCount->rowCount();
     //die(var_dump($req->rowCount()));
 
     $nombre_pages=ceil($nombre_produit_total/$nombre_products);
-
+    $retour['nombreProduits']=$reqCount->rowCount();
 
 
     if(!empty($produits)) // si produit trouvé
@@ -123,7 +124,7 @@ if ($_POST) {
 
             $produits_liste_html.='<div class="col-md-4 col-sm-6 product-item text-center mb-1">
                                         <div class="product-thumb">
-                                            <a href="details/'.$p->slug.'">
+                                            <a href="'.SITE_BASE_URL.'produit/details/'.$p->slug.'">
                                                 <div class="badges">
                                                     
                                                 ';
@@ -139,15 +140,15 @@ if ($_POST) {
                                             </a>
                                             <div class="product-action">
                                                 <span class="add-to-cart">
-                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Add to cart"></a>
+                                                    <a href="#" class="add-to-cart-btn" id-product="'.$p->token_produit.'" data-toggle="tooltip" data-placement="top" title="Ajouter au panier"></a>
                                                 </span>
                                                 <span class="quickview">
-                                                    <a href="details/'.$p->slug.'" data-toggle="tooltip" data-placement="top" title="Quickview"></a>
+                                                    <a href="'.SITE_BASE_URL.'produit/details/'.$p->slug.'" data-toggle="tooltip" data-placement="top" title="Voir detail"></a>
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="product-info">
-                                            <a href="shop-detail.html">
+                                            <a href="'.SITE_BASE_URL.'produit/details/'.$p->slug.'">
                                                 <h2 class="title">'.ucfirst($p->nom_produit).'</h2>
                                                 <span class="price">';
 
@@ -216,6 +217,7 @@ $retour['productDataSearch']=$productDataSearch;
 $retour['productDataCategory']=$productDataCategory;
 $retour['productDataNumberPage']=$numero_page;
 $retour['productDataOrder']=$productDataOrder;
+
 
 
 

@@ -130,6 +130,7 @@
                     </div> -->
 
 
+
 // ficheir ../../controllers/application_controller.rb
 if @operation.blank?
   redirect_to error_page_path(error_code: "502") unless @current_plateform
@@ -143,3 +144,7 @@ when "502"
       @description_message = "Veuillez reessayer plus tard."
 
 lieun tuto load content on scroll : https://www.youtube.com/watch?v=eziREnZPml4
+
+
+SELECT * from product WHERE produit.cat=$cat order by rand()
+LIMIT 0,4;
