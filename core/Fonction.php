@@ -1,4 +1,21 @@
 <?php
+
+// $prix_produit = $produit->prix_quantite_unitaire - 
+// ($produit->prix_quantite_unitaire*$produit->pourcentage_promo/100);
+
+function productPrice($prix_quantite_unitaire, $pourcentage_promo){
+  return $prix_quantite_unitaire - ($prix_quantite_unitaire*$pourcentage_promo/100);
+}
+
+/*
+*$date au format YYYY-mm-dd H:i:s
+*/
+function dateFormat($date){
+  $date_c = new DateTime($date);
+  $dateFormated = $date_c->format('d-m-Y H:i');
+  return $dateFormated;
+}
+
 function debug($var){
     
    $debug = debug_backtrace();   
@@ -94,7 +111,7 @@ function ancien($debut){
    
 }
 
-function dateFormat($date){
+function dateFormat_old($date){
     //$source = '2012-07-31';
     //$date = new DateTime($source);
     return implode('-', array_reverse(explode('-', $date)));

@@ -38,6 +38,7 @@ if ($_POST) {
             extract($_POST);
             //$encrypt_password = md5($user_password);
             $user_login = trim($user_login);
+            $user_password = md5($user_password);
             $req = $pdo->prepare("SELECT * FROM clients WHERE (tel =:tel OR email=:email) AND password =:password"); //':email' => $user_login,
             $req->execute(array(':tel' => $user_login, ':email' => $user_login, ':password' => $user_password));
             // var_dump($req);

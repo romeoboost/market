@@ -35,13 +35,20 @@
 			}
 		};
 		
-		if( !isMobile.any() ) {
-			if ($(this).scrollTop() > 51) {
+		// if( !isMobile.any() ) {
+		// 	if ($(this).scrollTop() > 51) {
+		// 		$('.header').addClass('scrolling-menu');
+		// 	} else {
+		// 		$('.header').removeClass('scrolling-menu');
+		// 	}
+		// }
+
+		if ($(this).scrollTop() > 51) {
 				$('.header').addClass('scrolling-menu');
 			} else {
 				$('.header').removeClass('scrolling-menu');
 			}
-		}
+
 	});
 
 

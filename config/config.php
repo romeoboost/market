@@ -12,7 +12,7 @@
         );
         
         static function redir(){
-            if(!isset($_SESSION['username'])){
+            if(!isset($_SESSION['user'])){
             header('Location: '.BASE_URL.DS.'accueil/index');            
        }       
       

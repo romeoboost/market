@@ -7,13 +7,18 @@ if (empty(session_id())) {
     session_start();
     //$_SESSION['menu'] = 'Nous_Rejoindre';
 }
-//debugger($_POST);
+//debugger($_SESSION);
 $error_statut = false;
 $error_text = '';
 $error_text_second = '';
 $field_error ='none';
 $retour = array();
-//$retour['enregistrement'] = 'non';
+$retour['enregistrement'] = 'non';
+if( isset($_GET) && isset($_SESSION) ){
+  //debugger($_SESSION);
+  // session_destroy();
+  // die();
+}
 
 if(!isset($_POST) || empty($_POST) ){
   $error_statut = true;
@@ -110,6 +115,17 @@ if(!isset($_POST) || empty($_POST) ){
               $_SESSION['cart']['total_nbre'] = 0;
               $_SESSION['cart']['products_list'] = array();
 
+              //On recupere la destination par defaut
+              $dest_sql_text="SELECT token,commune,frais FROM livraison_destinations ORDER BY id ASC LIMIT 0,1";
+              $dest_sql = $pdo->prepare($dest_sql_text);
+              $dest_sql->execute(array());
+              $destination = current($dest_sql->fetchAll(PDO::FETCH_OBJ));
+
+              //On defini dans la session la destination de livraison
+              $_SESSION['cart']['shipping_dest']['token'] = $destination->token;
+              $_SESSION['cart']['shipping_dest']['commune'] = $destination->commune;
+              $_SESSION['cart']['shipping_dest']['frais'] = $destination->frais;
+
               // On ajoute le premier produit
               $_SESSION['cart']['products_list'][$produit->token_produit]['nom'] = ucfirst($produit->nom_produit);
               $_SESSION['cart']['products_list'][$produit->token_produit]['qtite_unit'] = $produit->qtite_unit;
@@ -120,13 +136,14 @@ if(!isset($_POST) || empty($_POST) ){
               $_SESSION['cart']['products_list'][$produit->token_produit]['prix_qtite_unit'] = $prix_produit;
 
               $_SESSION['cart']['products_list'][$produit->token_produit]['qtite_cart'] = $nbreProduit;
-              $_SESSION['cart']['products_list'][$produit->token_produit]['price_cart'] = $prix_produit;
+              $_SESSION['cart']['products_list'][$produit->token_produit]['price_cart'] = $prix_produit*$nbreProduit;
 
               $_SESSION['cart']['total_amount'] = $prix_produit*$nbreProduit;
               $_SESSION['cart']['total_nbre'] = $nbreProduit;
 
             }else{ // le panier existe et n'est pas vide
               $Iscartempty=false;
+              //debugger($_SESSION);
               if( !isset($_SESSION['cart']['products_list'][$produit->token_produit]) || 
                    empty($_SESSION['cart']['products_list'][$produit->token_produit]) ){ //verifie si le produit n'existe pas deja dans le panier
                 
@@ -143,7 +160,7 @@ if(!isset($_POST) || empty($_POST) ){
                 $_SESSION['cart']['products_list'][$produit->token_produit]['prix_qtite_unit'] = $prix_produit;
 
                 $_SESSION['cart']['products_list'][$produit->token_produit]['qtite_cart'] = $nbreProduit;
-                $_SESSION['cart']['products_list'][$produit->token_produit]['price_cart'] = $prix_produit;
+                $_SESSION['cart']['products_list'][$produit->token_produit]['price_cart'] = $prix_produit*$nbreProduit;
 
 
 
@@ -152,7 +169,7 @@ if(!isset($_POST) || empty($_POST) ){
                 $_SESSION['cart']['last_updated_at'] = date("Y-m-d H:i:s");
 
                 $_SESSION['cart']['products_list'][$produit->token_produit]['qtite_cart'] += $nbreProduit;
-                $_SESSION['cart']['products_list'][$produit->token_produit]['price_cart'] += $prix_produit;
+                $_SESSION['cart']['products_list'][$produit->token_produit]['price_cart'] += $prix_produit*$nbreProduit;
               }
 
               $_SESSION['cart']['total_amount'] += $prix_produit*$nbreProduit;

@@ -1,0 +1,81 @@
+- finaliser les commandes : afficher le message de notifications (sweat alrt)
+	vider le panier : OK
+- mettre verrou : commander seulement lorsqu'on est connecté 
+	si le client n'est pas connecter afficher pop up connexion deriere bouton "commander" : OK
+
+- Mon espace personnelle
+	- Mes infos (liste et modification)
+	- Modifier Mon mot de passe
+	- Mes commandes
+
+/modification info personnelle
+	- verifier si les champs existe
+	- verifier si les champs obligatoires ne sont pas vides
+	- verifier si tel n'est pas deja used
+	- verifier si email n'est pas deja used
+
+/Modification de mot de passe (debut = 20:20 )
+	* JS *
+		- Verifier si les champs new_password et confirm_new_password ne sont pas vides
+		- Verifier si les champs new_password et confirm_new_password contiennent les mêmes valeurs
+		- envoie req en ajax
+	* Ajax *
+		- verifier si les champs existe
+		- verifier si les champs obligatoires ne sont pas vides
+		- Verifier si les champs new_password et confirm_new_password contiennent les mêmes valeurs
+		- verifier si l'ancien mot de passe est correct
+		- Modifier le mot de passe
+
+Liste commandes user
+	- Gerer le cas : Aucune commades pour le user : OK
+
+Fonction commander
+	- insérer le prix d'achat du produit en base : OK
+
+/Annuler une commande : OK
+	- verifier si tous les parametres existent : OK
+	- verifier si tous les parametres obligatoires ne sont pas vides : OK
+	- Verifie si la commande existe bien en base : OK
+	- Verifie que le statut de la commande est bien à en attente (0 ) : OK
+	- Modifie le statut de la commande : OK
+	- Met à jour le nombre de produits en stock avec ceux contenu dans la commande : OK
+	- renvoi le bon html pour le nouveau statut du produit : OK
+
+	--> Deploiement sur git <--
+	--> Deploiement sur serveur <--
+
+/Responsivité vues comptes
+	- 
+
+	--> Deploiement sur git <--
+	--> Deploiement sur serveur <--
+
+/Recherche produits
+65 65 06 59
+
+044131965000
+
+
+
+recupérer le checkbox au changement
+verifie s'il est selectionné
+	transforme les inputs text en password
+sinon
+	transforme les inputs password en text
+
+f5b8569f25528d10c56fe9808b0aa9e3
+
+place_order
+
+commandes Actions : annuler, voir les details 
+
+delete_to_cart
+
+Evariste pointure : 43
+
+
+ssage: PHP Warning:  Missing argument 3 for checkid_ref(), called in /var/www/html/eagence/ask_transfer_api.php on line 9 and defined in /var/www/html/eagence/request_functions.php on line 69, referer: https://macieenligne.ci/emmenager
+
+ssage: PHP Fatal error:  Call to undefined function Could not resolve host: 044131965000() in /var/www/html/eagence/request_functions.php on line 84, referer: https://macieenligne.ci/emmenager
+
+

@@ -1,7 +1,8 @@
 <?php
 
-function debugger($var){
+function debugger($var, $second_var=null){
   print_r($var);
+  print_r(' '.$second_var);
   die();
   return true;
 }
@@ -41,9 +42,27 @@ function getDuree($date_arrivee, $date_depart){
 
 function getMemberNumber($Nbre_Mbre_Actuel, $Abreviation_Pays){
 
-        $Identifiant = 'CLI';
+        $Identifiant = 'CLI'; //
 
-        $Date_Identifiant = date("Ym");
+        $Date_Identifiant = date("Ym"); //
+        $Identifiant .= "".$Date_Identifiant;        
+        $Numero_Mbre = "".($Nbre_Mbre_Actuel + 1);
+        //echo '<pre>';print_r($Identifiant);echo '</pre>';
+        $Taille_Fixe = 4;
+        $Numero_Mbre_Good = str_pad($Numero_Mbre, $Taille_Fixe, "0", STR_PAD_LEFT);
+        $Identifiant .= $Numero_Mbre_Good;
+
+        //$Abreviation_Pays = 'CI'; // A automatiser
+        $Identifiant .= $Abreviation_Pays;
+
+        return $Identifiant;
+}
+
+function getCmdeNumber($Nbre_Mbre_Actuel, $Abreviation_Pays){
+
+        $Identifiant = 'CMD'; //
+
+        $Date_Identifiant = date("Ym"); //
         $Identifiant .= "".$Date_Identifiant;        
         $Numero_Mbre = "".($Nbre_Mbre_Actuel + 1);
         //echo '<pre>';print_r($Identifiant);echo '</pre>';

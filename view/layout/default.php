@@ -22,9 +22,10 @@
     <link rel="stylesheet" href="<?php echo WEBROOT_URL; ?>css/loading-<?php echo VERSION; ?>.css" type="text/css" media="all"/>
     <link rel="stylesheet" href="<?php echo WEBROOT_URL; ?>css/custom-<?php echo VERSION; ?>.css" type="text/css" media="all"/>
     <link rel="stylesheet" href="<?php echo WEBROOT_URL; ?>css/sweetalert2.min-<?php echo VERSION; ?>.css" type="text/css" media="all">
+    <link rel="stylesheet" href="<?php echo WEBROOT_URL; ?>css/font-awesome.min-<?php echo VERSION; ?>.css" type="text/css" media="all">
     
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"/>
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"/> -->
     <link href="http://fonts.googleapis.com/css?family=Great+Vibes%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet"/>
     <link rel="stylesheet" href="<?php echo WEBROOT_URL; ?>css/flaticon-<?php echo VERSION; ?>.css" type="text/css" media="all">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -48,6 +49,45 @@
 
     <div id="menu-slideout" class="slideout-menu hidden-md-up">
             <div class="mobile-menu">
+                <div class="header-mobile-menu  mb-2">
+                    <div class="mobile-menu-logo">
+                        <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-1.png" 
+                                                alt="logo <?php echo APPLI_NAME; ?>" />
+                    </div>
+                    <div class="mobile-menu-actions-enter">
+                        <ul class="topbar-menu menu">
+                            <li class=" <?php echo isset($_SESSION['user']) ? 'dropdown' : ''; ?> ">
+                                
+                                <a id="<?php echo isset($_SESSION['user']) ? 'dropdown-user' : 'login-btn'; ?>" href="#" 
+                                    class="" role="" data-toggle="modal" 
+                                data-target="#<?php echo isset($_SESSION['user']) ? '' : 'login-modal'; ?>">
+                                    <?php echo isset($_SESSION['user']) ? ''.$_SESSION['user']['nom'] : 'Se connecter'; ?>                                           
+                                
+                                <?php if (isset($_SESSION['user'])){ ?>
+                                  <i class="sub-menu-toggle fa fa-angle-down"></i>  
+                                <?php } ?>
+
+                                </a>
+                                <?php if (isset($_SESSION['user'])){ ?>
+                                    <ul id="user-sub-menu" class="sub-menu sub-menu-close">
+                                        
+                                        <li class=""><a href="<?php echo BASE_URL.DS.'profil/liste'; ?>">Mes Infos</a></li>
+                                        <li class=""><a href="<?php echo BASE_URL.DS.'profil/modif_password'; ?>">Mot de passe</a></li>
+                                        <li class=""><a href="<?php echo BASE_URL.DS.'profil/commandes'; ?>">Mes commandes</a></li>
+                                        
+                                        <li><a href="<?php echo BASE_URL.DS.'accueil/deconnect'; ?>">Deconnexion</a></li>
+                                    </ul>
+                                <?php } ?>
+                            </li>
+                            <?php if (!isset($_SESSION['user'])){ ?>
+                            <li><a id="create-account-btn" class="" role="" data-toggle="modal" href="#" 
+                                data-target="#login-modal" >
+                                S'inscrire</a>
+                            </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </div>
                 <ul id="mobile-menu" class="menu">
                     <li>
                         <a href="<?php echo BASE_URL.DS.'accueil/index'; ?>"> <i class="fa fa-home" aria-hidden="true"></i>  Accueil</a>
@@ -65,6 +105,7 @@
                             <?php foreach ($categories as $c): ?>
                                 <li>
                                     <a href="<?php echo BASE_URL.DS.'produit/liste/categorie/'.$c->token; ?>">
+                                        <i class="glyph-icon flaticon-<?php echo $c->icon; ?>"></i>
                                         <?php echo ucfirst($c->nom); ?>
                                     </a>
                                 </li>
@@ -72,23 +113,18 @@
                         </ul>
                     </li>
 
-                    <!-- <li>
-                        <a href="shortcodes.html">Panier</a>
-                    </li>
-
                     <li>
-                        <a href="shortcodes.html">Paiement</a> -->
-                    </li>
-
-                    <li>
-                        <a href="shortcodes.html"> <i class="fas fa-arrows-alt"></i> A propos</a>
+                        <a href="<?php echo BASE_URL.DS.'apropos/index'; ?>"> 
+                            <i class="fa fa-arrows-alt"></i> 
+                            A propos
+                        </a>
                     </li>
                     
                     <li>
-                        <a href="contact-us.html"><i class="fas fa-file-contract"></i> Contacts</a>
+                        <a href="<?php echo BASE_URL.DS.'contact/index'; ?>"><i class="fa fa-envelope"></i> Contacts</a>
                     </li>
                 </ul>
-                
+
             </div>
         </div>
         
@@ -105,13 +141,19 @@
                         <span id="linkToAddToCart" class="hidden"><?php echo WEBROOT_URL.'ajax/ajoutPanier.php'; ?></span>
                         <span id="linkToUpdateToCart" class="hidden"><?php echo WEBROOT_URL.'ajax/modifPanier.php'; ?></span>
                         <span id="linkToDeleteToCart" class="hidden"><?php echo WEBROOT_URL.'ajax/supprimerPanier.php'; ?></span>
+                        <span id="linkToAddMessage" class="hidden"><?php echo WEBROOT_URL.'ajax/sendMessage.php'; ?></span>
+                        <span id="linkToShippingDest" class="hidden"><?php echo WEBROOT_URL.'ajax/setShippingDestination.php'; ?></span>
+                        <span id="linkToOrder" class="hidden"><?php echo WEBROOT_URL.'ajax/placeOrder.php'; ?></span>
+                        <span id="linkToUpdateInfosUser" class="hidden"><?php echo WEBROOT_URL.'ajax/updateInfosUser.php'; ?></span>
+                        <span id="linkToUpdatePassword" class="hidden"><?php echo WEBROOT_URL.'ajax/updatePassword.php'; ?></span>
+                        <span id="linkToCancelledOrder" class="hidden"><?php echo WEBROOT_URL.'ajax/cancelledOrder.php'; ?></span>
 
                         <?php 
                             $idLoginButton = isset($_SESSION['user']) ? 'dropdownMenuButton' : 'loginButton';
                             //var_dump($_SESSION['user']);
                         ?>
 
-                        <div class="col-md-12">
+                        <div class="col-md-12 topbar-menu-desktop">
                             <div class="topbar-menu">
                                 <ul class="topbar-menu">
                                     <li class="<?php echo isset($_SESSION['user']) ? 'dropdown' : ''; ?> ">
@@ -122,7 +164,7 @@
                                         </a>
                                         <?php if (isset($_SESSION['user'])){ ?>
                                             <ul class="sub-menu">
-                                                <li><a href="#">Mon compte</a></li>
+                                                <li><a href="<?php echo BASE_URL.DS.'profil/liste'; ?>">Mon compte</a></li>
                                                 <li><a href="<?php echo BASE_URL.DS.'accueil/deconnect'; ?>">Deconnexion</a></li>
                                             </ul>
                                         <?php } ?>
@@ -170,7 +212,7 @@
                                     </div>
                                 </div>
                             </div> -->
-                            <i class="glyph-icon flaticon-basket"></i>
+                            <!-- <i class="glyph-icon flaticon-basket"></i> -->
                             <div class="header-center">
                                 <nav class="menu">
                                     <ul class="main-menu">
@@ -228,12 +270,12 @@
                                             <a href="shortcodes.html">PAIEMENT</a>
                                         </li> -->
 
-                                        <li>
-                                            <a href="shortcodes.html">A PROPOS</a>
+                                        <li class="<?php echo ($_SESSION['menu']=='Apropos') ? 'active' : ''; ?>">
+                                            <a href="<?php echo BASE_URL.DS.'apropos/index'; ?>" >A PROPOS</a>
                                         </li>
                                         
-                                        <li>
-                                            <a href="contact-us.html">Contact</a>
+                                        <li <?php echo BASE_URL.DS.'contact/index'; ?> class="<?php echo ($_SESSION['menu']=='Contact') ? 'active' : ''; ?>">
+                                            <a href="<?php echo BASE_URL.DS.'contact/index'; ?>">Contact</a>
                                         </li>
                                         <li class="top-search-btn">
                                             <a href="javascript:void(0);">
@@ -288,7 +330,16 @@
                                     <?php //if( isset($_SESSION['cart']['products_list']) && !empty($_SESSION['cart']['products_list']) ) { ?>
                                         <p class="buttons">
                                             <a href="<?php echo BASE_URL.DS.'produit/panier'; ?>" class="view-cart">Le Panier</a>
-                                            <a href="<?php echo BASE_URL.DS.'commande/liste'; ?>" class="checkout">Commander</a>
+
+                                            <?php if ( isset($_SESSION['user']) ): ?>
+                                                <a href="<?php echo BASE_URL.DS.'commande/details'; ?>" class="checkout">
+                                                    Commander
+                                                </a>
+                                            <?php else: ?>
+                                                <a href="#" role="" data-toggle="modal" data-target="#login-modal" class="checkout">
+                                                    Commander
+                                                </a>
+                                            <?php endif; ?>
                                         </p>
                                     <?php //} ?>
                                 </div>
@@ -345,7 +396,7 @@
                     <!-- <img class="img-circle" id="img_logo" src="http://bootsnipp.com/img/logo.jpg"> -->
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <!-- <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> -->
-                        <i class="fas fa-times-circle"></i>
+                        <i class="fa fa-times-circle"></i>
                         <!-- <i class="far fa-times-circle"></i> -->
 
                     </button>
@@ -359,7 +410,7 @@
                         <div class="modal-body">
 
                             <div class="login-form-title col-md-12 text-center">
-                                <i class="fas fa-user"></i> <span> CONNEXION</span>
+                                <i class="fa fa-user"></i> <span> CONNEXION</span>
                             </div>
                             <div id="errorLoginForm" class="col-md-12 text-center"></div>                         
                             
@@ -367,7 +418,7 @@
                             <input id="login_password" name="user_password" class="form-control" type="password" placeholder="Mot de passe" required>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"> Afficher mot de passe
+                                    <input id="show-password-checbox-login" type="checkbox"> Afficher mot de passe
                                 </label>
                             </div>
                         </div>
@@ -388,7 +439,7 @@
                         <div class="modal-body">
                             
                             <div class="login-form-title col-md-12 text-center">
-                                <i class="fas fa-unlock"></i> <span> MOT DE PASSE OUBLIE</span>
+                                <i class="fa fa-unlock"></i> <span> MOT DE PASSE OUBLIE</span>
                             </div>
                             <input id="lost_email" class="form-control" type="text" placeholder="E-mail" required>
                         </div>
@@ -408,7 +459,7 @@
                     <form id="register-form" style="display:none;">
                         <div class="modal-body">
                             <div class="login-form-title col-md-12 text-center">
-                                <i class="fas fa-user-plus"></i> <span> CREER VOTRE COMPTE</span>
+                                <i class="fa fa-user-plus"></i> <span> CREER VOTRE COMPTE</span>
                             </div>
                             <div id="errorRegisterForm" class="col-md-12 text-center"></div>  
                             <div class="checkbox">
@@ -460,7 +511,7 @@
 
 
         <footer class="footer">
-            <div class="container">
+            <!-- <div class="container">
                 <div class="row">
                     <div class="col-md-5">
                         <img src="<?php echo WEBROOT_URL; ?>images/footer_logo.png" class="footer-logo" alt="" />
@@ -509,17 +560,24 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </footer>
         
         <div class="copyright">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
-                        Copyright © 2017 <a href="#">Organic Store</a> - All Rights Reserved.
+                        Copyright © 2019 <a href="<?php echo BASE_URL.DS.'accueil/index'; ?>">
+                        <?php echo APPLI_NAME; ?></a> - Tous droits reservés.
                     </div>
                     <div class="col-md-4">
-                        <img src="<?php echo WEBROOT_URL; ?>images/footer_payment.png" alt="" />
+                        <!-- <img src="<?php echo WEBROOT_URL; ?>images/footer_payment.png" alt="" /> -->
+                        <div class="footer-social">
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>

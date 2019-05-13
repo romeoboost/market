@@ -126,6 +126,8 @@ class ProduitController extends Controller {
     $this->loadmodel('Produit');
     $_SESSION['menu'] = 'Marche';
     
+    // debug($_SESSION);
+    // die();
     $d['list_shipping_destination'] = $this->Produit->find(array(),'livraison_destinations');
     $this->set($d);
   }

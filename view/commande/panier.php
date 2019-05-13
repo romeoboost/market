@@ -147,7 +147,7 @@
                                 </tbody>
                             </table>
                             <div class="proceed-to-checkout">
-                                <a href="<?php echo BASE_URL.DS.'commande/details'; ?>">Commander</a>
+                                <a href="<?php echo BASE_URL.DS.'commande/liste'; ?>">Commander</a>
                             </div>
                         </div>
                         
@@ -166,5 +166,3 @@
         </div>
     </div>
 </div>
-
-<br><br><br><br>

@@ -16,6 +16,10 @@ $produits_liste_html='';
 $pagination_html='';
 $productDataDisplay=false;
 
+$firstElement = 0;
+$lastElement = 0;
+$totalElement = 0;
+
 $OrderFields = array(
                     1 => 'produits.id DESC',
                     2 => 'produits.id DESC',
@@ -49,6 +53,9 @@ if ($_POST) {
 
     $numero_page=($numero_page < 1) ? 1 : $numero_page;
     $offset = ($numero_page - 1 )*$nombre_products;
+
+    $firstElement = $offset + 1; // defini le premier element
+    $retour['firstElement']=$firstElement; 
 
     //rajoute la condition de filtre sur la catégorie
     if(!empty($productDataCategory)){ 
@@ -98,15 +105,19 @@ if ($_POST) {
 
     //determiner le nombre de page
     $nombre_produits_trouves=count($produits);
+    $lastElement = $nombre_produits_trouves; // defini le nombre delement ramené
+    $retour['lastElement']=$lastElement;
 
     //$produit_total_sql="SELECT count(id) as nbre_produit_total FROM produits";
     $reqCount = $pdo->prepare($sql_liste_all); //':email' => $user_login,
     $reqCount->execute($conditions_prepare);
 
+
     //$nombre_produit_total = current($reqCount->fetchAll(PDO::FETCH_OBJ));
 
     $nombre_produit_total = $reqCount->rowCount();
     //die(var_dump($req->rowCount()));
+    $totalElement = $nombre_produit_total; // le nombre total en base pour la recherche
 
     $nombre_pages=ceil($nombre_produit_total/$nombre_products);
     $retour['nombreProduits']=$reqCount->rowCount();
@@ -121,8 +132,8 @@ if ($_POST) {
             
             $prix_html='';
             $symbole_unite=($unites[$p->unite] == 'NA') ? '' : $unites[$p->unite]; //determine le symbole de lunite du produit
-
-            $produits_liste_html.='<div class="col-md-4 col-sm-6 product-item text-center mb-1">
+                    //masonry-item PENSER A GERER LAFFICHAGE DES PRODUITS SUR PETIT ECRAN
+            $produits_liste_html.='<div class="col-md-4 col-sm-6 product-item  text-center mb-1">
                                         <div class="product-thumb">
                                             <a href="'.SITE_BASE_URL.'produit/details/'.$p->slug.'">
                                                 <div class="badges">
@@ -204,6 +215,8 @@ if ($_POST) {
                                     <div class="product-list-empty-description">Aucun produit trouvé.</div>
                                     <div id="" class="text-center"><a class="initial-product-reload">Actualiser</a></div>
                                 </div>';
+                                // GERER AUCUN PRODUIT TROUVE
+        $retour['firstElement']=0;
     }
 
 

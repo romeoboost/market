@@ -43,7 +43,7 @@
 									 data-frames='[{"from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","speed":1500,"to":"o:1;","delay":500,"ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
 									 data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
 									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
-									 data-paddingleft="[0,0,0,0]">BABI MARKET 
+									 data-paddingleft="[0,0,0,0]"><?php echo APPLI_NAME; ?>
 								</div>
 
 								<!-- LAYER NR. 3 -->
@@ -189,7 +189,7 @@
 									 data-frames='[{"from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","speed":590,"to":"o:1;","delay":300,"ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
 									 data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
 									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
-									 BABI MARKET
+									 <?php echo APPLI_NAME; ?>
 								</div>
 
 								<!-- LAYER NR. 13 -->
@@ -333,9 +333,9 @@
 							<div class="mb-1 desktop-shit section-pretitle default-left">Bienvenu à</div>
 							<div class="mb-1 section-pretitle responsive-shit">Bienvenu à</div>
 							<h2 class="section-title mtn-2 mb-3 desktop-shit"><?php echo APPLI_NAME; ?></h2>
-							<h2 class="section-title mtn-2 responsive-shit">
+							<h3 class="section-title mtn-2 responsive-shit">
 								<?php echo APPLI_NAME; ?>
-							</h2>
+							</h3>
 							<p class="mb-4">
 								Organic store opened its doors in 1990, 
 								it was Renée Elliott's dream to offer the best and widest range
@@ -343,7 +343,7 @@
 								  the community and to bring a sense of discovery and adventure 
 								  into food shopping.
 							</p>
-							<a class="organik-btn arrow" href="<?php echo BASE_URL.DS.'produits/liste'; ?>">Nos produits</a>
+							<a class="organik-btn arrow" href="<?php echo BASE_URL.DS.'produit/liste'; ?>">Nos produits</a>
 						</div>
 					</div>
 			</div>
@@ -440,7 +440,7 @@
 
 					<?php foreach ($products as $p): ?>
 					
-						<div class="col-md-3 col-sm-6 product-item masonry-item text-center juice">
+						<div class="col-md-3 col-sm-6 product-item masonry-item text-center ">
 							<div class="product-thumb">
 								<a href="<?php echo SITE_BASE_URL.'produit/details/'.$p->slug; ?>">
 									<div class="badges">
@@ -451,7 +451,7 @@
 											<span class="onsale">Promo</span>
 										<?php } ?>
 									</div>
-									<img src="<?php echo WEBROOT_URL; ?>images/shop/<?php echo $p->image; ?>" alt="" />
+									<img src="<?php echo WEBROOT_URL; ?>images/shop/<?php echo $p->image; ?>.jpg" alt="" />
 								</a>
 								<div class="product-action">
 									<span class="add-to-cart">
@@ -486,7 +486,7 @@
 
 				</div>
 				<div class="loadmore-contain">
-					<a class="organik-btn small" href="<?php echo BASE_URL.DS.'produits/liste'; ?>"> Voir tous les produits dans le marché </a>
+					<a class="organik-btn small" href="<?php echo BASE_URL.DS.'produit/liste'; ?>"> Voir tous les produits dans le marché </a>
 				</div>
 			</div>
 		</div>
