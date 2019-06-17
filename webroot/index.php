@@ -13,7 +13,7 @@
 
     $date = date_create();
     $version_number = date_timestamp_get($date);
-    define('APPLI_NAME', 'CHOCO MARKET');
+    define('APPLI_NAME', 'AFROMART');
     define('WEBROOT_URL', 'http://localhost/Market/webroot/');
     define('SITE_BASE_URL', 'http://localhost/Market/');     
     define('WEBROOT', dirname(__FILE__));

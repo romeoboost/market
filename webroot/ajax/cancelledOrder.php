@@ -78,6 +78,8 @@ if( !isset($_POST) || empty($_POST) || !isset($_POST['tokenCommande']) ){
 
         //renvoi le bon html pour le nouveau statut du produit
         $retour['error_html'] = '<span class="badge badge-danger"> annulée </span>';
+		
+		//les produits lies a la commande ne sont pas supprimés lors de l'annulation car la commandes pourrait etre restaurée
 
         $enregistrement = 'oui';
         $retour['enregistrement'] = $enregistrement;

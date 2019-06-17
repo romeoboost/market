@@ -56,7 +56,7 @@ class ProfilController extends Controller {
       $d['users_commands'] = $this->Membre->find(array( // recupere la liste des paiements de corisation pour le membre
             'condition' => array( 'id_client' => $user->id ),
             'order' => array( 'champs' => 'id', 'param' => 'DESC')
-          ),'commandes');
+       ),'commandes');
       
       // debug($d['user_infos']);
       // die();

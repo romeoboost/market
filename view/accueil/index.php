@@ -283,7 +283,7 @@
 									 data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
 									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]"
 									 data-paddingleft="[0,0,0,0]">
-									 	<img src="<?php echo WEBROOT_URL; ?>iimages/slider/slide_5.png" alt="" />
+									 	<img src="<?php echo WEBROOT_URL; ?>images/slider/slide_5.png" alt="" />
 								</div>
 
 								<!-- LAYER NR. 19 -->

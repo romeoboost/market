@@ -35,10 +35,10 @@
 
 @font-face {
     font-family: 'organik';
-    src: url( ../fonts/organik.eot);
-    src: url( ../fonts/organikd41d.eot?#iefix) format("embedded-opentype"),
-	url( ../fonts/organik.woff) format("woff"),
-	url( ../fonts/organik.ttf) format("truetype"), url( ../fonts/organik.svg#star) format("svg");
+    src: url(http://localhost/Market/webroot/fonts/organik.eot);
+    src: url(http://localhost/Market/webroot/fonts/organikd41d.eot?#iefix) format("embedded-opentype"),
+	url(http://localhost/Market/webroot/fonts/organik.woff) format("woff"),
+	url(http://localhost/Market/webroot/fonts/organik.ttf) format("truetype"), url(http://localhost/Market/webroot/fonts/organik.svg#star) format("svg");
     font-weight: 400;
     font-style: normal
 }
@@ -508,7 +508,7 @@ select {
 {
     width: 100%;
     height: 100%;
-    /*background-image: url( ../images/slider/slide_bg_4-3.jpg);*/
+    /*background-image: url(http://localhost/Market/webroot/images/slider/slide_bg_4-3.jpg);*/
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -1606,48 +1606,48 @@ header.header-4.scrolling-menu #logo {
     background: #a8d5ec;
 }
 .section-bg-1 {
-	/*background-image:url( ../images/background/bg_1.jpg);
+	/*background-image:url(http://localhost/Market/webroot/images/background/bg_1.jpg);
 	background-position: center;*/
 }
 .section-bg-2 {
-	background-image:url( ../images/background/bg_2.jpg);
+	background-image:url(http://localhost/Market/webroot/images/background/bg_2.jpg);
 	background-position: center;
 }
 .section-bg-3 {
-	background-image:url( ../images/background/bg_3.jpg);
+	background-image:url(http://localhost/Market/webroot/images/background/bg_3.jpg);
 	background-position: center 90%;
 	background-repeat: no-repeat;
 }
 .section-bg-4 {
-	background-image:url( ../images/background/bg_4.jpg);
+	background-image:url(http://localhost/Market/webroot/images/background/bg_4.jpg);
 	background-position: center 50%;
 	background-repeat: no-repeat;
 }
 .section-bg-5 {
-	background-image:url( ../images/background/bg_5.jpg);
+	background-image:url(http://localhost/Market/webroot/images/background/bg_5.jpg);
 	background-position: center;
 }
 .section-bg-6 {
-	background-image:url( ../images/background/bg_6.jpg);
+	background-image:url(http://localhost/Market/webroot/images/background/bg_6.jpg);
 	background-position: center;
 }
 .section-bg-7 {
-	background-image:url( ../images/background/bg_7.jpg);
+	background-image:url(http://localhost/Market/webroot/images/background/bg_7.jpg);
 	background-position: center;
 }
 .section-bg-8 {
-	background-image:url( ../images/background/bg_8.png);
+	background-image:url(http://localhost/Market/webroot/images/background/bg_8.png);
 	background-position: center bottom;
 	background-repeat: no-repeat;
 }
 .section-bg-9 {
-	background-image:url( ../images/background/bg_9.png);
+	background-image:url(http://localhost/Market/webroot/images/background/bg_9.png);
 	background-position: center bottom;
 	background-repeat: no-repeat;
 	background-color: #7fca90;
 }
 .section-bg-10 {
-	background-image:url( ../images/background/bg_10.png);
+	background-image:url(http://localhost/Market/webroot/images/background/bg_10.png);
 	background-position: center bottom;
 	background-repeat: no-repeat;
 	background-color: #7fca90;
@@ -3387,7 +3387,7 @@ header.header-4.scrolling-menu #logo {
     position: absolute;
     cursor: pointer;
     transform: translateX(-50%);
-    background-image: url( ../images/back_to_top.png);
+    background-image: url(http://localhost/Market/webroot/images/back_to_top.png);
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -3851,7 +3851,7 @@ header.header-4.scrolling-menu #logo {
     top: 0;
     width: 20px;
     height: 20px;
-    background-image: url( ../images/testi_quote_2.png);
+    background-image: url(http://localhost/Market/webroot/images/testi_quote_2.png);
     z-index: 99;
     position: absolute;
     transform: translateX(-50%);
@@ -3893,7 +3893,7 @@ header.header-4.scrolling-menu #logo {
     font-size: 24px;
     color: #fff;
     font-style: italic;
-    background-image: url( ../images/testi_quote.png);
+    background-image: url(http://localhost/Market/webroot/images/testi_quote.png);
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -3966,7 +3966,7 @@ header.header-4.scrolling-menu #logo {
     top: 25px;
     width: 20px;
     height: 20px;
-    background-image: url( ../images/testi_quote_2.png);
+    background-image: url(http://localhost/Market/webroot/images/testi_quote_2.png);
     z-index: 99;
     position: absolute;
 }
@@ -4295,7 +4295,7 @@ header.header-4.scrolling-menu #logo {
     position: absolute;
     height: 40px;
     width: 40px;
-    background-image: url( ../images/search.png);
+    background-image: url(http://localhost/Market/webroot/images/search.png);
     background-repeat: no-repeat;
     background-color: transparent;
     box-shadow: none;
@@ -5228,7 +5228,7 @@ header.header-4 .mini-cart-wrap .mini-cart .mini-cart-icon {
     display: block;
     width: 180px;
     height: 1px;
-    background-image: url( ../images/line_bg.png);
+    background-image: url(http://localhost/Market/webroot/images/line_bg.png);
     background-repeat: repeat-x;
 }
 .organik-product-spot.type-left .icon .icon-inner .spot {
@@ -6118,7 +6118,7 @@ table.shop-cart .actions .update-cart {
 }
 
 .order-confirmation-body{
-    background-image: url(' ../images/slider/slide_6.png');
+    background-image: url('http://localhost/Market/webroot/images/slider/slide_6.png');
 }
 
 #confirm-order-modal .modal-dialog{
@@ -6654,7 +6654,7 @@ table.shop-cart .actions .update-cart {
 }
 
 .auth-modal-content{
-    background: url( ../images/about/auth_bg-1.jpg) no-repeat center center fixed; 
+    background: url(http://localhost/Market/webroot/images/about/auth_bg-1.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
