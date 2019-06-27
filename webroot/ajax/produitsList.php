@@ -35,11 +35,9 @@ $sql_liste="SELECT produits.id AS id, produits.nom AS nom_produit, produits.toke
         produits.id_unite as unite, produits.prix_quantite_unitaire as prix_qtite_unit, produits.slug as slug,produits.nouveau as isnew,
         produits.promo as ispromo, produits.pourcentage_promo as percent_promo,
         produits.image as image,
-        categories_produits.nom AS categorie,
-        tailles.nom AS taille
+        categories_produits.nom AS categorie
       FROM produits
-      INNER JOIN categories_produits ON produits.id_categorie_produit=categories_produits.id
-      INNER JOIN tailles ON produits.id_taille=tailles.id ";
+      INNER JOIN categories_produits ON produits.id_categorie_produit=categories_produits.id";
 
 if ($_POST) {
     extract($_POST);
@@ -56,32 +54,36 @@ if ($_POST) {
 
     $firstElement = $offset + 1; // defini le premier element
     $retour['firstElement']=$firstElement; 
-
+	
+	//Rajoute les conditions pour recupertaion des produits actif
+	$sql_liste .= ' WHERE produits.statut=1 AND categories_produits.statut=1 ';
+	
     //rajoute la condition de filtre sur la catégorie
     if(!empty($productDataCategory)){ 
-        $sql_liste.="WHERE categories_produits.token =:productDataCategory ";
+        $sql_liste.=" AND categories_produits.token =:productDataCategory ";
         $conditions_prepare[':productDataCategory']=$productDataCategory;
     }
 
     //Rajoute la condition sur la recherche
     if(!empty($productDataSearch)){
         if(!empty($productDataCategory)){ 
-           $sql_liste.="AND produits.slug =:productDataSearch ";
+           $sql_liste.=" AND produits.slug =:productDataSearch ";
         }else{
-           $sql_liste.="WHERE produits.slug =:productDataSearch "; 
+           $sql_liste.=" AND produits.slug =:productDataSearch "; 
         }
         $conditions_prepare[':productDataSearch']=$productDataSearch;
         
     }
 
     //Rajoute l'ordonnancement
-    $sql_liste.="ORDER BY ".$order_value." ";
+    $sql_liste.=" ORDER BY ".$order_value." ";
 
     $sql_liste_all=$sql_liste;
 
     //Rajoute le nombre d'element a recuperer
-    $sql_liste.="LIMIT ".$offset.",".$nombre_products." ";
-    
+    $sql_liste.=" LIMIT ".$offset.",".$nombre_products." ";
+	// debugger($sql_liste);
+	
     $req = $pdo->prepare($sql_liste); //':email' => $user_login,
     $req->execute($conditions_prepare);
     // // var_dump($req);

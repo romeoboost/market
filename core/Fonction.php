@@ -19,17 +19,20 @@ function dateFormat($date){
 function debug($var){
     
    $debug = debug_backtrace();   
-   echo '<br/><p><a href="#" onclick="$(this).parent().next
-       (\'ol\').slideToggle(); return false;"><strong>'.$debug[0]['file'].
-           ' </strong></a>à la ligne : '.$debug[0]['line'].'</p>';
-   echo '<ol"> ';
+   echo '<br/><p><a href="#" onclick="$(this).parent().next.(\'ol\').slideToggle(); return false;">
+              <strong>'.$debug[0]['file'].
+           '  </strong></a>à la ligne : '.$debug[0]['line'].'</p>';
+   echo '<ol> ';
    foreach ($debug as $k => $v) {
-       echo '<li><strong>'.$v['file'].' '.$v['line'].'</li></strong>';
+      if( isset( $v['file'] ) || isset( $v['line'] ) ){
+        echo '<li><strong>'.$v['file'].' '.$v['line'].'</li></strong>';
+      }
    }
    echo '</ol>';
    echo '<pre>';
    print_r($var);
    echo '</pre>';
+   die();
 }
 function accentdel($var){
 		$var = str_replace(

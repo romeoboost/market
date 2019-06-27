@@ -194,7 +194,7 @@
                             <ul class="product-list-widget">
                                 <?php foreach ($produits_plus_vendus as $ppv): ?>
                                     <li>
-                                        <a href="shop-detail.html">
+                                        <a href="<?php echo SITE_BASE_URL.'produit/details/'.$ppv->slug ?>">
                                             <img src="<?php echo WEBROOT_URL; ?>images/shop/thumb/<?php echo $ppv->image; ?>.jpg" alt="" />
                                             <span class="product-title"><?php echo ucfirst($ppv->nom_produit) ?></span>
                                         </a>

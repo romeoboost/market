@@ -271,34 +271,19 @@ $('.pagination ').on('click', '.page-numbers', function (e) {
     //return false;
 });
 
-var productsRelatedContainer = document.getElementById('products-related-container');
 
-if(productsRelatedContainer!=null && productsRelatedContainer!==false){
+
+// var productsRelatedContainer = document.getElementById('products-related-container');
+
+if($(".products-related-container").attr('product-display') !== 'undefined' ){
     //console.log(productsRelatedContainer);
-    
-    var productRelatedDisplay = $('#products-related-container').attr('product-display');
+    console.log( $(".products-related-container").attr('product-display') );
+    var productRelatedDisplay = $('.products-related-container').attr('product-display');
     if(productRelatedDisplay=="false"){
             console.log("OK");
             search_products_related();
     }
 
- /*   
-A revoir
- function load_detail(){
-        var detailYOffset = window.pageYOffset;
-        var productRelatedDisplay_one = $('#products-related-container').attr('product-display');
-        if(productsRelatedContainer.getBoundingClientRect().y <= detailYOffset){
-            if(productRelatedDisplay_one=="false"){
-                console.log(productRelatedDisplay);
-                console.log(productsRelatedContainer.getBoundingClientRect().y);
-
-            }
-        }
-    }
-
-    window.onscroll = load_detail;
-    */
-    
 }
 
 //console.log(document.readyState);
@@ -1014,7 +999,7 @@ function add_to_cart(tokenProduit,nbreProduit){
 /* Fonction de recuperation de produit relatif a un produit particulier*/
 function search_products_related(){
 
-    var productDataCategory = $('#products-related-container').attr('product-data-category'); // filtre category
+    var productDataCategory = $('.products-related-container').attr('product-data-category'); // filtre category 
 
     $.ajax({
         type: "POST",
@@ -1024,9 +1009,9 @@ function search_products_related(){
         success: function (data, textStatus, jqXHR) {
            //console.log(data);
            if(data.productDataDisplay==true){
-                $('#products-related-container').attr('product-display','true');
+                $('.products-related-container').attr('product-display','true');
            }
-           $('#products-related-container').html(data.produits_liste_html).fadeIn(500);
+           $('.products-related-container').hide().html(data.produits_liste_html).fadeIn(500);
            
         },
         error: function(jqXHR) {

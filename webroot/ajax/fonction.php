@@ -2,7 +2,7 @@
 
 function debugger($var, $second_var=null){
   print_r($var);
-  print_r(' '.$second_var);
+  // print_r(' '.$second_var);
   die();
   return true;
 }

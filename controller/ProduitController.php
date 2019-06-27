@@ -29,16 +29,12 @@ class ProduitController extends Controller {
               array(
                 'main' => 'id_categorie_produit',
                 'second' => 'id'
-                ),
-              array(
-                'main' => 'id_taille',
-                'third' => 'id'  
-                    )
+                )
               ),
-              'condition' => 'produits.statut=1 AND produits.page_accueil=1 AND categories_produits.statut=1',
+              'condition' => 'produits.statut=1 AND categories_produits.statut=1',
               'order' => array('champs' => 'prix_quantite_unitaire','param' => 'ASC'),
               'limit' => '0,3'
-            ),'produits','categories_produits','tailles');
+            ),'produits','categories_produits');
     }
 
 
@@ -90,33 +86,38 @@ class ProduitController extends Controller {
 	public function details($slug=null){
 		$this->loadmodel('Produit');
 		$_SESSION['menu'] = 'Marche';
-		$d['produit'] = current($this->Produit->findJoin(array(
+		$d = array();
+		if( !isset($slug) || empty($slug) ){
+			header('Location: '.BASE_URL.DS.'produit/liste');
+		}else{
+			$d['produit'] = current($this->Produit->findJoin(array(
            'fieldsmain' => array('id AS id','nom AS nom_produit','token AS token_produit','description AS description', 'quantite_unitaire as qtite_unit', 'id_unite as unite',
             'prix_quantite_unitaire as prix_qtite_unit','slug as slug','nouveau as isnew','promo as ispromo','pourcentage_promo as percent_promo',
             'image as image'),
             'fieldstwo' => array('nom AS categorie', 'token AS token_cat'),
-            'fieldsthree' => array('nom AS taille'),
             'fields' => array(
               array(
                 'main' => 'id_categorie_produit',
                 'second' => 'id'
-                ),
-              array(
-                'main' => 'id_taille',
-                'third' => 'id'  
-                    )
+                )
               ),
               'condition' => 'produits.slug="'.$slug.'"'
-            ),'produits','categories_produits','tailles'));
-
-    $unites_from_bd = $this->Produit->find(array(
-          'fields' => array('id','libelle','symbole')
-        ),'unites');
-      $d['unites'] = array();
-      foreach ($unites_from_bd as $u) {
-        $d['unites'][$u->id] = $u->symbole;
-      }
-
+            ),'produits','categories_produits'));
+			
+			if( empty($d['produit']) ){
+				header('Location: '.BASE_URL.DS.'produit/liste');
+			}else{
+				$unites_from_bd = $this->Produit->find(array(
+				  'fields' => array('id','libelle','symbole')
+				),'unites');
+				$d['unites'] = array();
+				foreach ($unites_from_bd as $u) {
+					$d['unites'][$u->id] = $u->symbole;
+				}
+				
+			}	
+			
+		}
 		// debug($d['produit']);
 	 //    die();			
 		$this->set($d);

@@ -12,27 +12,25 @@ class AccueilController extends Controller {
         ),'publicites');
       //die(debug($d['pubs']));
 
-      $d['products'] = $this->Accueil->findJoin(array(
-           'fieldsmain' => array('id AS id','nom AS nom_produit','token AS token_produit','quantite_unitaire as qtite_unit', 'id_unite as unite',
-            'prix_quantite_unitaire as prix_qtite_unit','slug as slug','nouveau as isnew','promo as ispromo','pourcentage_promo as percent_promo',
-            'image as image'),
-            'fieldstwo' => array('nom AS categorie'),
-            'fieldsthree' => array('nom AS taille'),
-            'fields' => array(
-              array(
-                'main' => 'id_categorie_produit',
-                'second' => 'id'
-                ),
-              array(
-                'main' => 'id_taille',
-                'third' => 'id'  
-                    )
-              ),
-              'condition' => 'produits.statut=1 AND produits.page_accueil=1 AND categories_produits.statut=1',
-              'order' => array('champs' => 'prix_quantite_unitaire','param' => 'ASC',
-              'limit' => '0,8')
-            ),'produits','categories_produits','tailles');
-      //die(debug($d['products']));
+      $d['products'] = $this->Accueil->findJoin(
+	  array(
+			   'fieldsmain' => array('id AS id','nom AS nom_produit','token AS token_produit','quantite_unitaire as qtite_unit', 'id_unite as unite',
+				'prix_quantite_unitaire as prix_qtite_unit','slug as slug','nouveau as isnew','promo as ispromo','pourcentage_promo as percent_promo',
+				'image as image'),
+				'fieldstwo' => array('nom AS categorie'),
+				'fieldsthree' => array('nom AS taille'),
+				'fields' => array
+					(
+					  array(
+						'main' => 'id_categorie_produit',
+						'second' => 'id'
+						)
+				    ),
+				'condition' => 'produits.statut=1 AND produits.page_accueil=1 AND categories_produits.statut=1',
+				'order' => array('champs' => 'prix_quantite_unitaire','param' => 'ASC'),
+				'limit' => '0,8'
+            ),'produits','categories_produits');
+      // die(debug($d['products']));
 
       $d['avis'] = $this->Accueil->find(array(
           'fields' => array('nom','prenoms','contenu','localisation'),
