@@ -129,11 +129,15 @@ if(!isset($_POST) || empty($_POST) ){
                     $date = date("Y-m-d H:i:s");
 
                     //-- insertion dans la table commandes
-                    $req = $pdo->prepare('SELECT COUNT(id) as nbre FROM commandes '); 
+                    /* $req = $pdo->prepare('SELECT id as nbre FROM commandes order by id desc limit 0,1'); 
                     $req->execute(array());
-                    $Mbre_actuel_Obj = current($req->fetchAll(PDO::FETCH_OBJ));
-
-                    $token_cmde = getCmdeNumber($Mbre_actuel_Obj->nbre, 'MKT');
+                    $Nbre_Product_Actuel = isset($Mbre_actuel_Obj->nbre) ? $Mbre_actuel_Obj->nbre : 1 ; */
+					
+					$req = $pdo->prepare(" SHOW TABLE STATUS LIKE 'commandes' ");
+					$req->execute( array() ); $Mbre_actuel_Obj = current( $req->fetchAll() );
+					$Nbre_Product_Actuel = isset($Mbre_actuel_Obj['Auto_increment']) ? intval( $Mbre_actuel_Obj['Auto_increment'] ) - 1 : 0;
+					
+                    $token_cmde = getCmdeNumber($Nbre_Product_Actuel, 'MKT');
 
                     $req_insert = $pdo->prepare(' INSERT INTO commandes (
                                                               token, id_client, statut, montant_ht, frais_livraison, montant_total, id_livraison_destination, 

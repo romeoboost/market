@@ -60,10 +60,14 @@ if(!isset($_POST) || empty($_POST) ){
           if($client->email == $register_email){ $error_text = "L'adresse email est déjà utilisé."; $field_error ='register_email';}
         }else{   
 
-        $req = $pdo->prepare('SELECT COUNT(id) as nbre FROM clients '); 
-        $req->execute(array());
-        $Mbre_actuel_Obj = current($req->fetchAll(PDO::FETCH_OBJ));
-        $Nbre_Mbre_Actuel = $Mbre_actuel_Obj->nbre; // le nombe actuel des clients
+        // $req = $pdo->prepare('SELECT id as nbre FROM clients order by id desc limit 0,1'); 
+        // $req->execute(array());
+        // $Mbre_actuel_Obj = current($req->fetchAll(PDO::FETCH_OBJ));
+        // $Nbre_Product_Actuel = isset($Mbre_actuel_Obj->nbre) ? $Mbre_actuel_Obj->nbre : 1 ;  // le nombe actuel des clients
+		
+		$req = $pdo->prepare(" SHOW TABLE STATUS LIKE 'commandes' ");
+		$req->execute( array() ); $Mbre_actuel_Obj = current( $req->fetchAll() );
+		$Nbre_Mbre_Actuel = isset($Mbre_actuel_Obj['Auto_increment']) ? intval( $Mbre_actuel_Obj['Auto_increment'] ) - 1 : 0;
 
        // $Identifiant .= $Abreviation_Pays;
         $Identifiant = getMemberNumber($Nbre_Mbre_Actuel, 'MKT');
