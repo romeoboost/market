@@ -39,7 +39,7 @@ if( !isset($_POST) || empty($_POST) || !isset($_POST['tokenCommande']) ){
     if( empty($commande) ){ 
       $error_statut = true;
       $error_text = "Oups, Erreur !";
-      $error_text_second = "Echec d'annulation du produit du panier.";
+      $error_text_second = "Echec d'annulation de la commande.";
     }else{
 
       //Verifie que le statut de la commande est bien à en attente (0 )
@@ -120,13 +120,4 @@ if ($error_statut) {
 $retour_json = json_encode($retour);
 
 echo $retour_json;
-
-
-// <div class="alert alert-warning alert-dismissible fade show" role="alert">
-//   <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-//   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-// </div>
-
-
-
 

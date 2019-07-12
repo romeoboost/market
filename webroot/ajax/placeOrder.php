@@ -1,8 +1,7 @@
 <?php
 include 'connectDB.php';
 include 'fonction.php';
-define('WEBROOT_URL', 'http://localhost/Market/webroot/');
-define('SITE_BASE_URL', 'http://localhost/Market/');
+
 if (empty(session_id())) {
     session_start();
     //$_SESSION['menu'] = 'Nous_Rejoindre';

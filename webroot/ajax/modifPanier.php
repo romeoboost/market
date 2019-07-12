@@ -1,8 +1,6 @@
 <?php
 include 'connectDB.php';
 include 'fonction.php';
-define('WEBROOT_URL', 'http://localhost/Market/webroot/');
-define('SITE_BASE_URL', 'http://localhost/Market/');
 if (empty(session_id())) {
     session_start();
     //$_SESSION['menu'] = 'Nous_Rejoindre';
@@ -26,10 +24,9 @@ if(!isset($_POST) || empty($_POST) ){
   produits.quantite_unitaire as qtite_unit,
   produits.id_unite as unite, produits.prix_quantite_unitaire as prix_qtite_unit, produits.slug as slug,produits.nouveau as isnew,
   produits.promo as ispromo, produits.pourcentage_promo as percent_promo, produits.stock AS stock,
-  produits.image as image, categories_produits.nom AS categorie, tailles.nom AS taille
+  produits.image as image, categories_produits.nom AS categorie
   FROM produits
-  INNER JOIN categories_produits ON produits.id_categorie_produit=categories_produits.id
-  INNER JOIN tailles ON produits.id_taille=tailles.id ";
+  INNER JOIN categories_produits ON produits.id_categorie_produit=categories_produits.id ";
 
   $sql_liste.="WHERE produits.token =:token ";
   
