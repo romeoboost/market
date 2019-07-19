@@ -122,7 +122,7 @@ if(!isset($_POST) || empty($_POST) ){
               //On defini dans la session la destination de livraison
               $_SESSION['cart']['shipping_dest']['token'] = $destination->token;
               $_SESSION['cart']['shipping_dest']['commune'] = $destination->commune;
-              $_SESSION['cart']['shipping_dest']['frais'] = $destination->frais;
+              // $_SESSION['cart']['shipping_dest']['frais'] = $destination->frais;
 
               // On ajoute le premier produit
               $_SESSION['cart']['products_list'][$produit->token_produit]['nom'] = ucfirst($produit->nom_produit);
@@ -183,7 +183,11 @@ if(!isset($_POST) || empty($_POST) ){
 
             $retour['cart']['IsEmpty'] = $Iscartempty;
             $retour['cart']['total_amount'] = $_SESSION['cart']['total_amount'];
-            $retour['cart']['total_nbre'] = $_SESSION['cart']['total_nbre']; 
+            $retour['cart']['total_nbre'] = $_SESSION['cart']['total_nbre'];
+
+            $_SESSION['cart']['shipping_dest']['frais'] = getFees($pdo, $_SESSION['cart']['total_amount']);
+
+            $retour['cart']['shipping_dest'] = $_SESSION['cart']['shipping_dest'];
 
             $error_text = 'Produit ajouté avec succès.';
             $error_text_second = 'Dépechez vous de commander !';     

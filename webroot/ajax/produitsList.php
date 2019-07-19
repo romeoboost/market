@@ -241,10 +241,3 @@ echo $retour_json;
 //echo 'OK';    
 //echo ' <pre>'.print_r($_POST).'</pre>';
 //echo ' <pre>';print_r($matiere);echo '</pre>';
-
-
-
-
-
-
-

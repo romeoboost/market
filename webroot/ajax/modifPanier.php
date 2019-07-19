@@ -87,6 +87,11 @@ if(!isset($_POST) || empty($_POST) ){
       $_SESSION['cart']['total_nbre'] += $value;
     }
 
+    //recuperation des frais de livraison
+    $retour['cart']['total_amount'] = $_SESSION['cart']['total_amount'];
+    $_SESSION['cart']['shipping_dest']['frais'] = getFees($pdo, $_SESSION['cart']['total_amount']);
+    $retour['cart']['shipping_dest'] = $_SESSION['cart']['shipping_dest'];
+
     $error_text = 'Panier modifié avec succès.';
     $error_text_second = 'Dépechez vous de commander !';
 

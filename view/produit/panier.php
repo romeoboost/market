@@ -96,28 +96,7 @@
                         </table>
                     </div>
                     <div class="col-md-4">
-                        <div class="coupon-shipping">
-                            <div class="coupon">
-                                <div class="simulated-shipping-title">
-                                    <span> Choisissez le lieu de livraison. </span>
-                                </div>
-                                <form id="shipping-form" >
-                                    <select class="selectpicker" id="select-shipping-destination" data-live-search="true">
-                                        <?php foreach ($list_shipping_destination as $dest ): ?>
-                                        <?php $isSelected=($_SESSION['cart']['shipping_dest']['token']==$dest->token) ? 'selected' : '' ?>
-                                            <option  class="<?php echo $dest->token; ?>" shipping-amount="<?php echo $dest->frais; ?>"
-                                                    data-tokens="ketchup mustard" value="<?php echo $dest->token ; ?>" 
-                                                    <?php echo $isSelected; ?> >
-                                                <?php echo ucfirst($dest->commune); ?>
-                                            </option>
-                                        <?php endforeach;  ?>
-                                    </select>
-                                    <!-- <input type="text" name="coupon_code" class="coupon-code" id="coupon_code" value="" 
-                                    placeholder="Coupon code" />
-                                    <input type="submit" class="apply-coupon" name="apply_coupon" value="Apply Coupon" /> -->
-                                </form>
-                            </div>
-                        </div>
+                        
                         <div class="cart-totals">
                             <table>
                                 <tbody>

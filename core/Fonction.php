@@ -19,13 +19,13 @@ function dateFormat($date){
 function debug($var){
     
    $debug = debug_backtrace();   
-   echo '<br/><p><a href="#" onclick="$(this).parent().next.(\'ol\').slideToggle(); return false;">
+   echo '<br/><p><a href="#" onClick="$(this).parent().next.(\'ol\').slideToggle(); return false;">
               <strong>'.$debug[0]['file'].
            '  </strong></a>à la ligne : '.$debug[0]['line'].'</p>';
-   echo '<ol> ';
+   echo '<ol class="list"> ';
    foreach ($debug as $k => $v) {
       if( isset( $v['file'] ) || isset( $v['line'] ) ){
-        echo '<li><strong>'.$v['file'].' '.$v['line'].'</li></strong>';
+        echo '<li><strong>'.$v['file'].' '.$v['line'].'</strong></li>';
       }
    }
    echo '</ol>';

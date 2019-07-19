@@ -126,10 +126,10 @@ class ProduitController extends Controller {
   public function panier($numeroPanier=null){
     $this->loadmodel('Produit');
     $_SESSION['menu'] = 'Marche';
-    
-    // debug($_SESSION);
+    $d = array();
+    // sdebug($_SESSION);
     // die();
-    $d['list_shipping_destination'] = $this->Produit->find(array(),'livraison_destinations');
+    // $d['list_shipping_destination'] = $this->Produit->find(array(),'livraison_destinations');
     $this->set($d);
   }
 	

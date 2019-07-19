@@ -1,9 +1,87 @@
 <?php
 
+function getFees($pdo, $total_amount_cart){
+
+  $shippingFees = 0; // initie les frais à 0
+
+  //recuperer les frais
+  if($total_amount_cart <= 0 ){ //si le montant du panier est 0
+    $shippingFees = 0; // retourne 0 comme frais
+  }else{
+    $req['condition'] = " min <= $total_amount_cart AND max >= $total_amount_cart "; // recupere les frais dans le pallier adequat
+    $feeRow = current( sql_select($pdo, $req, 'frais_livraison') );
+    // debugger($total_amount_cart);
+    if( !empty( $feeRow ) ){
+      $shippingFees = $feeRow->frais;
+    }else{
+      unset($req['condition']);
+      $req['order']['champs'] = ' max '; $req['order']['param'] = ' DESC ';
+      $TopFeeRow = current( sql_select($pdo, $req, 'frais_livraison') );
+      $shippingFees = $TopFeeRow->frais;
+    }
+  }
+
+  return $shippingFees;
+}
+
+//peut prendre les conditions listées dans un tableau ou pas
+function sql_select($pdo, $req, $table=null){
+   $sql = 'SELECT ';
+   //reglage pour les doublons
+   if(isset($req['distinct'])){
+      $sql .= 'DISTINCT '; 
+   }
+   //reglage pour les champs
+   if(isset($req['fields'])){
+      if(is_array($req['fields'])){
+          $sql .= implode(', ',$req['fields']); 
+       }else {
+          $sql .= $req['fields']; 
+       }              
+   }else{
+      $sql .= '*'; 
+   } 
+   $sql .= ' FROM '.$table;
+    //condition
+   if(isset($req['condition'])){
+       $sql .= ' WHERE ';
+       $sql .= $req['condition'];
+       
+   }
+   //group by
+   if(isset($req['group'])){
+      $sql .= ' GROUP BY '.$req['group'];             
+   }
+
+   //reglage order by
+   if(isset($req['order'])){
+      $sql .= ' ORDER BY '.$req['order']['champs'].' '.$req['order']['param'];              
+   }
+   //reglage pour LIMIT
+   if(isset($req['limit'])){
+      $sql .= ' LIMIT '.$req['limit'];              
+   }           
+   //die ($sql);
+   $pre = $pdo->prepare($sql);
+   if( isset( $req['array_filter'] ) ){
+      $pre->execute($req['array_filter']);  
+    }else{
+      $pre->execute(); 
+    }
+   
+   if(isset($req['assos'])){
+     return $pre->fetchAll(PDO::FETCH_ASSOC);  
+   }else{
+     return $pre->fetchAll(PDO::FETCH_OBJ);  
+   } 
+}
+
+
 function debugger($var, $second_var=null){
   print_r($var);
-  // print_r(' '.$second_var);
-  die();
+  print_r(' ');
+  print_r($second_var);
+  die( header("arret pour debuggage", true, 501) );
   return true;
 }
 

@@ -59,7 +59,11 @@ if(!isset($_POST) || empty($_POST) ){
         unset( $_SESSION['cart']['products_list'][$tokenProduit] ); // suppresion du produit du panier
 
         $retour['cart']['total_amount'] = $_SESSION['cart']['total_amount'];
-        $retour['cart']['total_nbre'] = $_SESSION['cart']['total_nbre']; 
+        $retour['cart']['total_nbre'] = $_SESSION['cart']['total_nbre'];
+
+        //recuperation des frais de livraison
+        $_SESSION['cart']['shipping_dest']['frais'] = getFees($pdo, $_SESSION['cart']['total_amount']);
+        $retour['cart']['shipping_dest'] = $_SESSION['cart']['shipping_dest'];
 
         if( intval($_SESSION['cart']['total_amount']) <= 0 || 
             intval($_SESSION['cart']['total_nbre']) <= 0 ){ // le montant ou le nombre total du panier est 0

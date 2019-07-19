@@ -851,9 +851,11 @@ function delete_to_cart(tokenProduit,vue="header-panier"){
                         });
                         
                         $('#sous-total-vue-panier').html(data.cart.total_amount+' F'); //modifier le sous total du panier
+
+                        $('#frais-livraison').html(data.cart.shipping_dest.frais+' F'); ////modifier le montant des frais sur la vue
                         
                         var shipping_fees = parseInt( $('#frais-livraison').attr('montant-livraison') );
-                        var total_amount_cart = parseInt(data.cart.total_amount) + shipping_fees;
+                        var total_amount_cart = parseInt(data.cart.total_amount) + parseInt(data.cart.shipping_dest.frais);
                         $('#total-vue-panier').html(total_amount_cart+' F'); ////modifier le total montant du panier
                     }
                     /////panier entete////
