@@ -410,7 +410,7 @@
 						<div class="item">
 							<a href="#">
 								<div class="product-image"> 
-	<img src="<?php echo WEBROOT_URL; ?>images/pub/<?php echo $pub->entreprise.'_'.$pub->token.'_'.$pub->position; ?>.png" alt=""/>
+									<img src="<?php echo WEBROOT_URL; ?>images/pub/<?php echo $pub->image; ?>.png" alt=""/>
 								</div>
 							</a>
 						</div>
@@ -515,7 +515,7 @@
 											<div class="info">
 												<div class="author">
 													<span class="name"><?php echo $avi->nom.' '.$avi->prenoms ?></span>
-													<span class="tagline"><?php echo ucfirst($avi->localisation) ?></span>
+													<!-- <span class="tagline"><?php //echo ucfirst($avi->localisation) ?></span> -->
 												</div>
 											</div>
 										</div>

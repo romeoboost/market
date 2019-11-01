@@ -1,7 +1,7 @@
 <?php
 class ProduitController extends Controller {
 
-	public function liste($categorie=null, $value_categorie=null){
+	public function liste($categorie=null, $value_categorie=null, $search=null, $search_value=null){
 		$this->loadmodel('Produit');
 		$_SESSION['menu'] = 'Marche';
 
@@ -42,7 +42,8 @@ class ProduitController extends Controller {
 
     $d['filter'] = array();
     $d['filter']['status'] = false;
-    if(isset($categorie) && isset($value_categorie)){
+    if(isset($categorie) && isset($value_categorie) && !empty($categorie) && !empty($value_categorie) && 
+      strtolower( $value_categorie ) != 'all' ){
       $catName=strtolower($categorie);
       $cat = current($this->Produit->find(array(
           'condition' => array(
@@ -56,6 +57,12 @@ class ProduitController extends Controller {
         $d['filter']['status'] = true;
       }
     }
+
+    if(isset($search) && isset($search_value) && !empty($search) && !empty($search_value) ){
+        $d['filter']['search']['element'] = $search_value;
+        $d['filter']['status'] = true;
+    }
+
     $unites_from_bd = $this->Produit->find(array(
           'fields' => array('id','libelle','symbole')
         ),'unites');
@@ -114,11 +121,26 @@ class ProduitController extends Controller {
 				foreach ($unites_from_bd as $u) {
 					$d['unites'][$u->id] = $u->symbole;
 				}
+
+       $req = [
+              'fieldsmain' => ['id as id_avis','id_client as id_c','nom as nom_avis', 'token as token',
+              'prenoms as prenoms_avis','email as email_avis', 'contenu as contenu','localisation as localisation', 'date_reponse as date_reponse',
+              'statut as statut','page_accueil as page_accueil','date_creation as date_creation','date_modification as date_modification','reponse_admin_contenu as reponse_admin_contenu'],
+              'fieldstwo' => ['nom as produit'],
+              'fields' => 
+                  array( 
+                    array(  'main' => 'id_produit',  'second' => 'id' )
+                  ),
+                'order' => array('champs' => 'avis.id','param' => 'DESC'),
+                'condition' => 'produits.token="'.$d['produit']->token_produit.'"'
+            ];    
+        $d['avis']['list'] = $this->Produit->findJoin( $req, 'avis', 'produits') ;
+        $d['avis']['nbre'] = count($d['avis']['list']);
 				
 			}	
 			
 		}
-		// debug($d['produit']);
+		// debug($d['avis']);
 	 //    die();			
 		$this->set($d);
 	}

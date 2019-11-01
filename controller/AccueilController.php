@@ -6,11 +6,12 @@ class AccueilController extends Controller {
       $_SESSION['menu'] = 'Accueil';
       //debug($_SERVER);
       //die();
+      $date = date("Y-m-d H:i:s");
       $d['pubs'] = $this->Accueil->find(array(
-           'condition' => array('statut' => 1),
+           'condition' => " statut=1 and date_debut < '$date' and  date_fin > '$date' ",
            'order' => array('champs' => 'position','param' => 'ASC')
         ),'publicites');
-      //die(debug($d['pubs']));
+      // die(debug($d['pubs']));
 
       $d['products'] = $this->Accueil->findJoin(
 	  array(
@@ -22,10 +23,10 @@ class AccueilController extends Controller {
 				'fields' => array
 					(
 					  array(
-						'main' => 'id_categorie_produit',
-						'second' => 'id'
-						)
-				    ),
+    						'main' => 'id_categorie_produit',
+    						'second' => 'id'
+  						)
+				  ),
 				'condition' => 'produits.statut=1 AND produits.page_accueil=1 AND categories_produits.statut=1',
 				'order' => array('champs' => 'prix_quantite_unitaire','param' => 'ASC'),
 				'limit' => '0,8'

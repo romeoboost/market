@@ -147,6 +147,7 @@
                         <span id="linkToUpdateInfosUser" class="hidden"><?php echo WEBROOT_URL.'ajax/updateInfosUser.php'; ?></span>
                         <span id="linkToUpdatePassword" class="hidden"><?php echo WEBROOT_URL.'ajax/updatePassword.php'; ?></span>
                         <span id="linkToCancelledOrder" class="hidden"><?php echo WEBROOT_URL.'ajax/cancelledOrder.php'; ?></span>
+                        <span id="RooTlinkToSearch" class="hidden"><?php echo SITE_BASE_URL.'produit/liste/categorie/all/search/'; ?></span>
 
                         <?php 
                             $idLoginButton = isset($_SESSION['user']) ? 'dropdownMenuButton' : 'loginButton';
@@ -188,8 +189,9 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
-                                <form>
-                                    <input type="search" class="top-search-input" name="s" placeholder="Saisissez le produit que vous recherchez et tapez Entrée" />
+                                <form class="search_product_form" method="POST" action="#">
+                                    <input type="search" class="top-search-input" name="element" 
+                                    placeholder="Saisissez le produit que vous recherchez et tapez Entrée" />
                                 </form>
                             </div>
                         </div>

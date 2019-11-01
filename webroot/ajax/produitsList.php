@@ -63,13 +63,28 @@ if ($_POST) {
     }
 
     //Rajoute la condition sur la recherche
+    // $condition_sql_liste .= " AND produits.nom like :nom ";
+    // $conditions_prepare[':nom'] = '%'.strtolower( $name_product ).'%';
     if(!empty($productDataSearch)){
-        if(!empty($productDataCategory)){ 
-           $sql_liste.=" AND produits.slug =:productDataSearch ";
-        }else{
-           $sql_liste.=" AND produits.slug =:productDataSearch "; 
+        $Array_search_element = explode( '-', trim($productDataSearch) ); // regroupe les éléments rechercger dans un tableau
+        $nbre_occurence = count($Array_search_element); // determiner le nombre d'element rechercher
+        
+        $sql_liste.=" AND ( "; 
+        for( $i=1; $i <= $nbre_occurence; $i++ ){ // fait une boucle sur le nombre d'élement de l'occurence afin de formater la conditions SQL
+            $sql_liste.=" produits.slug like :search_element".$i." ";
+            if( $i != $nbre_occurence ){
+                $sql_liste.=" OR ";
+            }
+            $conditions_prepare[':search_element'.$i]= '%'.strtolower( $Array_search_element[$i-1] ).'%';
         }
-        $conditions_prepare[':productDataSearch']=$productDataSearch;
+        $sql_liste.=" ) ";
+        // debugger($sql_liste);
+        // if(!empty($productDataCategory)){ 
+        //    $sql_liste.=" AND produits.slug like :productDataSearch ";
+        // }else{
+        //    $sql_liste.=" AND produits.slug like :productDataSearch "; 
+        // }
+        // $conditions_prepare[':productDataSearch']= '%'.strtolower( $productDataSearch ).'%';
         
     }
 

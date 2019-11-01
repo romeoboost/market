@@ -43,7 +43,7 @@ if(!isset($_POST) || empty($_POST) ){
       //On defini dans la session la destination de livraison
       $_SESSION['cart']['shipping_dest']['token'] = $destination->token;
       $_SESSION['cart']['shipping_dest']['commune'] = $destination->commune;
-      $_SESSION['cart']['shipping_dest']['frais'] = $destination->frais;
+      // $_SESSION['cart']['shipping_dest']['frais'] = $destination->frais;
       
     }
   }
@@ -74,71 +74,6 @@ if ($error_statut) {
 $retour_json = json_encode($retour);
 
 echo $retour_json;
-
-
-// <div class="alert alert-warning alert-dismissible fade show" role="alert">
-//   <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-//   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-// </div>
-
-// CL20180300033
-  // structure numero de membre
-  // AM AAAA MM NUMERO CI
-  //EX : AM20180300001CI
-
-
-/*
-<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-#membre#
-
-id
-nom
-prenom
-date_naissance
-id_pays
-id_metier
-email
-tel
-password
-date_creation
-date_modification
-statut
-id_user
-carte_membre
-photo
-numero_membre
-id_poste
-
-------------------------------------------------
-
-#paiement#
-id
-id_membre
-order_id
-jwt
-currency
-transaction_amount
-statut_id
-transaction_id
-paid_transaction_amount
-paid_currency
-change_rate
-onflictual_transaction_amount
-conflictual_currency
-wallet
-*/
-
-
-
-/*
-[operation_token] => hgdsttdf-b845-78c9-4hg7-74mpoef114ui
-    [order] => 
-    [jwt] => 
-    [currency] => XOF
-    [transaction_amount] =>
-
-*/
-
 
 
 

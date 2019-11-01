@@ -1,3 +1,5 @@
+<span id="linkToAddElement" class="hidden">ajax/PostAvis.php</span>
+<span id="linkToWebroot" class="hidden"><?php echo WEBROOT_URL; ?></span>
 <div id="main">
     <div class="section section-bg-10 pt-4 pb-10">
         <div class="container">
@@ -157,85 +159,85 @@
 
                                     <div id="tab-reviews" class="tab-pane fade">
 
-                                        <!-- <div class="single-comments-list mt-0">
+                                        <div class="single-comments-list mt-0">
                                             <div class="mb-2">
-                                                <h2 class="comment-title">2 reviews for Orange Juice</h2>
+                                                <h2 class="comment-title"><?php echo $avis['nbre'] ?> commentaire<?php echo ($avis['nbre'] > 1) ? 's' : '' ?> pour 
+                                                    <?php echo ucfirst($produit->nom_produit) ?></h2>
                                             </div>
                                             <ul class="comment-list">
-                                                <li>
-                                                    <div class="comment-container">
-                                                        <div class="comment-author-vcard">
-                                                            <img alt="" src="<?php echo WEBROOT_URL; ?>images/avatar/avatar.png" />
-                                                        </div>
-                                                        <div class="comment-author-info">
-                                                            <span class="comment-author-name">admin</span>
-                                                            <a href="#" class="comment-date">July 27, 2016</a>
-                                                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                                        </div>
-                                                        <div class="reply">
-                                                            <a class="comment-reply-link" href="#">Reply</a>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="children">
-                                                        <li>
-                                                            <div class="comment-container">
-                                                                <div class="comment-author-vcard">
-                                                                    <img alt="" src="<?php echo WEBROOT_URL; ?>images/avatar/avatar.png" />
-                                                                </div>
-                                                                <div class="comment-author-info">
-                                                                    <span class="comment-author-name">admin</span>
-                                                                    <a href="#" class="comment-date">July 27, 2016</a>
-                                                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                                                </div>
-                                                                <div class="reply">
-                                                                    <a class="comment-reply-link" href="#">Reply</a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <div class="comment-container">
-                                                        <div class="comment-author-vcard">
-                                                            <img alt="" src="<?php echo WEBROOT_URL; ?>images/avatar/avatar.png" />
-                                                        </div>
-                                                        <div class="comment-author-info">
-                                                            <span class="comment-author-name">admin</span>
-                                                            <a href="#" class="comment-date">July 27, 2016</a>
-                                                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                                        </div>
-                                                        <div class="reply">
-                                                            <a class="comment-reply-link" href="#">Reply</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div> -->
 
-                                        <div class="single-comment-form mt-0">
+                                                <?php foreach ( $avis['list'] as $element ): ?>
+                                                <li>
+                                                    <div class="comment-container">
+                                                        <div class="comment-author-vcard">
+                                                            <img alt="" src="<?php echo WEBROOT_URL; ?>images/avatar/avatar.png" />
+                                                        </div>
+                                                        <div class="comment-author-info">
+                                                            <?php $nom = ($element->id_c == 0) ? $element->nom_avis.' '.$element->prenoms_avis : $element->nom_client.' '.$element->prenoms_client; ?>
+                                    
+                                                            <span class="comment-author-name"><?php echo $nom ; ?></span>
+                                                            <a href="#" class="comment-date"><?php echo dateFormat($element->date_creation); ?></a>
+                                                            <p><?php echo $element->contenu ; ?></p>
+                                                        </div>
+                                                        <!-- <div class="reply">
+                                                            <a class="comment-reply-link" href="#">Reply</a>
+                                                        </div> -->
+                                                    </div>
+                                                    <?php if( $element->statut == 1 ){?>
+                                                        <ul class="children">
+                                                            <li>
+                                                                <div class="comment-container">
+                                                                    <div class="comment-author-vcard">
+                                                                        <img alt="" src="<?php echo WEBROOT_URL; ?>images/avatar/admin_avatar.png" />
+                                                                    </div>
+                                                                    <div class="comment-author-info">
+                                                                        <span class="comment-author-name">Administrateur</span>
+                                                                        <a href="#" class="comment-date"><?php echo dateFormat($element->date_reponse) ; ?></a>
+                                                                        <p><?php echo $element->reponse_admin_contenu ; ?></p>
+                                                                    </div>
+                                                                    <!-- <div class="reply">
+                                                                        <a class="comment-reply-link" href="#">Reply</a>
+                                                                    </div> -->
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    <?php } ?>
+
+                                                </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+                                        <br/><br/><br/>
+                                        <div class="single-comment-form mt-3">
                                             <div class="mb-2">
                                                 <h2 class="comment-title">LAISSER UN COMMENTAIRE</h2>
                                             </div>
                                             <form class="comment-form">
+                                                <div id="" class="col-md-12 text-center errorForm"></div>
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <textarea id="comment" name="comment" cols="45" rows="5" placeholder="Message *"></textarea>
+                                                        <textarea id="comment" name="comment" cols="45" rows="5" placeholder="Message *" required></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <input id="author" name="author" type="text" value="" size="30" placeholder="Nom *" class="mb-2">
+                                                        <input id="author" name="author" type="text" value="" size="30" placeholder="Nom *" class="mb-2" required>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <input id="email" name="email" type="email" value="" size="30" placeholder="Email *" class="mb-2">
+                                                        <input id="email" name="email" type="email" value="" size="30" placeholder="Email *" class="mb-2" required>
                                                     </div>
+                                                    <input type="hidden" name="token_produit" value="<?php echo $produit->token_produit ?>" required>
                                                     <!-- <div class="col-md-4">
                                                         <input id="url" name="url" type="text" value="" placeholder="Website">
                                                     </div> -->
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-2">
-                                                        <input name="submit" type="submit" id="submit" class="btn btn-alt btn-border" value="Envoyer">
+                                                        <!-- <input name="submit" type="submit" id="confirm_btn" class="btn btn-alt btn-border" value="Envoyer"> -->
+                                                        <button id="btn-alt btn-border" class="btn btn-alt btn-border" type="submit">
+                                                                CONFIRMER
+                                                                <div class="ld ld-ring ld-spin"></div>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </form>

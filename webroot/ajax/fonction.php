@@ -1,5 +1,30 @@
 <?php
 
+function insert($pdo, $req, $table){
+    $sql = ' INSERT INTO '.$table.' (';
+    $sql .= implode(', ', $req['fields']).')';
+    $sql .= ' VALUE (:'.implode(', :',$req['fields']).')';
+    $pre = $pdo->prepare($sql);
+    $pre->execute($req['values']);
+}
+
+function getTokenNumber($Nbre_Mbre_Actuel, $Abreviation_Pays, $Debut){
+
+  $Identifiant = $Debut;
+
+  $Date_Identifiant = date("Ym"); //
+  $Identifiant .= "".$Date_Identifiant;        
+  $Numero_Mbre = "".($Nbre_Mbre_Actuel + 0);
+  $Taille_Fixe = 4;
+  $Numero_Mbre_Good = str_pad($Numero_Mbre, $Taille_Fixe, "0", STR_PAD_LEFT);
+  $Identifiant .= $Numero_Mbre_Good;
+
+  //$Abreviation_Pays = 'CI'; // A automatiser
+  $Identifiant .= $Abreviation_Pays;
+
+  return $Identifiant;
+}
+
 function getFees($pdo, $total_amount_cart){
 
   $shippingFees = 0; // initie les frais à 0

@@ -100,7 +100,7 @@
                     <!-- masonry-grid-post -->
                     <div id="list_produits" class="product-grid " 
                     product-data-display="false" product-data-found="5" product-data-total="254"
-                    product-data-search="" 
+                    product-data-search="<?php echo isset($filter['search']) ? $filter['search']['element'] : ''; ?>" 
                     product-data-category="<?php echo isset($filter['categorie']) ? $filter['categorie']['token'] : ''; ?>" 
                     product-data-number-page="1" product-data-order="3"
                     >
@@ -159,8 +159,8 @@
                     <div class="sidebar">
 
                         <div class="widget widget-product-search">
-                            <form class="form-search">
-                                <input type="text" class="search-field" placeholder="Rechercher produit..." value="" name="product_searched" />
+                            <form class="form-search form-search-product-list" method="POST" action="#">
+                                <input type="text" class="search-field" placeholder="Rechercher produit..." value="" name="element" />
                                 <input type="submit" value="Search" />
                             </form>
                         </div>

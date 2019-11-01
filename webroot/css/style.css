@@ -6941,6 +6941,13 @@ table.list-produits-commands td, table.list-produits-commands th {
         height: 390px;
         overflow: hidden;
     }
+
+    .product-grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+        grid-auto-rows: minmax(100px, auto);
+    }
 }
 @media (max-width: 767px) {
 
