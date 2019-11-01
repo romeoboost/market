@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 17 juin 2019 à 12:13
+-- Généré le :  ven. 01 nov. 2019 à 02:31
 -- Version du serveur :  5.7.21
--- Version de PHP :  5.6.35
+-- Version de PHP :  7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,12 +31,13 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `avis`;
 CREATE TABLE IF NOT EXISTS `avis` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `token` varchar(255) NOT NULL,
   `id_client` int(10) NOT NULL DEFAULT '0',
   `nom` varchar(255) DEFAULT NULL,
   `prenoms` varchar(255) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `contenu` text NOT NULL,
-  `localisation` varchar(255) NOT NULL,
+  `localisation` varchar(255) DEFAULT NULL,
   `id_produit` int(10) NOT NULL,
   `date_creation` datetime NOT NULL,
   `date_modification` datetime NOT NULL,
@@ -45,18 +46,19 @@ CREATE TABLE IF NOT EXISTS `avis` (
   `reponse_admin_contenu` text,
   `date_reponse` datetime DEFAULT NULL,
   `page_accueil` int(1) NOT NULL DEFAULT '0',
+  `statut` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `avis`
 --
 
-INSERT INTO `avis` (`id`, `id_client`, `nom`, `prenoms`, `email`, `contenu`, `localisation`, `id_produit`, `date_creation`, `date_modification`, `id_avis_parent`, `id_admin_reponse`, `reponse_admin_contenu`, `date_reponse`, `page_accueil`) VALUES
-(1, 0, 'Koffi', 'Luc', 'koffi.luc@test.ci', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'cocody, angre', 1, '2018-11-08 00:00:00', '2018-11-08 00:00:00', 0, NULL, NULL, NULL, 1),
-(2, 0, 'Kone', 'hamed', 'hamed85@test.ci', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'cocody, riviera II', 4, '2018-11-08 00:00:00', '2018-11-08 00:00:00', 0, NULL, NULL, NULL, 1),
-(3, 0, 'YAO', 'Elodie', 'elodie225@test.ci', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'cocody, riviera II', 3, '2018-11-08 00:00:00', '2018-11-08 00:00:00', 0, NULL, NULL, NULL, 1),
-(4, 0, 'ATTIA', 'paulin', 'paulingris@test.ci', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Divo, bada', 2, '2018-11-08 00:00:00', '2018-11-08 00:00:00', 0, NULL, NULL, NULL, 1);
+INSERT INTO `avis` (`id`, `token`, `id_client`, `nom`, `prenoms`, `email`, `contenu`, `localisation`, `id_produit`, `date_creation`, `date_modification`, `id_avis_parent`, `id_admin_reponse`, `reponse_admin_contenu`, `date_reponse`, `page_accueil`, `statut`) VALUES
+(2, 'mpogffzs800144', 0, 'Kone', 'hamed', 'hamed85@test.ci', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'cocody, riviera II', 4, '2018-11-08 00:00:00', '2018-11-08 00:00:00', 0, NULL, NULL, NULL, 1, 0),
+(3, 'loagxfqx4xh', 0, 'YAO', 'Elodie', 'elodie225@test.ci', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'cocody, riviera II', 3, '2018-11-08 00:00:00', '2019-09-19 23:21:53', 0, 1, 'Je sais pas quoi dire mais ce qui est sure c\'est que ça marche.', '2019-09-14 21:21:49', 1, 1),
+(4, 'azedsgb5815czsd', 0, 'ATTIA', 'paulin', 'paulingris@test.ci', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Divo, bada', 2, '2018-11-08 00:00:00', '2019-09-19 23:24:41', 0, 1, 'Merci de nous avoir contacter. Nous prenoms en compte votre remarque et vous revenons.', '2019-09-14 02:13:34', 1, 1),
+(6, 'AVS2019090006AM', 0, 'juizerv', '', 'erjsyuvc@hcghs.ci', 'Consultez nos spécialistes pour obtenir de l’aide concernant une commande, une personnalisation ou des conseils de conception.', NULL, 2, '2019-09-25 01:02:28', '2019-09-25 01:05:19', 0, 1, 'nzcghcg jcztgctc chzchgcqsc', '2019-09-25 01:05:19', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -75,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `categories_produits` (
   `date_creation` datetime DEFAULT NULL,
   `date_modification` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `categories_produits`
@@ -87,9 +89,15 @@ INSERT INTO `categories_produits` (`id`, `nom`, `token`, `statut`, `image`, `ico
 (3, 'cremerie', 'jjhshgfcbcjhj4koi22', 1, 'jjhshgfcbcjhj4koi22', 'oil', '2018-11-01 00:00:00', '2018-11-01 00:00:00'),
 (4, 'poissonnerie', 'jfhcdstgsdhgfcbcjhj45ss', 1, 'jfhcdstgsdhgfcbcjhj45ss', 'fish', '2018-11-01 00:00:00', '2018-11-01 00:00:00'),
 (5, 'fruit', 'kbsedeadbcjhj45ss', 1, 'kbsedeadbcjhj45ss', 'fruit', '2018-11-01 00:00:00', '2018-11-01 00:00:00'),
-(6, 'céréale', 'jhergdvherjd', 1, 'jhergdvherjd', 'seed-bag', '2018-11-01 00:00:00', '2018-11-01 00:00:00'),
+(6, 'Céréales', 'jhergdvherjd', 1, '650b2de60935fb31340be95a729072e6', 'seed-bag', '2018-11-01 00:00:00', '2019-06-23 15:20:58'),
 (7, 'féculent', 'ergeverjkvfer', 1, 'ergeverjkvfer', 'potatoes', '2018-11-01 00:00:00', '2018-11-01 00:00:00'),
-(8, 'produit dérivé', 'dscfvrgher258451zdrcc', 1, 'dscfvrgher258451zdrcc', 'rice', '2018-11-02 00:00:00', '2018-11-02 00:00:00');
+(8, 'produit dérivé', 'dscfvrgher258451zdrcc', 1, 'dscfvrgher258451zdrcc', 'rice', '2018-11-02 00:00:00', '2018-11-02 00:00:00'),
+(13, 'Crustacés', 'CTP2019060009AM', 0, 'f797cd6ce7e5186a96482e1e99d9a35c', 'fruit', '2019-06-23 18:12:35', '2019-06-23 18:12:35'),
+(14, 'TEST', 'CTP2019060010AM', 1, '650b2de60935fb31340be95a729072e6', 'seed-bag', '2018-11-01 00:00:00', '2019-06-23 15:20:58'),
+(15, 'TEST 2350', 'CTP2019060011AM', 1, 'ergeverjkvfer', 'potatoes', '2018-11-01 00:00:00', '2018-11-01 00:00:00'),
+(16, 'TEST bibine', 'CTP2019060012AM', 1, 'dscfvrgher258451zdrcc', 'rice', '2018-11-02 00:00:00', '2018-11-02 00:00:00'),
+(17, 'Alcool', 'CTP2019060013AM', 0, 'f797cd6ce7e5186a96482e1e99d9a35c', 'fruit', '2019-06-23 18:12:35', '2019-06-23 18:12:35'),
+(18, 'TEST', 'CTP2019060018AM', 0, 'f18ecb7faff47e319b555211f07d8fd3', 'oil', '2019-06-30 11:21:30', '2019-06-30 11:21:30');
 
 -- --------------------------------------------------------
 
@@ -112,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `date_creation` datetime DEFAULT NULL,
   `date_modification` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `clients`
@@ -120,8 +128,16 @@ CREATE TABLE IF NOT EXISTS `clients` (
 
 INSERT INTO `clients` (`id`, `token`, `nom`, `prenoms`, `tel`, `email`, `password`, `sexe`, `statut`, `image`, `date_creation`, `date_modification`) VALUES
 (1, 'CLI2019010001MKT', 'MAGASSOUBA', 'Oumar Check Premier', '01010101', 'check.oumar@test.ci', 'f5b8569f25528d10c56fe9808b0aa9e3', 1, 1, 'chsdbcbsbhsd5222', '2018-12-03 15:00:00', '2019-04-28 18:12:22'),
-(2, 'fvevjhdfvj585csd', 'boss', 'boss', '01010102', 'boss@boss.ci', 'test1234', 0, 0, 'fvevjhdfvj585csd', '2018-12-03 00:00:00', '2018-12-03 00:00:00'),
-(6, 'CLI2019010003MKT', 'test', 'testeur', '01040507', ' ', '16d7a4fca7442dda3ad93c9a726597e4', 0, 1, NULL, '2019-01-01 23:52:26', '2019-01-01 23:52:26');
+(2, 'CLI2019010002MKT', 'boss', 'boss', '01010102', 'boss@boss.ci', 'f5b8569f25528d10c56fe9808b0aa9e3', 0, 0, 'fvevjhdfvj585csd', '2018-12-03 00:00:00', '2018-12-03 00:00:00'),
+(6, 'CLI2019010003MKT', 'test', 'testeur', '01040507', ' ', '16d7a4fca7442dda3ad93c9a726597e4', 0, 1, NULL, '2019-01-01 23:52:26', '2019-01-01 23:52:26'),
+(7, 'CLI2019010004MKT', 'TEST', 'BOBI', '01010102', 'test4@boss.ci', 'f5b8569f25528d10c56fe9808b0aa9e3', 1, 0, 'CLI2019010004MKT', '2019-06-03 00:00:00', '2019-06-03 00:00:00'),
+(8, 'CLI2019010005MKT', 'MERLIN', 'MAGICIEN', '01040507', ' ', '16d7a4fca7442dda3ad93c9a726597e4', 0, 1, NULL, '2019-06-05 00:00:00', '2019-06-05 00:00:00'),
+(9, 'CLI2019010006MKT', 'AMINA', 'DIALO', '01040507', ' ', '16d7a4fca7442dda3ad93c9a726597e4', 0, 1, NULL, '2019-04-01 23:52:26', '2019-04-01 23:52:26'),
+(10, 'CLI2019010007MKT', 'TEST', 'Bobi', '01010102', 'bobi@boss.ci', 'f5b8569f25528d10c56fe9808b0aa9e3', 1, 1, 'CLI2019010008MKT', '2019-06-03 00:00:00', '2019-06-27 00:54:36'),
+(11, 'CLI2019010008MKT', 'MATHIEU', 'BIBO', '01040507', ' ', '16d7a4fca7442dda3ad93c9a726597e4', 0, 0, NULL, '2019-06-05 00:00:00', '2019-06-26 23:56:40'),
+(13, 'CLI2019010010MKT', 'titan', 'pere', '01040507', ' ', '16d7a4fca7442dda3ad93c9a726597e4', 1, 1, NULL, '2019-04-01 23:52:26', '2019-04-01 23:52:26'),
+(14, 'CLI2019010011MKT', 'ali', 'fere', '01010102', 'ali@boss.ci', 'f5b8569f25528d10c56fe9808b0aa9e3', 1, 0, 'CLI2019010008MKT', '2019-06-03 00:00:00', '2019-06-03 00:00:00'),
+(15, 'CLI2019010012MKT', 'EDWIGE', 'Bile', '01040507', ' ', '16d7a4fca7442dda3ad93c9a726597e4', 0, 1, NULL, '2019-06-05 00:00:00', '2019-06-05 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -146,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `commandes` (
   `date_modification` datetime NOT NULL,
   `date_livraison` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `commandes`
@@ -175,6 +191,7 @@ INSERT INTO `commandes` (`id`, `token`, `id_client`, `statut`, `montant_ht`, `fr
 (28, 'CMD2019050021MKT', 1, 3, 2600, 500, 3100, 1, 2, 0, NULL, '2019-05-04 08:47:32', '2019-06-06 08:33:06', NULL),
 (29, 'CMD2019050022MKT', 1, 3, 6600, 1000, 7600, 3, 2, 0, NULL, '2019-05-05 08:47:59', '2019-06-06 16:51:36', NULL),
 (30, 'CMD2019050023MKT', 1, 0, 1700, 500, 2200, 1, 2, 1, NULL, '2019-05-06 08:48:18', '2019-06-08 08:10:51', NULL),
+(48, 'CMD2019070048MKT', 1, 0, 3200, 500, 3700, 1, NULL, NULL, NULL, '2019-07-19 23:53:57', '2019-07-19 23:53:57', NULL),
 (32, 'CMD2019050025MKT', 1, 3, 2100, 500, 2600, 1, 1, 1, NULL, '2019-05-06 08:49:07', '2019-06-06 22:53:24', NULL),
 (33, 'CMD2019050026MKT', 1, 0, 2000, 500, 2500, 1, 2, 1, NULL, '2019-05-07 08:50:28', '2019-06-08 08:09:22', NULL),
 (34, 'CMD2019050027MKT', 1, 4, 2200, 1500, 3700, 4, 1, 1, 'TEST', '2019-05-08 08:51:08', '2019-06-08 19:43:13', NULL),
@@ -182,7 +199,7 @@ INSERT INTO `commandes` (`id`, `token`, `id_client`, `statut`, `montant_ht`, `fr
 (36, 'CMD2019050029MKT', 1, 4, 5500, 1000, 6500, 2, 3, 1, 'je sais pas', '2019-05-23 08:52:42', '2019-06-08 19:41:12', NULL),
 (37, 'CMD2019050030MKT', 1, 0, 1000, 500, 1500, 1, 3, 1, NULL, '2019-05-23 08:53:09', '2019-06-06 22:53:41', NULL),
 (40, 'CMD2019050033MKT', 1, 0, 1200, 500, 1700, 1, 3, 1, NULL, '2019-05-25 08:57:09', '2019-06-06 22:48:26', NULL),
-(41, 'CMD2019050034MKT', 1, 0, 6600, 500, 7100, 1, 1, 1, 'Tu ne me plais pas du tout.', '2019-05-25 08:57:31', '2019-06-10 13:16:45', NULL),
+(41, 'CMD2019050034MKT', 1, 3, 6600, 500, 7100, 1, 3, 1, 'Tu ne me plais pas du tout.', '2019-05-25 08:57:31', '2019-06-19 12:11:38', NULL),
 (45, 'CMD2019050038MKT', 1, 1, 2600, 500, 3100, 1, 2, 0, NULL, '2019-05-26 09:02:40', '2019-05-18 09:02:40', NULL),
 (46, 'CMD2019050039MKT', 1, 1, 3100, 500, 3600, 1, 1, 0, NULL, '2019-05-26 09:03:10', '2019-05-18 09:03:10', NULL),
 (47, 'CMD2019050040MKT', 1, 0, 6600, 500, 7100, 1, 3, 1, NULL, '2019-05-26 09:03:30', '2019-06-08 08:26:40', NULL);
@@ -204,7 +221,7 @@ CREATE TABLE IF NOT EXISTS `commandes_produits` (
   `date_creation` datetime NOT NULL,
   `date_modification` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=107 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=109 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `commandes_produits`
@@ -246,6 +263,8 @@ INSERT INTO `commandes_produits` (`id`, `id_commande`, `id_produit`, `quantite`,
 (48, 22, 5, 1, 1, 5000, '2019-05-18 08:44:15', '2019-05-18 08:44:15'),
 (49, 23, 1, 1, 5, 500, '2019-05-18 08:44:33', '2019-05-18 08:44:33'),
 (50, 23, 2, 1, 3, 100, '2019-05-18 08:44:33', '2019-05-18 08:44:33'),
+(107, 48, 12, 1, 3, 1600, '2019-07-19 23:53:57', '2019-07-19 23:53:57'),
+(108, 48, 3, 1, 3, 1600, '2019-07-19 23:53:57', '2019-07-19 23:53:57'),
 (53, 25, 6, 1, 1, 1000, '2019-05-18 08:46:05', '2019-05-18 08:46:05'),
 (54, 25, 3, 1, 3, 1600, '2019-05-18 08:46:05', '2019-05-18 08:46:05'),
 (55, 25, 7, 1, 1, 500, '2019-05-18 08:46:05', '2019-05-18 08:46:05'),
@@ -298,6 +317,66 @@ INSERT INTO `commandes_produits` (`id`, `id_commande`, `id_produit`, `quantite`,
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `fournisseurs`
+--
+
+DROP TABLE IF EXISTS `fournisseurs`;
+CREATE TABLE IF NOT EXISTS `fournisseurs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `token` varchar(100) NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `tel` varchar(50) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `date_creation` datetime NOT NULL,
+  `date_modification` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `fournisseurs`
+--
+
+INSERT INTO `fournisseurs` (`id`, `token`, `nom`, `tel`, `email`, `date_creation`, `date_modification`) VALUES
+(1, 'FNS20190001AM', 'KONE Abou', '09841171', NULL, '2019-06-18 08:42:17', '2019-06-18 08:42:17'),
+(2, 'FNS20190002AM', 'Gueu manou', '59791682', NULL, '2019-06-18 08:42:17', '2019-06-18 08:42:17'),
+(4, 'FNS2019060004AM', 'Vié Coulibaly', '04523685', 'test@fournisseur.som', '2019-06-30 14:21:11', '2019-06-30 15:01:26'),
+(5, 'FNS2019060005AM', 'Kouakou édouard', '57525654', 'edouard@fournisseur.som', '2019-06-30 14:23:28', '2019-06-30 14:23:28');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `frais_livraison`
+--
+
+DROP TABLE IF EXISTS `frais_livraison`;
+CREATE TABLE IF NOT EXISTS `frais_livraison` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `token` varchar(255) NOT NULL,
+  `libelle` varchar(255) DEFAULT NULL,
+  `min` int(11) NOT NULL,
+  `max` int(11) NOT NULL,
+  `frais` float NOT NULL,
+  `date_creation` datetime NOT NULL,
+  `date_modification` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `frais_livraison`
+--
+
+INSERT INTO `frais_livraison` (`id`, `token`, `libelle`, `min`, `max`, `frais`, `date_creation`, `date_modification`) VALUES
+(1, 'FLV2019070001AM', NULL, 0, 5000, 500, '2019-07-18 07:00:17', '2019-07-23 09:24:47'),
+(2, 'FLV2019070002AM', NULL, 10001, 15000, 1000, '2019-07-18 07:00:17', '2019-07-23 09:23:30'),
+(3, 'FLV2019070003AM', NULL, 20001, 30000, 1500, '2019-07-18 07:00:17', '2019-07-18 07:00:17'),
+(4, 'FLV2019070004AM', NULL, 30001, 500000, 2000, '2019-07-18 07:00:17', '2019-07-24 05:14:23'),
+(6, 'FLV2019070006AM', NULL, 5001, 10000, 700, '2019-07-23 09:25:18', '2019-07-23 09:25:18'),
+(7, 'FLV2019070007AM', NULL, 15001, 20000, 1200, '2019-07-23 09:26:25', '2019-07-23 09:26:25'),
+(8, 'FLV2019070008AM', NULL, 500001, 1000000, 3000, '2019-07-24 05:14:57', '2019-07-24 05:18:09');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `livraison_destinations`
 --
 
@@ -307,6 +386,9 @@ CREATE TABLE IF NOT EXISTS `livraison_destinations` (
   `token` varchar(100) NOT NULL,
   `commune` varchar(255) NOT NULL,
   `frais` float NOT NULL,
+  `statut` int(1) NOT NULL,
+  `longitude` double NOT NULL,
+  `lagitude` double NOT NULL,
   `date_creation` datetime NOT NULL,
   `date_modification` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -316,12 +398,12 @@ CREATE TABLE IF NOT EXISTS `livraison_destinations` (
 -- Déchargement des données de la table `livraison_destinations`
 --
 
-INSERT INTO `livraison_destinations` (`id`, `token`, `commune`, `frais`, `date_creation`, `date_modification`) VALUES
-(1, 'hfhfhcdsjlll55d', 'cocody', 500, '2019-01-13 08:12:00', '2019-01-13 08:12:00'),
-(2, 'nhcfqsffsbxhx', 'bingerville', 1000, '2019-01-13 08:12:00', '2019-01-13 08:12:00'),
-(3, 'kdkckcdk15d4', 'Adjamé', 1000, '2018-11-01 00:00:00', '2018-12-05 00:00:00'),
-(4, 'mooc45dddcddd', 'Yopougon', 1500, '2018-12-05 00:00:00', '2018-12-05 00:00:00'),
-(5, 'mongsfsfccxxx', 'Marcory', 2000, '2018-12-05 00:00:00', '2018-12-05 00:00:00');
+INSERT INTO `livraison_destinations` (`id`, `token`, `commune`, `frais`, `statut`, `longitude`, `lagitude`, `date_creation`, `date_modification`) VALUES
+(1, 'hfhfhcdsjlll55d', 'cocody', 500, 1, 0, 0, '2019-01-13 08:12:00', '2019-01-13 08:12:00'),
+(2, 'nhcfqsffsbxhx', 'bingerville', 1000, 1, 0, 0, '2019-01-13 08:12:00', '2019-01-13 08:12:00'),
+(3, 'kdkckcdk15d4', 'Adjamé', 1000, 0, 0, 0, '2018-11-01 00:00:00', '2018-12-05 00:00:00'),
+(4, 'mooc45dddcddd', 'Yopougon', 1500, 0, 0, 0, '2018-12-05 00:00:00', '2018-12-05 00:00:00'),
+(5, 'mongsfsfccxxx', 'Marcory', 2000, 0, 0, 0, '2018-12-05 00:00:00', '2018-12-05 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -332,6 +414,7 @@ INSERT INTO `livraison_destinations` (`id`, `token`, `commune`, `frais`, `date_c
 DROP TABLE IF EXISTS `livreurs`;
 CREATE TABLE IF NOT EXISTS `livreurs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `token` varchar(50) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `prenoms` varchar(255) NOT NULL,
   `tel` varchar(255) NOT NULL,
@@ -339,16 +422,19 @@ CREATE TABLE IF NOT EXISTS `livreurs` (
   `date_modification` datetime NOT NULL,
   `email` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `livreurs`
 --
 
-INSERT INTO `livreurs` (`id`, `nom`, `prenoms`, `tel`, `date_creation`, `date_modification`, `email`) VALUES
-(1, 'DHL', 'Ibrahim', '08091011', '2019-06-02 11:25:40', '2019-06-02 11:25:40', 'ibrahim.kone@dhl.com'),
-(2, 'CR Service', 'kesso', '07080502', '2019-06-02 11:25:40', '2019-06-02 11:25:40', 'kesso.dev@cr-service.com'),
-(3, 'CR SERVICE', 'Bernard', '65626364', '2019-05-03 11:25:40', '2019-05-03 11:25:40', 'bernard.livreur@cr-service.com');
+INSERT INTO `livreurs` (`id`, `token`, `nom`, `prenoms`, `tel`, `date_creation`, `date_modification`, `email`) VALUES
+(1, 'LVR201900001AM', 'DHL', 'Ibrahim', '08091011', '2019-06-02 11:25:40', '2019-06-02 11:25:40', 'ibrahim.kone@dhl.com'),
+(2, 'LVR201900002AM', 'CR Service', 'kesso', '07080502', '2019-06-02 11:25:40', '2019-06-02 11:25:40', 'kesso.dev@cr-service.com'),
+(3, 'LVR201900003AM', 'CR SERVICE', 'Bernard', '65626364', '2019-05-03 11:25:40', '2019-05-03 11:25:40', 'bernard.livreur@cr-service.com'),
+(4, 'LVR2019070004AM', 'TEST', 'TEST', '01040705', '2019-07-03 18:46:47', '2019-07-03 19:33:37', ''),
+(5, 'LVR2019070005AM', 'yao', 'eudoxy', '01050608', '2019-07-03 18:50:01', '2019-07-03 18:50:01', 'test@amarket.com'),
+(6, 'LVR2019070006AM', 'ahmed', 'terrain', '01052555', '2019-07-03 18:51:55', '2019-07-03 19:32:26', '');
 
 -- --------------------------------------------------------
 
@@ -359,6 +445,7 @@ INSERT INTO `livreurs` (`id`, `nom`, `prenoms`, `tel`, `date_creation`, `date_mo
 DROP TABLE IF EXISTS `messages`;
 CREATE TABLE IF NOT EXISTS `messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `token` varchar(255) DEFAULT NULL,
   `id_client` int(11) NOT NULL DEFAULT '0',
   `nom_prenoms` varchar(255) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -366,6 +453,10 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `contenu` text NOT NULL,
   `date_creation` datetime NOT NULL,
   `date_modification` datetime NOT NULL,
+  `id_admin_reponse` int(100) DEFAULT NULL,
+  `reponse_admin_contenu` text,
+  `date_reponse` datetime DEFAULT NULL,
+  `statut` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
@@ -373,11 +464,10 @@ CREATE TABLE IF NOT EXISTS `messages` (
 -- Déchargement des données de la table `messages`
 --
 
-INSERT INTO `messages` (`id`, `id_client`, `nom_prenoms`, `email`, `objet`, `contenu`, `date_creation`, `date_modification`) VALUES
-(1, 1, 'Oumar Check', 'check.oumar@test.ci', 'TEST', 'TEST', '2019-01-27 20:18:18', '2019-01-27 20:18:18'),
-(2, 0, 'Romeo Kesso', 'test@test.ci', 'TEST', 'POPO', '2019-01-27 20:19:15', '2019-01-27 20:19:15'),
-(3, 0, 'Romeo testeur', 'test@test.ci', ' ', 'La belle Nadi ChouChou !', '2019-01-27 20:20:14', '2019-01-27 20:20:14'),
-(4, 0, 'test', 'test@test.ci', 'TEST', 'TESTEUR', '2019-05-03 08:08:36', '2019-05-03 08:08:36');
+INSERT INTO `messages` (`id`, `token`, `id_client`, `nom_prenoms`, `email`, `objet`, `contenu`, `date_creation`, `date_modification`, `id_admin_reponse`, `reponse_admin_contenu`, `date_reponse`, `statut`) VALUES
+(1, 'MSG201901001MKT', 1, 'Oumar Check', 'romkesso92@gmail.com', 'Re: TEST', 'TEST', '2019-01-27 20:18:18', '2019-10-29 00:36:23', 1, 'Mon Push à moi même !<br><br>\r\n                                                    <hr>\r\n                                                    <div style=\"background-color: #c7d0d0; padding: 5px;\">\r\n                                                        <p>\r\n                                                                                                                        <strong>De:</strong> MAGASSOUBA Oumar Check Premier [ check.oumar@test.ci ] <br>\r\n                                                            <strong>Date:</strong>  27-01-2019 20:18 ‎‎<br>\r\n                                                            <strong>À:</strong>  AFROMART                                                        </p>\r\n                                                        <p>\r\n                                                            TEST                                                        </p>\r\n                                                    </div>', '2019-10-29 00:36:23', 1),
+(2, 'MSG201901002MKT', 0, 'Romeo Kesso', 'test@test.ci', 'TEST', 'POPO', '2019-01-27 20:19:15', '2019-01-27 20:19:15', NULL, NULL, NULL, 0),
+(3, 'MSG201901003MKT', 0, 'Romeo testeur', 'romeo.kesso@ngser.com', 'Re: SANS OBJET', 'La belle Nadi ChouChou !', '2019-01-27 20:20:14', '2019-10-29 00:30:02', 1, '<br>Qu\'est ce que tu en dis ? <span style=\"font-weight: bold; background-color: rgb(255, 0, 0);\">c\'est propre ?</span><br>\r\n                                                    <hr>\r\n                                                    <div style=\"background-color: #c7d0d0;padding: 5px;\">\r\n                                                        <p>\r\n                                                                                                                        <strong>De:</strong> Romeo testeur [ test@test.ci ] <br>\r\n                                                            <strong>Date:</strong>  27-01-2019 20:20 ‎‎<br>\r\n                                                            <strong>À:</strong>  AFROMART                                                        </p>\r\n                                                        <p>\r\n                                                            La belle Nadi ChouChou !                                                        </p>\r\n                                                    </div>', '2019-10-29 00:30:02', 1);
 
 -- --------------------------------------------------------
 
@@ -442,27 +532,29 @@ CREATE TABLE IF NOT EXISTS `produits` (
   `date_creation` datetime DEFAULT NULL,
   `date_modification` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `produits`
 --
 
 INSERT INTO `produits` (`id`, `nom`, `description`, `token`, `stock`, `id_categorie_produit`, `id_unite`, `quantite_unitaire`, `prix_quantite_unitaire`, `id_taille`, `slug`, `statut`, `image`, `page_accueil`, `nouveau`, `promo`, `pourcentage_promo`, `date_creation`, `date_modification`) VALUES
-(1, 'tomate', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'aaaaaaaaa123', 60, 1, 3, 5, 500, 2, 'tomate-moyen-legume-aaaaaaaaa123', 1, 'aaaaaaaaa123', 1, 0, 1, 10, '2018-11-01 00:00:00', '2019-06-08 16:13:28'),
-(2, 'carotte', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'bbbbbbbbbbb589', 206, 1, 3, 3, 100, 4, 'carotte-moyen-bbbbbbbbbbb589', 1, 'bbbbbbbbbbb589', 1, 1, 0, 0, '2018-11-01 00:00:00', '2019-06-08 19:43:13'),
-(3, 'carpe', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'cccccccccccc256', 85, 4, 3, 3, 2000, 4, 'carpe-poissonnerie-cccccccccccc256', 1, 'cccccccccccc256', 1, 1, 1, 20, '2018-11-01 00:00:00', '2019-06-10 13:16:45'),
-(4, 'crevette', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'ddddddddddddd585', 498, 4, 1, 1, 1000, 4, 'crevette-poissonnerie-ddddddddddddd585', 1, 'ddddddddddddd585', 1, 0, 0, 0, '2018-11-01 00:00:00', '2018-11-01 00:00:00'),
-(5, 'poule pondeuse', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'zsfjchjzesg5555aaa', 140, 2, 3, 1, 5000, 4, 'poule-pondeuse-boucherie-zsfjchjzesg5555aaa', 1, 'zsfjchjzesg5555aaa', 1, 0, 0, 0, '2018-11-01 00:00:00', '2019-06-10 13:16:45'),
-(6, 'oignon', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'qdsfgersdgrd552000', 394, 1, 1, 1, 1000, 4, 'oignon-legume-qdsfgersdgrd552000', 1, 'qdsfgersdgrd552000', 1, 0, 0, 0, '2018-11-01 00:00:00', '2019-06-08 16:13:28'),
-(7, 'chou', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'mmmmmmmmmmm255', 481, 1, 3, 1, 500, 4, 'chou-legume-mmmmmmmmmmm255', 1, 'mmmmmmmmmmm255', 1, 0, 0, 0, '2018-11-01 00:00:00', '2019-06-08 19:43:13'),
-(8, 'orange', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'xsdrfghhnk25hhh', 94, 5, 3, 3, 200, 4, 'orange-fruits-xsdrfghhnk25hhh', 1, 'xsdrfghhnk25hhh', 1, 0, 0, 0, '2018-11-01 00:00:00', '2018-11-01 00:00:00'),
-(9, 'Mangue', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'PR20190600015AM', 94, 5, 3, 3, 200, 4, 'mangure-fruits-PR20190600015AM', 1, 'xsdrfghhnk25hhh', 1, 0, 0, 0, '2018-11-01 00:00:00', '2018-11-01 00:00:00'),
-(10, 'Banane Douce', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'PR20190600016AM', 94, 5, 3, 3, 200, 4, 'banane-douce-fruits-PR20190600016AM', 0, 'xsdrfghhnk25hhh', 1, 0, 0, 0, '2018-11-01 00:00:00', '2018-11-01 00:00:00'),
-(11, 'piment', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'PR20190600013AM', 394, 1, 1, 5, 100, 4, 'piment-legume-PR20190600013AM', 1, 'qdsfgersdgrd552000', 1, 0, 0, 0, '2018-11-01 00:00:00', '2019-06-08 16:13:28'),
-(12, 'machoiron', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'PR20190600011AM', 0, 4, 3, 3, 2000, 4, 'machoiron-poissonnerie-PR20190600011AM', 1, 'cccccccccccc256', 1, 1, 1, 20, '2018-11-01 00:00:00', '2019-06-10 13:16:45'),
-(14, 'Piment', 'Tres bon piment', 'PDT2019060013MKT', 0, 1, 3, 20, 200, NULL, 'Piment-légume-PDT2019060013MKT', 0, '735decffc15cdbaf879be219a94cff5e', 0, 0, 0, 0, '2019-06-17 09:36:41', '2019-06-17 09:36:41'),
-(15, 'Gombo', 'TEST', 'PDT2019060014MKT', 0, 1, 3, 5, 150, NULL, 'Gombo-légume-PDT2019060014MKT', 0, 'f8aa12ef265bfcc76c76725bc206339f', 0, 0, 0, 0, '2019-06-17 09:40:46', '2019-06-17 09:40:46');
+(1, 'Tomate', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'aaaaaaaaa123', 100, 1, 3, 5, 500, 2, 'Tomate-légume-aaaaaaaaa123', 1, '1f1254b42cb27debac63fdd769f4cac2', 1, 0, 1, 10, '2018-11-01 00:00:00', '2019-06-30 11:09:44'),
+(2, 'Carotte Grand', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'bbbbbbbbbbb589', 140, 1, 3, 3, 100, 4, 'Carotte-Grand-légume-bbbbbbbbbbb589', 1, '5b7d767338c627979d3fcbc66508098b', 1, 1, 1, 10, '2018-11-01 00:00:00', '2019-06-30 11:12:24'),
+(3, 'Carpe', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'cccccccccccc256', 82, 4, 3, 3, 2000, 4, 'Carpe-poissonnerie-cccccccccccc256', 1, 'a0cfb5517cadec0fc259734038cf6495', 1, 1, 1, 20, '2018-11-01 00:00:00', '2019-06-30 11:10:06'),
+(4, 'Crevette', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'ddddddddddddd585', 558, 4, 1, 1, 1000, 4, 'Crevette-poissonnerie-ddddddddddddd585', 1, 'da84b7ca2bb73e4ccbdb0db14eca1f5e', 1, 0, 0, 0, '2018-11-01 00:00:00', '2019-06-30 11:07:55'),
+(5, 'Poule pondeuse', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'zsfjchjzesg5555aaa', 140, 2, 3, 1, 5000, 4, 'Poule-pondeuse-boucherie-zsfjchjzesg5555aaa', 1, 'd9ad969f1f25a7d69cfeaf84e6b7fa37', 1, 0, 0, 0, '2018-11-01 00:00:00', '2019-06-19 14:38:29'),
+(6, 'Oignon', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'qdsfgersdgrd552000', 400, 1, 1, 1, 1000, 4, 'Oignon-légume-qdsfgersdgrd552000', 1, 'b17c6696aa1d8c8635f5b4bf1b0f720c', 1, 0, 0, 0, '2018-11-01 00:00:00', '2019-06-29 17:34:43'),
+(7, 'Chou', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'mmmmmmmmmmm255', 571, 1, 3, 1, 500, 4, 'Chou-légume-mmmmmmmmmmm255', 1, '4184b4d29624086be3b3c42d59ec20c2', 1, 0, 0, 0, '2018-11-01 00:00:00', '2019-07-01 04:35:07'),
+(8, 'Orange', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'xsdrfghhnk25hhh', 94, 5, 3, 3, 200, 4, 'Orange-fruit-xsdrfghhnk25hhh', 1, 'd3ac81a903ce60b5d588e70b292a3284', 1, 0, 0, 0, '2018-11-01 00:00:00', '2019-06-19 14:09:44'),
+(9, 'Mangue', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'PR20190600015AM', 94, 5, 3, 3, 200, 4, 'Mangue-fruit-PR20190600015AM', 1, '9a8b48d6e46a07df1513c6effab132c9', 1, 0, 0, 0, '2018-11-01 00:00:00', '2019-06-19 14:20:24'),
+(10, 'Banane Douce', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'PR20190600016AM', 680, 5, 3, 3, 200, 4, 'Banane Douce-fruit-PR20190600016AM', 0, '3bc1d6826ee416ece7aa8377e3d19b17', 1, 0, 0, 0, '2018-11-01 00:00:00', '2019-06-29 21:11:44'),
+(11, 'Piment Rouge', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'PR20190600013AM', 394, 1, 1, 5, 100, 4, 'Piment Rouge-légume-PR20190600013AMPiment-Rouge-légume-PR20190600013AM', 0, 'qdsfgersdgrd552000', 1, 0, 0, 0, '2018-11-01 00:00:00', '2019-06-21 13:40:55'),
+(12, 'Machoiron', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'PR20190600011AM', 497, 4, 3, 3, 2000, 4, 'Machoiron-poissonnerie-PR20190600011AM', 1, '07ac97d1054258cb3077d85364f09174', 1, 1, 1, 20, '2018-11-01 00:00:00', '2019-06-30 11:10:30'),
+(14, 'Piment', 'Tres bon piment', 'PDT2019060013MKT', 0, 1, 3, 20, 200, NULL, 'Piment-légume-PDT2019060013MKT', 1, '735decffc15cdbaf879be219a94cff5e', 0, 0, 0, 0, '2019-06-17 09:36:41', '2019-06-19 16:17:50'),
+(15, 'Gombo', 'TEST', 'PDT2019060014MKT', 90, 1, 3, 5, 150, NULL, 'Gombo-légume-PDT2019060014MKT', 0, 'f8aa12ef265bfcc76c76725bc206339f', 0, 0, 0, 0, '2019-06-17 09:40:46', '2019-06-30 11:12:06'),
+(17, 'Pommes de terre', 'TEST', 'PDT2019060015AM', 290, 7, 1, 1, 1500, NULL, 'Pommes de terre-féculent-PDT2019060015AM', 1, '96f9f25f1837a0e92cc6b4cb3ef5a586', 0, 0, 0, 0, '2019-06-19 21:39:03', '2019-06-29 17:32:47'),
+(19, 'Obergine', 'TEST', 'PDT2019060016AM', 0, 1, 3, 3, 1000, NULL, 'Obergine-légume-PDT2019060016AMObergine-légume-PDT2019060016AM', 0, '61b4380d1d7efae4df2f6ba1da114946', 0, 0, 0, 0, '2019-06-29 14:28:22', '2019-06-29 14:28:22');
 
 -- --------------------------------------------------------
 
@@ -480,19 +572,28 @@ CREATE TABLE IF NOT EXISTS `publicites` (
   `date_modification` datetime NOT NULL,
   `statut` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL COMMENT 'lien de limage genere a partire du md5 de la date dajout/modif de limage',
-  `duree` int(10) NOT NULL COMMENT 'en jour',
+  `duree` int(10) DEFAULT NULL COMMENT 'en jour',
+  `date_debut` datetime DEFAULT NULL,
+  `date_fin` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `publicites`
 --
 
-INSERT INTO `publicites` (`id`, `position`, `entreprise`, `token`, `date_creation`, `date_modification`, `statut`, `image`, `duree`) VALUES
-(1, 1, 'fanta', 'fdhfhdgdgdh555', '2018-11-08 08:16:17', '2018-11-08 08:16:17', 1, NULL, 30),
-(2, 1, 'coca', 'qdtdtggdgdh444', '2018-11-08 08:16:17', '2018-11-08 08:16:17', 0, NULL, 30),
-(3, 2, 'aromate', 'kckkchghxqs552', '2018-11-13 00:00:00', '2018-11-13 00:00:00', 1, NULL, 30),
-(4, 3, 'kingkash', 'mljhtgrdfygutjjj', '2018-11-14 00:00:00', '2018-11-20 00:00:00', 1, NULL, 60);
+INSERT INTO `publicites` (`id`, `position`, `entreprise`, `token`, `date_creation`, `date_modification`, `statut`, `image`, `duree`, `date_debut`, `date_fin`) VALUES
+(1, 1, 'fanta', 'fdhfhdgdgdh555', '2018-11-08 08:16:17', '2018-11-08 08:16:17', 1, 'fdhfhdgdgdh555', 30, '2019-08-19 00:00:00', '2019-09-25 00:00:00'),
+(2, 1, 'coca', 'qdtdtggdgdh444', '2018-11-08 08:16:17', '2018-11-08 08:16:17', 0, 'qdtdtggdgdh444', 30, '2019-08-19 00:00:00', '2019-09-25 00:00:00'),
+(3, 2, 'aromate', 'kckkchghxqs552', '2018-11-13 00:00:00', '2018-11-13 00:00:00', 1, 'kckkchghxqs552', 30, '2019-08-13 00:00:00', '2019-08-19 00:00:00'),
+(4, 3, 'kingkash', 'mljhtgrdfygutjjj', '2018-11-14 00:00:00', '2018-11-20 00:00:00', 1, 'mljhtgrdfygutjjj', 60, '2019-08-05 00:00:00', '2019-11-20 00:00:00'),
+(5, 1, 'UNIWAX', 'PUB2019090005AM', '2019-09-08 14:00:32', '2019-09-08 14:00:32', 0, '2ec4b5ee10939307cf53d1c9c7302a83', NULL, '2019-09-07 00:00:00', '2019-09-11 23:59:59'),
+(6, 1, 'UNIWAX II', 'PUB2019090006AM', '2019-09-08 14:01:50', '2019-09-09 22:53:13', 0, 'e8856302d0318cb4b0246c271cbb7624', NULL, '2019-09-12 00:00:00', '2019-09-20 23:59:59'),
+(8, 3, 'gvblm', 'PUB2019090008AM', '2019-09-10 07:58:55', '2019-09-10 07:58:55', 1, 'a90d023f074e7661eda98d199392647d', NULL, '2019-09-10 00:00:00', '2019-11-19 23:59:59'),
+(9, 3, 'JUKIO', 'PUB2019090009AM', '2019-09-10 07:59:28', '2019-09-10 07:59:28', 0, '548b2a756f4a5abd184991a22ddfb1e3', NULL, '2019-09-12 00:00:00', '2019-09-13 23:59:59'),
+(10, 2, 'MOPI', 'PUB2019090010AM', '2019-09-10 08:00:06', '2019-09-10 08:00:06', 0, 'e2081583c9dd437a137df63de96c9f83', NULL, '2019-09-12 00:00:00', '2019-09-26 23:59:59'),
+(11, 2, 'HYGG', 'PUB2019090011AM', '2019-09-10 08:00:41', '2019-09-10 08:00:41', 0, 'cafeae5a55622e28d8e5d9a05727454a', NULL, '2019-09-11 00:00:00', '2019-09-12 23:59:59'),
+(12, 1, 'JYGF', 'PUB2019090012AM', '2019-09-10 08:01:19', '2019-09-10 08:01:19', 0, '6af0761f5a7a6c878da4e4bf38a37924', NULL, '2019-05-26 00:00:00', '2019-09-22 23:59:59');
 
 -- --------------------------------------------------------
 
@@ -515,7 +616,7 @@ CREATE TABLE IF NOT EXISTS `shipping_infos` (
   `date_creation` datetime NOT NULL,
   `date_modification` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `shipping_infos`
@@ -561,7 +662,8 @@ INSERT INTO `shipping_infos` (`id`, `id_client`, `id_commande`, `nom`, `prenoms`
 (38, 1, 44, 'MAGASSOUBA', 'Oumar Check Premier', '01010101', 'check.oumar@test.ci', 1, 'riviera', '                                        ', '2019-05-18 09:01:34', '2019-05-18 09:01:34'),
 (39, 1, 45, 'MAGASSOUBA', 'Oumar Check Premier', '01010101', 'check.oumar@test.ci', 1, 'Niangon', '                                        ', '2019-05-18 09:02:40', '2019-05-18 09:02:40'),
 (40, 1, 46, 'MAGASSOUBA', 'Oumar Check Premier', '01010101', 'check.oumar@test.ci', 1, 'Niangon', '                                        ', '2019-05-18 09:03:10', '2019-05-18 09:03:10'),
-(41, 1, 47, 'MAGASSOUBA', 'Oumar Check Premier', '01010101', 'check.oumar@test.ci', 1, 'Niangon', '                                        ', '2019-05-18 09:03:30', '2019-05-18 09:03:30');
+(41, 1, 47, 'MAGASSOUBA', 'Oumar Check Premier', '01010101', 'check.oumar@test.ci', 1, 'Niangon', '                                        ', '2019-05-18 09:03:30', '2019-05-18 09:03:30'),
+(42, 1, 48, 'MAGASSOUBA', 'Oumar Check Premier', '01010101', 'check.oumar@test.ci', 1, 'blokauss', 'TEST', '2019-07-19 23:53:57', '2019-07-19 23:53:57');
 
 -- --------------------------------------------------------
 
@@ -573,16 +675,31 @@ DROP TABLE IF EXISTS `stocks`;
 CREATE TABLE IF NOT EXISTS `stocks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_produit` int(100) DEFAULT NULL,
+  `token` varchar(50) NOT NULL,
   `quantite_initiale` int(100) DEFAULT NULL,
-  `quantite_reserve` int(100) DEFAULT NULL,
-  `quantite_paye` int(100) DEFAULT NULL,
-  `quantite_resta,te` int(100) DEFAULT NULL,
+  `montant` float NOT NULL,
+  `frais_livraison` float NOT NULL DEFAULT '0',
+  `montant_ttc` float NOT NULL DEFAULT '0',
   `statut` int(1) DEFAULT NULL COMMENT '1=en cours; 0=epuise',
   `id_fournisseur` int(100) DEFAULT NULL,
   `date_creation` datetime NOT NULL,
   `date_modification` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `stocks`
+--
+
+INSERT INTO `stocks` (`id`, `id_produit`, `token`, `quantite_initiale`, `montant`, `frais_livraison`, `montant_ttc`, `statut`, `id_fournisseur`, `date_creation`, `date_modification`) VALUES
+(1, 5, 'STK20190001AM', 10, 25000, 500, 25500, 1, 2, '2019-06-12 06:23:34', '2019-06-29 17:35:31'),
+(11, 12, 'STK2019060011AM', 450, 45000, 0, 45000, NULL, 2, '2019-06-30 11:10:30', '2019-06-30 11:10:30'),
+(3, 1, 'STK2019060003AM', 1000, 20000, 500, 20500, NULL, 2, '2019-06-29 01:35:36', '2019-06-29 21:39:48'),
+(6, 1, 'STK2019060004AM', 250, 2000, 0, 2000, NULL, 1, '2019-06-29 20:40:57', '2019-06-29 20:40:57'),
+(12, 15, 'STK2019060012AM', 90, 68700, 300, 69000, NULL, 2, '2019-06-30 11:12:06', '2019-06-30 11:12:06'),
+(10, 4, 'STK2019060010AM', 60, 52000, 1450, 60000, NULL, 1, '2019-06-30 11:07:55', '2019-06-30 11:07:55'),
+(13, 2, 'STK2019060013AM', 40, 5200, 0, 5200, NULL, 1, '2019-06-30 11:12:24', '2019-06-30 11:12:24'),
+(14, 7, 'STK2019070014AM', 90, 18000, 500, 18500, NULL, 5, '2019-07-01 04:35:07', '2019-07-01 04:35:07');
 
 -- --------------------------------------------------------
 
@@ -617,21 +734,24 @@ INSERT INTO `tailles` (`id`, `nom`) VALUES
 DROP TABLE IF EXISTS `unites`;
 CREATE TABLE IF NOT EXISTS `unites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `token` varchar(20) NOT NULL,
   `libelle` varchar(100) NOT NULL,
   `symbole` varchar(5) NOT NULL,
   `date_creation` datetime NOT NULL,
   `date_modification` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `unites`
 --
 
-INSERT INTO `unites` (`id`, `libelle`, `symbole`, `date_creation`, `date_modification`) VALUES
-(1, 'kilogramme', 'Kg', '2018-11-01 00:00:00', '2018-11-01 00:00:00'),
-(2, 'litre', 'L', '2018-11-01 00:00:00', '2018-11-01 00:00:00'),
-(3, 'nombre', 'NA', '2018-11-01 00:00:00', '2018-11-01 00:00:00');
+INSERT INTO `unites` (`id`, `token`, `libelle`, `symbole`, `date_creation`, `date_modification`) VALUES
+(1, 'nfggggggd14', 'kilogramme', 'Kg', '2018-11-01 00:00:00', '2018-11-01 00:00:00'),
+(2, 'mpongzfs4522', 'litre', 'L', '2018-11-01 00:00:00', '2018-11-01 00:00:00'),
+(3, 'gdsfhsjhs0155', 'nombre', 'NA', '2018-11-01 00:00:00', '2018-11-01 00:00:00'),
+(4, 'UM2019070004AM', 'Hectare', 'Ha', '2019-07-04 05:05:07', '2019-07-04 05:05:07'),
+(5, 'UM2019070005AM', 'metre carré', 'M²', '2019-07-04 05:09:33', '2019-07-04 05:09:33');
 
 -- --------------------------------------------------------
 
