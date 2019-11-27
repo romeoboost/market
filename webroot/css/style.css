@@ -493,7 +493,7 @@ select {
 }
 
 .welcom-presa-process{
-    background-color: #f5f3f0;
+    /* background-color: #f5f3f0; */
 }
 
 .presa-produit-title{
@@ -2601,9 +2601,9 @@ header.header-4.scrolling-menu #logo {
 }
 .organik-featured-product.style-8 {
     width: 100%;
-    height: 790px;
-    background-color: #fbf7eb;
-    border: 3px solid #f6edd0;
+    height: 755px;
+    background-color: #f5f3f0;
+    border: 3px solid #e0e0df;
     padding: 5px 5px 5px 5px;
 	text-align: left;
 }

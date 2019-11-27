@@ -51,7 +51,7 @@
             <div class="mobile-menu">
                 <div class="header-mobile-menu  mb-2">
                     <div class="mobile-menu-logo">
-                        <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-1.png" 
+                        <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-2.png" 
                                                 alt="logo <?php echo APPLI_NAME; ?>" />
                     </div>
                     <div class="mobile-menu-actions-enter">
@@ -160,6 +160,7 @@
                                     <li class="<?php echo isset($_SESSION['user']) ? 'dropdown' : ''; ?> ">
                                         
                                         <a href="#" class="" role="" data-toggle="modal" 
+                                        id="<?php echo isset($_SESSION['user']) ? 'dropdown-user' : 'login-btn-web'; ?>"
                                         data-target="#<?php echo isset($_SESSION['user']) ? '' : 'login-modal'; ?>">
                                             <?php echo isset($_SESSION['user']) ? 'Bonjour '.$_SESSION['user']['nom'] : 'Se connecter'; ?>                                           
                                         </a>
@@ -171,7 +172,7 @@
                                         <?php } ?>
                                     </li>
                                     <?php if (!isset($_SESSION['user'])){ ?>
-                                    <li><a id="create-account-btn" class="" role="" data-toggle="modal" href="#" 
+                                    <li><a id="create-account-btn-web" class="" role="" data-toggle="modal" href="#" 
                                         data-target="#login-modal" >
                                         S'inscrire</a>
                                     </li>
@@ -264,7 +265,7 @@
                                         </li> -->
                                         <li id="branding-logo">
                                             <a href="<?php echo BASE_URL.DS.'accueil/index'; ?>" id="logo">
-                                                <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-1.png" 
+                                                <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-2.png" 
                                                 alt="logo <?php echo APPLI_NAME; ?>" />
                                             </a>
                                         </li>
@@ -362,7 +363,7 @@
                         <div class="col-xs-8">
                             <div class="header-center">
                                 <a href="<?php echo BASE_URL.DS.'accueil/index'; ?>" id="logo-2">
-                                    <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-1.png" alt="logo <?php echo APPLI_NAME; ?>" />
+                                    <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-2.png" alt="logo <?php echo APPLI_NAME; ?>" />
                                 </a>
                             </div>
                         </div>
@@ -579,6 +580,7 @@
                             <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
                             <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a>
                             <a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="linkedin"><i class="fa fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
@@ -602,7 +604,7 @@
     <script type='text/javascript' src='<?php echo WEBROOT_URL; ?>js/slick.min.js'></script>
 
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/script-<?php echo VERSION; ?>.js"></script>
-    <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/own-script-<?php echo VERSION; ?>.js"></script>
+    <!-- <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/own-script-<?php echo VERSION; ?>.js"></script> -->
 
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/jquery.themepunch.tools.min.js"></script>
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/jquery.themepunch.revolution.min.js"></script>
@@ -622,6 +624,7 @@
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/jquery.ui.touch-punch.js"></script>
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/price-slider-<?php echo VERSION; ?>.js"></script>
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/sweetalert2.min.js"></script>
+    <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/own-script-<?php echo VERSION; ?>.js"></script>
 </body>
 
 </html>

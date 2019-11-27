@@ -256,7 +256,8 @@
 
                                 <div product-display="false" 
                                      product-data-category="<?php echo $produit->token_cat ?>"
-                                     class="product-carousel p-0 products-related-container" data-auto-play="true" data-desktop="3" 
+                                     class="product-carousel p-0 products-related-container owl-carousel owl-theme" 
+                                     data-auto-play="true" data-desktop="3" 
                                      data-laptop="2" data-tablet="2" data-mobile="1">
 
                                 </div>

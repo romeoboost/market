@@ -319,7 +319,7 @@
 
 	<div class="col-md-12 pt-2 pb-2 welcom-presa-process">
 		<div class="col-md-10">
-			<div class="section section-bg-1 section-cover pt-3 pb-3 ">				
+			<div class="section section-bg-1 section-cover pt-1 pb-1 ">				
 				<div class="row">
 						<div class="col-sm-6 home-description-title desktop-shit">
 							<div class="mt-3 mb-3">
@@ -337,17 +337,15 @@
 								<?php echo APPLI_NAME; ?>
 							</h3>
 							<p class="mb-4">
-								Organic store opened its doors in 1990, 
-								it was Renée Elliott's dream to offer the best and widest range
-								 of organic foods available, and her mission to promote health in
-								  the community and to bring a sense of discovery and adventure 
-								  into food shopping.
+							Offrez-vous les meilleurs produits du marché en un clic !
+							notre mission est de vous aider à éviter les longues heures d’embouteillage et de faire la queue
+							dans les supermarchés. Avec AfroMart, chaque achat vous procure un sentiment de découverte et d’aventure !
 							</p>
 							<a class="organik-btn arrow" href="<?php echo BASE_URL.DS.'produit/liste'; ?>">Nos produits</a>
 						</div>
 					</div>
 			</div>
-			<div class="mt-1">
+			<div class="mt-0">
 
 				<div class="section bg-light pt-2 pb-1">
 					<div class="row">
