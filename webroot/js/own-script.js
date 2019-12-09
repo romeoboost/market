@@ -1098,8 +1098,8 @@ function search_products_related(){
            $('.products-related-container').html(data.produits_liste_html);
            console.log(data.produits_liste_html);
            var productRelatedContainer = document.querySelector('.products-related-container');
-           productRelatedContainer.style.opacity = "1";
-           productRelatedContainer.style.display = "block";
+          //  productRelatedContainer.style.opacity = "1";
+          //  productRelatedContainer.style.display = "block";
         },
         error: function(jqXHR) {
           //console.log(jqXHR.responseText);

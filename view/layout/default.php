@@ -51,7 +51,7 @@
             <div class="mobile-menu">
                 <div class="header-mobile-menu  mb-2">
                     <div class="mobile-menu-logo">
-                        <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-2.png" 
+                        <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-3.png" 
                                                 alt="logo <?php echo APPLI_NAME; ?>" />
                     </div>
                     <div class="mobile-menu-actions-enter">
@@ -265,7 +265,7 @@
                                         </li> -->
                                         <li id="branding-logo">
                                             <a href="<?php echo BASE_URL.DS.'accueil/index'; ?>" id="logo">
-                                                <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-2.png" 
+                                                <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-3.png" 
                                                 alt="logo <?php echo APPLI_NAME; ?>" />
                                             </a>
                                         </li>
@@ -362,8 +362,8 @@
                         </div>
                         <div class="col-xs-8">
                             <div class="header-center">
-                                <a href="<?php echo BASE_URL.DS.'accueil/index'; ?>" id="logo-2">
-                                    <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-2.png" alt="logo <?php echo APPLI_NAME; ?>" />
+                                <a href="<?php echo BASE_URL.DS.'accueil/index'; ?>" id="logo-1">
+                                    <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-3.png" alt="logo <?php echo APPLI_NAME; ?>" />
                                 </a>
                             </div>
                         </div>

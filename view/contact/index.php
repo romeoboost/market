@@ -75,9 +75,9 @@
 						<div class="contact-inner">
 							<h6 class="contact-title"> Adresses Email </h6>
 							<div class="contact-content">
-								info@chocomarket.com
+								afromart225@gmail.com
 								<br />
-								support@chocmarket.com
+								manager.afromart@gmail.com
 							</div>
 						</div>
 					</div>
