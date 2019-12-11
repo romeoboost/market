@@ -96,9 +96,9 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label>Quartier <span class="required">*</span></label>
+                                    <label>Quartier ou Lieu/Etablissement connu dans votre Zone<span class="required">*</span></label>
                                     <div class="form-wrap">
-                                        <input type="text" name="quartier" value="" size="255" />
+                                        <input type="text" name="quartier" value="" size="255" id="search_input" />
                                     </div>
                                 </div>
                             </div>
@@ -107,12 +107,13 @@
                                     <label>Description lieu de livraison</label>
                                     <div class="form-wrap">
                                         <textarea name="description_lieu_livraison" class="input-text " id="order_comments" 
-                                        placeholder="Donnez plus de details sur le lieu auquel vous voulez vous faire livrer vos produits."
-                                         rows="2" cols="40">
-                                        </textarea>
+                                        placeholder="Donnez plus de details sur le lieu où vous voulez vous faire livrer vos produits."
+                                         rows="2" cols="40"></textarea>
                                     </div>
                                 </div>
                             </div>
+                            <input type="hidden" id="loc_lat" name="loc_lat"/>
+		                    <input type="hidden" id="loc_long" name="loc_long"/>
                         </form>
                     </div>
                     <div class="col-md-6">

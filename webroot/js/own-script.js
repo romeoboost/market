@@ -517,7 +517,7 @@ $(".checkout-payment").on('click', '#commandeur-btn', function(e){
     var error = false;
     $('#shipping-form input, #shipping-form select, #shipping-form textarea').each(function(){
         //console.log(this.name+' = '+this.value);
-        if( this.name != 'email' && this.name != 'description_lieu_livraison' && this.value == ''){
+        if( this.name != 'email' && this.name != 'description_lieu_livraison' && this.value == '' && this.name != 'loc_lat' && this.name != 'loc_long'){
             if(this.name !== '' && this.value == ''){
                 var HtmlError ='<div class="col-sm-12 alert alert-danger alert-dismissible " role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>';
                 HtmlError += '</button><span class=""> Le champs ' + this.name + ' ne pas être vide.</span></div>';
@@ -539,6 +539,8 @@ $(".checkout-payment").on('click', '#commandeur-btn', function(e){
         var shipping_email= $('#shipping-form input[name="email"]').val();
         var shipping_commune= $('#shipping-form select option:selected').text();
         var shipping_quartier= $('#shipping-form input[name="quartier"]').val();
+        var shipping_quartier_long= $('#shipping-form input[name="loc_lat"]').val();
+        var shipping_quartier_lag= $('#shipping-form input[name="loc_long"]').val();
         var shipping_decript= $('#shipping-form textarea').val();
 
         $('.shipping-confirmation-details .shipping-name').html(shipping_name);
@@ -554,6 +556,44 @@ $(".checkout-payment").on('click', '#commandeur-btn', function(e){
     }
     
 });
+
+if( document.getElementById("search_input") ){
+  googleMapLibrary();
+}
+
+
+function googleMapLibrary(){
+  var searchInput = 'search_input';
+		
+		var sessionToken = new google.maps.places.AutocompleteSessionToken();
+		
+		$(document).ready(function () {
+			var autocomplete;
+			autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+				types: ['geocode','establishment'],
+				componentRestrictions: {
+					country: "CIV"
+				}
+			});
+			
+			google.maps.event.addListener(autocomplete, 'place_changed', function () {
+				var near_place = autocomplete.getPlace();
+				document.getElementById('loc_lat').value = near_place.geometry.location.lat();
+				document.getElementById('loc_long').value = near_place.geometry.location.lng();
+				
+				// document.getElementById('latitude_view').innerHTML = near_place.geometry.location.lat();
+				// document.getElementById('longitude_view').innerHTML = near_place.geometry.location.lng();
+			});
+		});
+		
+		$(document).on('change', '#'+searchInput, function () {
+			document.getElementById('loc_lat').value = '';
+			document.getElementById('loc_long').value = '';
+			
+			// document.getElementById('latitude_view').innerHTML = '';
+			// document.getElementById('longitude_view').innerHTML = '';
+		});
+}
 
 /*click sur bouton confirmation de commande*/
 $('#confirm-order-modal').on('click','#confirm-command-btn',function(){
@@ -814,7 +854,7 @@ function place_order(ShippingForm){
             });
         },
         error: function(jqXHR) {
-          // console.log(jqXHR.responseText);
+          console.log(jqXHR.responseText);
           //$('.contact-form .error-text').html(jqXHR.responseJSON.error_html);
           if(jqXHR.responseJSON.error === 'oui'){
                 //$('#confirm-order-modal').hide();

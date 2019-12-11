@@ -19,10 +19,10 @@ if(!isset($_POST) || empty($_POST) ){
   $error_text = "Oups, Erreur !";
   $error_text_second = 'Veuillez ne pas modifier la page';
 }else{
-  //debugger($_POST);
+  // debugger($_POST);
   extract($_POST);
   if( !isset($userT) || !isset($nom) || !isset($prenoms) || !isset($tel) || !isset($email) || !isset($lieu_livraison) || !isset($quartier)
-   || !isset($description_lieu_livraison) ) //verifie si tous les champs existent
+   || !isset($description_lieu_livraison) || !isset($loc_lat) || !isset($loc_long) ) //verifie si tous les champs existent
   {
     $error_statut = true;
     $error_text = "Oups, Erreur !";
@@ -195,13 +195,15 @@ if(!isset($_POST) || empty($_POST) ){
 
                     //-- insertion dans la table shipping_infos
                     $date = date("Y-m-d H:i:s");
+                    $loc_lat = strlen($loc_lat) == 0 ? 0 : $loc_lat ;
+                    $loc_long = strlen($loc_long) == 0 ? 0 : $loc_long ;
                       $req_insert = $pdo->prepare(' INSERT INTO shipping_infos (
                                                               id_client, id_commande, nom, prenoms, tel, email, id_destination, quartier, 
-                                                              description, date_creation, date_modification
+                                                              longitude, lagitude, description, date_creation, date_modification
                                                            )
                                                   VALUES(
                                                         :id_client, :id_commande, :nom, :prenoms, :tel, :email, :id_destination, :quartier, 
-                                                              :description, :date_creation, :date_modification
+                                                        :longitude, :lagitude, :description, :date_creation, :date_modification
                                                         )'
                                                 );
                       $req_insert->execute( array( 
@@ -213,6 +215,8 @@ if(!isset($_POST) || empty($_POST) ){
                           'email' => $email,
                           'id_destination' => $lieu_shipping->id,
                           'quartier' => $quartier,
+                          'longitude' => $loc_long,
+                          'lagitude' => $loc_lat,
                           'description' => $description_lieu_livraison,
                           'date_creation' => $date,
                           'date_modification' => $date 
@@ -270,6 +274,12 @@ $retour_json = json_encode($retour);
 
 echo $retour_json;
 
+/**
+ * Modification sur la bd (11-12-2019)
+ * ALTER TABLE `shipping_infos` ADD `longitude` VARCHAR(255) NOT NULL AFTER `quartier`;
+ * ALTER TABLE `shipping_infos` ADD `lagitude` VARCHAR(255) NOT NULL AFTER `quartier`;
+ * ALTER TABLE `shipping_infos` CHANGE `lagitude` `lagitude` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0', CHANGE `longitude` `longitude` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0';
+ */
 
 
 

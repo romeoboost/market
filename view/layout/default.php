@@ -589,6 +589,7 @@
         </div>
 
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/jquery.min-<?php echo VERSION; ?>.js"></script>
     
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/bootstrap.min.js"></script>
@@ -624,6 +625,8 @@
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/jquery.ui.touch-punch.js"></script>
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/price-slider-<?php echo VERSION; ?>.js"></script>
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/sweetalert2.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyA_yVN4rg9Xo5j2Et1UtdVQMLyIDF3Rv4I"></script>
     <script type="text/javascript" src="<?php echo WEBROOT_URL; ?>js/own-script-<?php echo VERSION; ?>.js"></script>
 </body>
 
