@@ -47,7 +47,7 @@ class AccueilController extends Controller {
         $d['unites'][$u->id] = $u->symbole;
       }
 
-      //die(debug($d['unites']));
+      // debug($_SESSION);
       $this->set($d);
 
     }  

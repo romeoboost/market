@@ -6198,6 +6198,143 @@ table.shop-cart .actions .update-cart {
     border-radius: 10px;
 }
 
+.quick-menu-sidebar{
+    position: fixed;
+    top: 100 !important;
+    left: -500px;
+    width: 500px;
+    height: auto;
+    z-index: 1000;
+    background-color: #0d2707c9;
+    transition: .5s;
+}
+
+.quick-menu-sidebar-active{
+    left: 0;
+    box-shadow: -1px 0px 8px 0px #599e69;
+}
+
+.quick-menu-form-container{
+    margin: 0 ;
+    padding: 20px 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 500px;
+}
+
+.quick-menu-form-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track fe4214 */
+.quick-menu-form-container::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #221411; 
+    border-radius: 10px;
+}
+
+/* Handle */
+.quick-menu-form-container::-webkit-scrollbar-thumb {
+    background: #fe4214; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.quick-menu-form-container::-webkit-scrollbar-thumb:hover {
+    background: #832007; 
+}
+
+
+
+.accueil.quick-menu-sidebarBtn{
+    bottom: 0px;
+}
+
+.autres.quick-menu-sidebarBtn{
+    bottom: 148px;
+}
+
+.quick-menu-sidebarBtn{
+    position: absolute;
+    /* top: -8%;
+    right : -160px; */
+    right: -160px;
+    text-transform: uppercase;
+    padding: 5px 10px !important;
+    /* background-color: #599e69; */
+    background-color: #fe4214;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 0 10px 10px 0;
+    width: 160px;
+    box-shadow: 0 0 7px 1px #383e39;
+    transition: .5s;
+}
+
+.quick-menu-sidebarBtn .quick-menu-sidebarBtn-text{
+    display: inline-block;
+    float: left;
+    width: 70%;
+    text-align: center;
+}
+
+.quick-menu-sidebarBtn .quick-menu-sidebarBtn-icon{
+    display: inline-block;
+    width: 30%;
+    height: auto;
+    line-height: 42px;
+    font-size: 35px;
+    padding: 1px 5px;
+}
+
+.quick-menu-sidebar-active .quick-menu-sidebarBtn{
+    /* top: 40%; */
+    bottom: 60%;
+    background-color: #0d2707c9;
+}
+
+.quick-menu-sidebar form input{
+    background-color: #fff;
+    border: 1px solid #5fbd74;
+    height: 26px;
+    font-size: 0.9em;
+    color: #032d0c;
+    padding: 3px 10px;
+}
+
+.quick-menu-sidebar form .row label{
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-bottom: 0px !important;
+    display: block;
+    font-size: 0.8em;
+    color: #ffffff;
+}
+
+.quick-menu-sidebar form .row input[type="file"]{
+    width: 100%;
+    border-radius: 5px;
+}
+
+.quick-menu-sidebar form .row .selectpicker{
+    border-radius: 5px;
+}
+
+.quick-menu-sidebar form .row{
+    margin-bottom: 5px !important;
+}
+
+.quick-menu-valid-form-btn{
+    border: 2px solid #fff;
+    background-color: #3f4a2f00;
+}
+
+.quick-menu-valid-form-btn:hover{
+    border: none;
+    background-color: #289441;
+    font-size: 17px;
+}
+
 
 @media (min-width: 769px) {
 	.product-carousel {
@@ -6230,6 +6367,72 @@ table.shop-cart .actions .update-cart {
     .cart_item .product-subtotal{
         display: none;
     }
+}
+
+@media (max-width: 500px) {
+	.quick-menu-sidebarBtn{
+        left: 500px;        
+        font-weight: 800;
+        font-size: 0.9em;
+        padding: 1px 2px !important;
+    }
+    .accueil.quick-menu-sidebarBtn {
+        bottom: 280px;
+    }
+    .autres.quick-menu-sidebarBtn {
+        bottom: 280px;
+    }
+    .quick-menu-sidebar {
+        width: 80%;
+    }
+    .quick-menu-sidebar-active .quick-menu-sidebarBtn {
+        /* right: -160px; */
+        left: 100%;
+        width: 50px;
+    }
+
+    .quick-menu-sidebar-active .quick-menu-sidebarBtn .quick-menu-sidebarBtn-text{
+        /* right: -160px; */
+        display: none;
+    }
+
+    .quick-menu-form-container {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 600px;
+    }
+    .quick-menu-form-container::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track fe4214 */
+    .quick-menu-form-container::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px #221411; 
+        border-radius: 10px;
+    }
+    
+    /* Handle */
+    .quick-menu-form-container::-webkit-scrollbar-thumb {
+        background: #fe4214; 
+        border-radius: 10px;
+    }
+    
+    /* Handle on hover */
+    .quick-menu-form-container::-webkit-scrollbar-thumb:hover {
+        background: #832007; 
+    }
+
+    /* .quick-menu-sidebar form .row label {
+        margin-bottom: 10px !important;
+    } */
+
+    .quick-menu-sidebar form input {
+        height: 30px;
+        margin-bottom: 10px;
+    }
+
+
+
 }
 
 @media (max-width: 414px){

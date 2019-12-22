@@ -331,7 +331,7 @@
 								<img src="<?php echo WEBROOT_URL; ?>images/mobile/about_pic.png" alt="" />
 							</div>
 							<div class="mb-1 desktop-shit section-pretitle default-left">Bienvenue à</div>
-							<div class="mb-1 section-pretitle responsive-shit">Bienvenu à</div>
+							<div class="mb-1 section-pretitle responsive-shit">Bienvenue à</div>
 							<h2 class="section-title mtn-2 mb-3 desktop-shit"><?php echo APPLI_NAME; ?></h2>
 							<h3 class="section-title mtn-2 responsive-shit">
 								<?php echo APPLI_NAME; ?>

@@ -1,5 +1,49 @@
 <?php
 
+
+function upload($file, $width, $height) {
+  $img = $file['name'];
+  $img_tmp = $file['tmp_name'];
+  $image = explode('.',$img);
+  $image_ext = end($image);
+  $error = '';
+  if( empty( $img ) ){
+     return false;
+  }
+  if( in_array( strtolower($image_ext),array('png','jpeg','jpg') ) === false ){
+      $error = 'veuillez entrer une image valable';
+      return false;
+  }else{
+      $image_size = getimagesize($img_tmp);
+      if($image_size['mime'] === 'image/png'){
+          $image_src = imagecreatefrompng($img_tmp);
+      }elseif($image_size['mime'] === 'image/jpeg'){
+          $image_src = imagecreatefromjpeg($img_tmp);
+      }elseif($image_size['mime'] === 'image/jpg'){
+          $image_src = imagecreatefromjpg($img_tmp);
+      }else{
+          $image_src = false;
+          $error =  'veuillez entrer une image valide';
+          return false;
+      }
+      if($image_src !== false){
+          $image_width = $width;
+          if($image_size[0] == $image_width){
+              $image_finale = $image_src;
+          }else{
+              $new_width = $image_width;
+              $new_height = $height;
+              $image_finale= imagecreatetruecolor($new_width,$new_height);
+              imagecopyresampled($image_finale,$image_src,0,0,0,0,$new_width,$new_height,
+                      $image_size[0],$image_size[1]);
+          }
+          //imagejpeg($image_finale,'C:\wamp\www\mareussite\webroot\photo\1.jpg');
+          return $image_finale;
+      }
+  }
+
+}
+
 function insert($pdo, $req, $table){
     $sql = ' INSERT INTO '.$table.' (';
     $sql .= implode(', ', $req['fields']).')';
@@ -163,20 +207,20 @@ function getMemberNumber($Nbre_Mbre_Actuel, $Abreviation_Pays){
 
 function getCmdeNumber($Nbre_Mbre_Actuel, $Abreviation_Pays){
 
-        $Identifiant = 'CMD'; //
+        $Identifiant = 'AM'; //
 
         $Date_Identifiant = date("Ym"); //
-        $Identifiant .= "".$Date_Identifiant;        
+        $Abreviation_Pays .= "".$Date_Identifiant;        
         $Numero_Mbre = "".($Nbre_Mbre_Actuel + 1);
         //echo '<pre>';print_r($Identifiant);echo '</pre>';
         $Taille_Fixe = 4;
         $Numero_Mbre_Good = str_pad($Numero_Mbre, $Taille_Fixe, "0", STR_PAD_LEFT);
-        $Identifiant .= $Numero_Mbre_Good;
+        $Abreviation_Pays .= $Numero_Mbre_Good;
 
         //$Abreviation_Pays = 'CI'; // A automatiser
-        $Identifiant .= $Abreviation_Pays;
+        $Abreviation_Pays .= $Identifiant;
 
-        return $Identifiant;
+        return $Abreviation_Pays;
 }
 
 function getPaymentParams($name, $service_token){

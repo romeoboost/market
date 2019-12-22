@@ -14,13 +14,72 @@
     var linkToAddMessage = $("#linkToAddMessage").html();
     var linkToShippingDest = $("#linkToShippingDest").html();
     var linkToOrder = $("#linkToOrder").html();
+    var linkToQuickOrder = $("#linkToQuickOrder").html();
     var linkToUpdateInfosUser = $("#linkToUpdateInfosUser").html();
     var linkToUpdatePassword = $("#linkToUpdatePassword").html();
     var linkToCancelledOrder = $("#linkToCancelledOrder").html();
 
+    /** QUICK MENU ORDER HANDLE */
 
-    console.log(screen.width);
-    console.log($(window).width());
+    var fixmeTop = $('.quick-menu-sidebar').offset().top;
+    $(window).scroll(function() {
+        var currentScroll = $(window).scrollTop();
+        // console.log(currentScroll);
+
+        if (currentScroll >= 89) {
+          // console.log(currentScroll);
+            $('.quick-menu-sidebar').css({
+                position: 'fixed',
+                top: '90'
+                // ,left: '0'
+            });
+        } 
+        // else {
+        //     $('.quick-menu-sidebar').css({
+        //         position: 'static'
+        //     });
+        // }
+    });
+
+    $('.quick-menu-sidebar').on('click', '.quick-menu-sidebarBtn', function() {        
+        
+        if( $('.quick-menu-sidebarBtn-icon i').hasClass('fa-cart-plus') ){
+          $('.quick-menu-sidebarBtn-icon').append('<i class="fa fa-times-circle"></i>');
+          $('.quick-menu-sidebarBtn-icon i.fa-cart-plus').remove();
+        }else{
+          $('.quick-menu-sidebarBtn-icon').append('<i class="fa fa-cart-plus"></i>');
+          $('.quick-menu-sidebarBtn-icon i.fa-times-circle').remove();
+        }
+
+        $('.quick-menu-sidebar').toggleClass('quick-menu-sidebar-active');
+
+    });
+
+    //SUPPRIMER PRODUIT DE PANIER
+    $('.quick-menu-sidebar-form').on('submit', function(e){ 
+      e.preventDefault();
+      // var self = $(this).serialize();
+      var form = $('.quick-menu-sidebar-form')[0]; // You need to use standard javascript object here
+      var formData = new FormData(form);
+      console.log($(this).serialize());
+      Swal({
+        title: 'Confirmation !',
+        text: 'Confirmez vous votre commande ?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#2ecc71',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Annuler'
+      }).then((result) => {
+        if (result.value) {
+          place_quick_order(formData);
+        }
+      });
+      return false;
+    });
+
+    /*** END MENU ORDER HANDLE */
     if($(window).width() <= 500){
         $('.slide-element').remove();
     }
@@ -433,7 +492,6 @@ $("#cart-content-panier").on('submit',function(e){
 $('.table').on('click', '.remove-product-cart', function(e){ // j'ai essayer avec un id sur un form mais ça pas marché, l'element n'etait pas retrouvé
     e.preventDefault();
     var tokenProduit = $(this).attr('id-product');
-    //console.log(tokenProduit);
      Swal({
       title: 'Êtes vous sure ?',
       text: 'Voulez vous retirer ce produit de votre panier ?',
@@ -558,12 +616,16 @@ $(".checkout-payment").on('click', '#commandeur-btn', function(e){
 });
 
 if( document.getElementById("search_input") ){
-  googleMapLibrary();
+  googleMapLibrary("search_input", "loc_long", "loc_lat");
+}
+
+if( document.getElementById("search_input_quick_order") ){
+  googleMapLibrary("search_input_quick_order", "loc_long_quick_order", "loc_lat_quick_order");
 }
 
 
-function googleMapLibrary(){
-  var searchInput = 'search_input';
+function googleMapLibrary(main_field, long_field, lat_field){
+  var searchInput = main_field;
 		
 		var sessionToken = new google.maps.places.AutocompleteSessionToken();
 		
@@ -578,8 +640,8 @@ function googleMapLibrary(){
 			
 			google.maps.event.addListener(autocomplete, 'place_changed', function () {
 				var near_place = autocomplete.getPlace();
-				document.getElementById('loc_lat').value = near_place.geometry.location.lat();
-				document.getElementById('loc_long').value = near_place.geometry.location.lng();
+				document.getElementById(lat_field).value = near_place.geometry.location.lat();
+				document.getElementById(long_field).value = near_place.geometry.location.lng();
 				
 				// document.getElementById('latitude_view').innerHTML = near_place.geometry.location.lat();
 				// document.getElementById('longitude_view').innerHTML = near_place.geometry.location.lng();
@@ -587,8 +649,8 @@ function googleMapLibrary(){
 		});
 		
 		$(document).on('change', '#'+searchInput, function () {
-			document.getElementById('loc_lat').value = '';
-			document.getElementById('loc_long').value = '';
+			document.getElementById(long_field).value = '';
+			document.getElementById(lat_field).value = '';
 			
 			// document.getElementById('latitude_view').innerHTML = '';
 			// document.getElementById('longitude_view').innerHTML = '';
@@ -828,9 +890,52 @@ function update_personnal_infos(form_user_info_data){
     });
 }
 
+
+/*Function validation commande RAPIDE ######## A FINALISER #######*/
+function place_quick_order(ShippingForm){
+    
+  $.ajax({
+      type: "POST",
+      dataType: "json",
+      url: linkToQuickOrder,
+      data: ShippingForm,
+      contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+      processData: false, // NEEDED, DON'T OMIT THIS
+      success: function (data, textStatus, jqXHR) {
+        //  console.log(data);         
+         Swal({
+            title: data.error_text,
+            text: data.error_text_second,
+            type: 'success',
+            showCancelButton: false,
+            confirmButtonColor: '#2ecc71',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.value) {
+              location.reload(true);
+            }
+          });
+      },
+      error: function(jqXHR) {
+        console.log(jqXHR.responseText);
+        //$('.contact-form .error-text').html(jqXHR.responseJSON.error_html);
+        if(jqXHR.responseJSON.error){
+              Swal({
+                type: 'error',
+                title: jqXHR.responseJSON.error_text,
+                text: jqXHR.responseJSON.error_text_second
+              });
+        }
+
+      }
+  });
+
+}
+
 /*Function validation commande*/
 function place_order(ShippingForm){
-    //console.log( quartier, derciption_livraison, linkToOrder );
+    
     $.ajax({
         type: "POST",
         dataType: "json",

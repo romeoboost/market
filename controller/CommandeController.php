@@ -31,9 +31,6 @@ class CommandeController extends Controller {
 	public function details(){
 		$this->loadmodel('Produit');
 		$_SESSION['menu'] = 'Marche';
-
-    // debug($_SESSION);
-    // die();
 		
     $d['list_shipping_destination'] = $this->Produit->find(array(),'livraison_destinations');
     $this->set($d);
@@ -45,6 +42,13 @@ class CommandeController extends Controller {
     
     $d['list_shipping_destination'] = $this->Produit->find(array(),'livraison_destinations');
     $this->set($d);
+  }
+
+  public function getShippingDestination(){
+    $this->loadmodel('Produit');
+		
+    $list_shipping_destination = $this->Produit->find(array(),'livraison_destinations');
+    return $list_shipping_destination;
   }
 	
 }

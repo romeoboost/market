@@ -4,7 +4,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-    <link rel="shortcut icon" href="<?php echo WEBROOT_URL; ?>images/favicon.ico"/>
+    <link rel="shortcut icon" href="<?php echo WEBROOT_URL; ?>images/favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="<?php echo WEBROOT_URL; ?>images/favicon.ico" type="image/x-icon" />
     <title><?php echo APPLI_NAME; ?> &#8211; <?php echo isset($_SESSION['menu']) ? strtoupper($_SESSION['menu']) : APPLI_NAME; ?>  
         
     </title>
@@ -148,7 +149,8 @@
                         <span id="linkToUpdatePassword" class="hidden"><?php echo WEBROOT_URL.'ajax/updatePassword.php'; ?></span>
                         <span id="linkToCancelledOrder" class="hidden"><?php echo WEBROOT_URL.'ajax/cancelledOrder.php'; ?></span>
                         <span id="RooTlinkToSearch" class="hidden"><?php echo SITE_BASE_URL.'produit/liste/categorie/all/search/'; ?></span>
-
+                        <span id="linkToQuickOrder" class="hidden"><?php echo WEBROOT_URL.'ajax/placeQuickOrder.php'; ?></span>
+                        
                         <?php 
                             $idLoginButton = isset($_SESSION['user']) ? 'dropdownMenuButton' : 'loginButton';
                             //var_dump($_SESSION['user']);
@@ -201,21 +203,6 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-11">
-
-                            <!-- <div class="header-left">
-                                <div class="widget">
-                                    <div class="header-call">
-                                        <div class="text">
-                                            CALL US NOW
-                                            <span>0122 333 8889</span>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="ion-ios-telephone-outline"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <!-- <i class="glyph-icon flaticon-basket"></i> -->
                             <div class="header-center">
                                 <nav class="menu">
                                     <ul class="main-menu">
@@ -383,16 +370,131 @@
                         </div>
                     </div>
                 </div>
-            </header>      
+            </header>
 
+            <div class="quick-menu-sidebar">
+                <div class="quick-menu-form-container">
+                    <div class="col-md-12 error-text text-align-center"></div>
+                    <form class="quick-menu-sidebar-form" enctype="multipart/form-data">
+                        <div class="row">
+                            <input type="hidden" name="userT" 
+                            value="<?php echo isset($_SESSION['user']) ? $_SESSION['user']['token'] : '00000000'; ?>" />
+                            <div class="col-md-6">
+                                <label>Nom <span class="required">*</span></label>
+                                <div class="form-wrap">
+                                    <input type="text" name="nom" 
+                                    value="<?php echo isset($_SESSION['user']) ? $_SESSION['user']['nom'] : ''; ?>" 
+                                    size="255" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Prenoms <span class="required">*</span></label>
+                                <div class="form-wrap">
+                                    <input type="text" name="prenoms" 
+                                    value="<?php echo isset($_SESSION['user']) ? $_SESSION['user']['prenoms'] : ''; ?>" 
+                                    size="200" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Téléphone <span class="required">*</span></label>
+                                <div class="form-wrap">
+                                    <input type="text" name="tel" 
+                                    value="<?php echo isset($_SESSION['user']) ? $_SESSION['user']['tel'] : ''; ?>" 
+                                    size="20" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label>E-Mail</label>
+                                <div class="form-wrap">
+                                    <input type="text" name="email" 
+                                    value="<?php echo isset($_SESSION['user']) ? $_SESSION['user']['email'] : ''; ?>"
+                                    size="200" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="">
+                                    <label class="" for="image_list">Image de liste de Produits</label>
+                                    <input type="file" class="" name="image_list">                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Description de la Commande</label>
+                                <div class="form-wrap">
+                                    <textarea name="description_commande" class="textarea" id="order_descript_quick_order" 
+                                    placeholder="Donnez plus de détails sur votre commande."
+                                        rows="2" cols="40"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Commune <span class="required">*</span></label>
+                                <div class="form-wrap ">
+                                    <select class="selectpicker " id="select-shipping-destination" data-live-search="true" data-width="100%" name="lieu_livraison">
+                                        <?php $list_shipping_destination = $this->request('Commande', 'getShippingDestination'); ?>
+                                        <?php foreach ($list_shipping_destination as $dest ): ?>
+                                            <?php $isSelected=($_SESSION['cart']['shipping_dest']['token']==$dest->token) ? 'selected' : ''; ?>
+                                            <option  class="<?php echo $dest->token; ?>" shipping-amount="<?php echo $dest->frais; ?>"
+                                                    data-tokens="ketchup mustard" value="<?php echo $dest->token ; ?>" 
+                                                    <?php echo $isSelected; ?> >
+                                                <?php echo ucfirst($dest->commune); ?>
+                                            </option>
+                                        <?php endforeach;  ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Quartier ou Lieu/Etablissement connu dans votre Zone<span class="required">*</span></label>
+                                <div class="form-wrap">
+                                    <input type="text" name="quartier" value="" size="255" id="search_input_quick_order" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Description lieu de livraison</label>
+                                <div class="form-wrap">
+                                    <textarea name="description_lieu_livraison" class="textarea" id="order_comments_quick_order" 
+                                    placeholder="Donnez plus de details sur le lieu où vous voulez vous faire livrer vos produits."
+                                        rows="2" cols="40"></textarea>
+                                </div>
+                            </div>
+                        </div>                        
+                        <input type="hidden" id="loc_lat_quick_order" name="loc_lat"/>
+                        <input type="hidden" id="loc_long_quick_order" name="loc_long"/>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <button type="submit" class="quick-menu-valid-form-btn">VALIDER</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="<?php echo ($_SESSION['menu']=='Accueil') ? 'accueil' : 'autres'; ?> quick-menu-sidebarBtn">
+                    <?php //debug($_SESSION['menu']) ?>
+                    <div class="quick-menu-sidebarBtn-text"> commande rapide</div>  
+                    <div class="quick-menu-sidebarBtn-icon">
+                        <i class="fa fa-cart-plus"></i> 
+                        <!-- fa-times-circle -->
+                    </div>
+                </div>
+            </div>   
+        
         <?php
-        
-        
+            // debug($_SESSION['menu']);
             echo $contain_for_layout;                      
         ?>
 
 
-        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog ">
             <div class="modal-content ">
                 <div class="modal-header" align="center">
@@ -514,56 +616,7 @@
 
 
         <footer class="footer">
-            <!-- <div class="container">
-                <div class="row">
-                    <div class="col-md-5">
-                        <img src="<?php echo WEBROOT_URL; ?>images/footer_logo.png" class="footer-logo" alt="" />
-                        <p>
-                            Welcome to Organik. Our products are freshly harvested, washed ready for box and finally delivered from our family farm right to your doorstep.
-                        </p>
-                        <div class="footer-social">
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="widget">
-                            <h3 class="widget-title">Infomation</h3>
-                            <ul>
-                                <li><a href="#">New Products</a></li>
-                                <li><a href="#">Top Sellers</a></li>
-                                <li><a href="#">Our Blog</a></li>
-                                <li><a href="#">About Our Shop</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="widget">
-                            <h3 class="widget-title">Useful Link</h3>
-                            <ul>
-                                <li><a href="#">Our Team</a></li>
-                                <li><a href="#">Our Blog</a></li>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Secure Shopping</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="widget">
-                            <h3 class="widget-title">Subscribe</h3>
-                            <p>
-                                Enter your email address for our mailing list to keep yourself updated.
-                            </p>
-                            <form class="newsletter">
-                                <input type="email" placeholder="Your email address" required="" />
-                                <button><i class="fa fa-paper-plane"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+            
         </footer>
         
         <div class="copyright">

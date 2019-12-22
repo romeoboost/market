@@ -5,4 +5,6 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
 define('WEBROOT_URL', 'http://localhost/Market/webroot/');
 define('SITE_BASE_URL', 'http://localhost/Market/');
+define('WEBROOT_FRONT_DIR', 'C:/wamp64/www/Market/webroot/');
+
 //echo 'bd bien chargé';

@@ -439,5 +439,67 @@
     </script>
 
 
+<div class="callcenter btn_crc" id="btncallcenter" style="background: rgb(245, 245, 247); width: 90px; margin-top: 100px; top: 25%; position: fixed; left: 410px; z-index: 10000;">
+                <a style="color: black" href="">
+                    <!-- <img src="images/179.jpg" width="100%"> -->
+                    COMMANDE RAPIDE
+                </a>
+            </div>
+
+            <div id="callcentercontent" style="width: 410px; top: 20%; position: fixed; left: 0px; z-index: 10000;">
+                <!-- Preoccupation CRC  -->
+                <div id="live_support" style="float: right;width: 410px">
+                    <div style="min-height: 150px;background: #FFF;border: solid 1px #e06b1c;">
+                    <p style="text-align: center;color: #FFF;font-weight: bold;font-size: 15px;background: #e06b1a;height: 40px;padding: 10px;margin: 0px;">VOTRE PREOCCUPATION
+                        <a id="close_q" class="btn_crc" href="#" style="color: #FFF;float:right;margin-right: 10px"> X </a>        
+                    </p>
+                    <hr style="border: solid gray 1px;margin:0px">
+                    <form style="width: 350px ; margin: 10px auto">
+                        <fieldset id="mailsenderf" class="foremailp" style="display: block;">
+                        <input type="hidden" id="customer_identifier" name="customer_identifier">
+                        <span id="msg_fieldset" class="msg_fieldset" style="display: block;color:#E06B19;margin: -5px 0 5px;">Pièce jointe autorisée: Pdf - Jpeg - Png - Gif | 2MB/fichier</span>
+                        <div class="form-group col-sm-12">
+                            <h6 style="color: #E06B19;">Votre adresse email *</h6>
+                            <input type="text" name="destinataire" autocomplete="off" placeholder="Veuillez renseigner votre email" maxlength="40" class="form-control requiredField email emailReg" style="border: solid #c5c3c3 3px; height: 0;">
+                        </div><!-- /.form-group -->
+                        <div class="form-group col-sm-12" style="margin-top: -10px;">
+                            <h6 style="color: #E06B19;">Votre Numéro de téléphone *</h6>
+                            <input type="text" name="numero_tel" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57" placeholder="Veuillez renseigner votre numéro" autocomplete="off" maxlength="8" class="form-control requiredField telReg" style="border: solid #c5c3c3 3px; height: 0;">
+                        </div><!-- /.form-group -->
+                        <div class="form-group col-sm-12" style="margin-top: -10px;">
+                            <h6 style="color: #E06B19;">Votre Objet *</h6>
+                            <input type="text" name="objet" autocomplete="off" placeholder="Motif de votre préoccupation" maxlength="50" class="form-control requiredField charReg4" style="border: solid #c5c3c3 3px; height: 0;">
+                        </div><!-- /.form-group -->
+                        <div class="form-group col-sm-12" style="margin-top: -10px;">
+                            <h6 style="color: #E06B19;">Votre message *</h6>
+                            <textarea id="messagep" rows="3" style="width:100%;border: solid #c5c3c3 3px;" placeholder="Entrer votre message" class="requiredField" name="message"></textarea>
+                        </div><!-- /.form-group -->
+                        <div id="id_nok" class="form-group col-sm-7" style="margin-top: -10px;">
+                            <h6 style="color:#e06b1a">Joindre un fichier</h6>
+                            <input type="file" name="msg_attachment_init" style="margin: 0px;width: 100%;border: dashed 1px #e06b1a">
+                        </div>
+                        <div id="id_ok" class="row" style="margin: -10px 0 0;display: none;">
+                            <div class="form-group col-sm-6">
+                            <h6 style="color:#e06b1a">Pièce d’identité *</h6>
+                            <input type="file" name="msg_attachment" class="requiredField" style="margin: 0px;width: 100%;border: dashed 1px #e06b1a">
+                            </div>
+                            <div class="form-group col-sm-6">
+                            <h6 style="color:#e06b1a">Facture *</h6>
+                            <input type="file" name="msg_bill_attachment" class="requiredField" style="margin: 0px;width: 100%;border: dashed 1px #e06b1a">
+                            </div>
+                        </div>
+                        <a id="sendemailp" class="submitF" href="" style="background: #E06B19;display: inline-block;color: #FFF;font-size: 20px;font-weight: bold;border-radius:5px;border: none;float: right;padding: 5px 20px;margin-right: 20px;margin-bottom: 20px;margin-top:10px">Envoyer</a>
+                        </fieldset>
+                        <div id="result_response" style="display: none">
+                        <h4 id="result_txt"></h4>
+                        <div style="clear: both;margin-bottom: 30px"></div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+
+
+
 </body>
 </html>
