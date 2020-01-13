@@ -71,11 +71,11 @@ if(!isset($_POST) || empty($_POST) ){
             imagejpeg($image_finale, WEBROOT_FRONT_DIR. 'images/quick_order/' . $image_name . '.jpg'); //copie les images sur le serveur
 
             //image thumbs du produit
-            $image_finale_thumbs = upload( $image, 180, 180 );
+            $image_finale_thumbs = upload( $image_list, 180, 180 );
             imagejpeg($image_finale_thumbs, WEBROOT_FRONT_DIR. 'images/quick_order/thumb/' . $image_name . '.jpg'); //copie les images sur le serveur
 
             //image Large du produit
-            $image_finale_large = upload( $image, 570, 570 );
+            $image_finale_large = upload( $image_list, 570, 570 );
             imagejpeg($image_finale_large, WEBROOT_FRONT_DIR. 'images/quick_order/large/' . $image_name . '.jpg'); //copie les images sur le serveur
             $image_good = true; // dire que c'est ok pour l'image 
         }

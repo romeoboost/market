@@ -6282,9 +6282,10 @@ table.shop-cart .actions .update-cart {
     display: inline-block;
     width: 30%;
     height: auto;
-    line-height: 42px;
-    font-size: 35px;
+    /* line-height: 42px; */
+    font-size: 20px;
     padding: 1px 5px;
+    text-align: center;
 }
 
 .quick-menu-sidebar-active .quick-menu-sidebarBtn{
@@ -6373,11 +6374,11 @@ table.shop-cart .actions .update-cart {
 	.quick-menu-sidebarBtn{
         left: 500px;        
         font-weight: 800;
-        font-size: 0.9em;
+        font-size: 0.7em;
         padding: 1px 2px !important;
     }
     .accueil.quick-menu-sidebarBtn {
-        bottom: 280px;
+        bottom: 320px;
     }
     .autres.quick-menu-sidebarBtn {
         bottom: 280px;
