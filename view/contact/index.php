@@ -48,7 +48,7 @@
 						<div class="contact-inner">
 							<h6 class="contact-title"> Telephone I</h6>
 							<div class="contact-content">
-								0122 333 8889
+								+225 88 38 33 93
 							</div>
 						</div>
 					</div>
@@ -62,7 +62,7 @@
 						<div class="contact-inner">
 							<h6 class="contact-title"> Telephone II</h6>
 							<div class="contact-content">
-								0122 333 8889
+							+225 42 88 92 30
 							</div>
 						</div>
 					</div>
@@ -90,7 +90,7 @@
 						<div class="contact-inner">
 							<h6 class="contact-title"> Site Web</h6>
 							<div class="contact-content">
-								www.chocomarket.com
+								www.afromart.ci
 							</div>
 						</div>
 					</div>

@@ -51,7 +51,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label>Prenoms <span class="required">*</span></label>
+                                    <label>Prénoms <span class="required">*</span></label>
                                     <div class="form-wrap">
                                         <input type="text" name="prenoms" 
                                         value="<?php echo isset($_SESSION['user']) ? $_SESSION['user']['prenoms'] : ''; ?>" 
@@ -96,9 +96,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label>Quartier ou Lieu/Etablissement connu dans votre Zone<span class="required">*</span></label>
+                                    <label>Quartier ou Lieu/Etablissement connu dans votre zone<span class="required">*</span></label>
                                     <div class="form-wrap">
-                                        <input type="text" name="quartier" value="" size="255" id="search_input" />
+                                        <input type="text" name="quartier" 
+                                        placeholder="Indiquez un lieu." value="" size="255" id="search_input" />
                                     </div>
                                 </div>
                             </div>

@@ -17,6 +17,15 @@ class AproposController extends Controller {
 
     }  
 
+    public function CGU(){
+      $this->loadmodel('Accueil');
+      $_SESSION['menu'] = 'Apropos';
+
+      //die(debug($d['unites']));
+      // $this->set($d);
+
+    }
+
     public function index_old(){
         $this->loadmodel('Accueil');
         $d['annee'] = current($this->Accueil->find(array(

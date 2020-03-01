@@ -52,7 +52,7 @@
             <div class="mobile-menu">
                 <div class="header-mobile-menu  mb-2">
                     <div class="mobile-menu-logo">
-                        <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-3.png" 
+                        <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-4.png" 
                                                 alt="logo <?php echo APPLI_NAME; ?>" />
                     </div>
                     <div class="mobile-menu-actions-enter">
@@ -461,10 +461,10 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <label>Description lieu de livraison</label>
+                                <label>Description du lieu de livraison</label>
                                 <div class="form-wrap">
                                     <textarea name="description_lieu_livraison" class="textarea" id="order_comments_quick_order" 
-                                    placeholder="Donnez plus de details sur le lieu où vous voulez vous faire livrer vos produits."
+                                    placeholder="Donnez plus de détails sur le lieu où vous voulez vous faire livrer vos produits."
                                         rows="2" cols="40"></textarea>
                                 </div>
                             </div>
@@ -588,7 +588,9 @@
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="register_cond" value="1"> conditions générales
+                                    <input type="checkbox" name="register_cond" value="1"> 
+                                    <a href="<?php echo BASE_URL.DS.'apropos/CGU'; ?>" target="_blank" 
+                                        rel="CGU">conditions générales</a> 
                                 </label>
                             </div>
                             <div class="champs-obligatoires">

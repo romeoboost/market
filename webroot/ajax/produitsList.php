@@ -201,7 +201,7 @@ if ($_POST) {
             }else{
                 $prev_value=$numero_page-1;
             }            
-            $pagination_html.='<a class="prev page-numbers" numero="'.$prev_value.'" href="">Prev</a>';
+            $pagination_html.='<a class="prev page-numbers" numero="'.$prev_value.'" href="">Pre</a>';
         }
 
         for ($i=1; $i <= $nombre_pages; $i++) { 
@@ -222,7 +222,7 @@ if ($_POST) {
                 $next_value=$numero_page+1;
             }
             
-            $pagination_html.='<a class="next page-numbers" numero="'.$next_value.'"  href="">Next</a>';
+            $pagination_html.='<a class="next page-numbers" numero="'.$next_value.'"  href="">Sui</a>';
         }
 
     }else{

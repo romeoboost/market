@@ -142,7 +142,7 @@
 									 data-frames='[{"from":"x:50px;opacity:0;","speed":530,"to":"o:1;","delay":890,"ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]'
 									 data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
 									 data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]">
-									 	<span class="fw-900"> Tous vos produits en un click </span> 
+									 	<span class="fw-900"> Tous vos produits en un clic </span> 
 								</div>
 
 								<!-- LAYER NR. 10 -->
@@ -317,7 +317,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-12 pt-2 pb-2 welcom-presa-process">
+	<div class="col-md-12 pt-1 pb-2 welcom-presa-process">
 		<div class="col-md-10">
 			<div class="section section-bg-1 section-cover pt-1 pb-1 ">				
 				<div class="row">
