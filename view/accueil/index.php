@@ -508,11 +508,11 @@
 									<?php foreach ($avis as $avi): ?>
 										<div class="testi-item">
 											<div class="text"> 
-												<?php echo $avi->contenu ?>
+												<?php echo htmlspecialchars($avi->contenu) ?>
 											</div>
 											<div class="info">
 												<div class="author">
-													<span class="name"><?php echo $avi->nom.' '.$avi->prenoms ?></span>
+													<span class="name"><?php echo htmlspecialchars($avi->nom).' '.htmlspecialchars($avi->prenoms) ?></span>
 													<!-- <span class="tagline"><?php //echo ucfirst($avi->localisation) ?></span> -->
 												</div>
 											</div>

@@ -90,10 +90,10 @@ if(!isset($_POST) || empty($_POST) ){
 
           $_SESSION['user']['id'] = $user->id;
           $_SESSION['user']['token'] = $user->token;
-          $_SESSION['user']['nom'] = $user->nom;
-          $_SESSION['user']['prenoms'] = $user->prenoms;
-          $_SESSION['user']['email'] = $user->email;
-          $_SESSION['user']['tel'] = $user->tel;
+          $_SESSION['user']['nom'] = htmlspecialchars($user->nom);
+          $_SESSION['user']['prenoms'] = htmlspecialchars($user->prenoms);
+          $_SESSION['user']['email'] = htmlspecialchars($user->email);
+          $_SESSION['user']['tel'] = htmlspecialchars($user->tel);
           $_SESSION['user']['date_creation'] = $user->date_creation;
           $_SESSION['user']['statut'] = $user->statut;
 
