@@ -52,7 +52,7 @@
             <div class="mobile-menu">
                 <div class="header-mobile-menu  mb-2">
                     <div class="mobile-menu-logo">
-                        <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-4.png" 
+                        <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-old-4.png" 
                                                 alt="logo <?php echo APPLI_NAME; ?>" />
                     </div>
                     <div class="mobile-menu-actions-enter">
@@ -252,7 +252,7 @@
                                         </li> -->
                                         <li id="branding-logo">
                                             <a href="<?php echo BASE_URL.DS.'accueil/index'; ?>" id="logo">
-                                                <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-3.png" 
+                                                <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-old.png" 
                                                 alt="logo <?php echo APPLI_NAME; ?>" />
                                             </a>
                                         </li>
@@ -350,7 +350,7 @@
                         <div class="col-xs-8">
                             <div class="header-center">
                                 <a href="<?php echo BASE_URL.DS.'accueil/index'; ?>" id="logo-1">
-                                    <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-3.png" alt="logo <?php echo APPLI_NAME; ?>" />
+                                    <img class="logo-image" src="<?php echo WEBROOT_URL; ?>images/logo-old-4.png" alt="logo <?php echo APPLI_NAME; ?>" />
                                 </a>
                             </div>
                         </div>
@@ -455,7 +455,8 @@
                             <div class="col-md-12">
                                 <label>Quartier ou Lieu/Etablissement connu dans votre Zone<span class="required">*</span></label>
                                 <div class="form-wrap">
-                                    <input type="text" name="quartier" value="" size="255" id="search_input_quick_order" />
+                                    <input type="text" 
+                                    placeholder="Indiquez un lieu." name="quartier" value="" size="255" id="search_input_quick_order" />
                                 </div>
                             </div>
                         </div>
@@ -532,7 +533,7 @@
                                 <button id="login-button-valide" type="submit" class="btn btn-success btn-lg btn-block">Valider</button>
                             </div>
                             <div class="login-form-other-actions">
-                                <button id="login_lost_btn" type="button" class="btn btn-link">Mot de passe oublié?</button>
+                                <button id="login_lost_btn" type="button" class="btn btn-link">Mot de passe oublié ?</button>
                                 <button id="login_register_btn" type="button" class="btn btn-link">S'inscrire</button>
                             </div>
                         </div>
@@ -578,7 +579,7 @@
                             </div>
                             <!-- .input-error // pour lorsqu'un champs n'a pas la bonne valeur -->
                             <input id="register_name" name="register_nom" class="form-control" type="text" placeholder="Nom*" required>
-                            <input id="register_username" name="register_prenom" class="form-control" type="text" placeholder="prenom*" required>
+                            <input id="register_username" name="register_prenom" class="form-control" type="text" placeholder="Prénoms*" required>
                             <input id="register_tel" name="register_tel" class="form-control" type="text" placeholder="Tel*" maxlength="8" required>
                             <input id="register_email" name="register_email" class="form-control" type="text" placeholder="E-Mail" >
                             <input id="register_password" name="register_password" class="form-control" type="password" 
@@ -603,7 +604,7 @@
                             </div>
                             <div>
                                 <button id="register_login_btn" type="button" class="btn btn-link">Se connecter</button>
-                                <button id="register_lost_btn" type="button" class="btn btn-link">Mot de passe oublié?</button>
+                                <button id="register_lost_btn" type="button" class="btn btn-link">Mot de passe oublié ?</button>
                             </div>
                         </div>
                     </form>

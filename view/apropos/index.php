@@ -34,7 +34,7 @@
 					<p class="text-center">
 					Nous sommes un groupe de jeunes étudiants ivoiriens passionnés par l’innovation à travers les nouvelles technologies.
 					 Pour pallier le grand problème d’embouteillage dans la ville d’Abidjan, nous mettons à votre disposition 
-					 une plate-forme de vente qui a pour but de simplifier votre vie en faisant votre marche en un clic ! 
+					 une plate-forme de vente qui a pour but de simplifier votre vie en faisant votre marché en un clic ! 
 					Restez à la maison et commandez tout ce dont vous avez besoin pour préparer vos plats préférés.
 						<br />
 						<br />

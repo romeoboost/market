@@ -826,6 +826,7 @@ form .row .form-wrap {
     display: inline-block;
     margin: 0 0 0 15px;
     padding-left: 15px;
+    padding-left: 3px;
     border-left: 1px solid #696969;
     line-height: 1;
     position: relative;
@@ -834,9 +835,17 @@ form .row .form-wrap {
     border: 0;
 }
 .topbar .topbar-menu ul li a {
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 18px;
+    font-weight: 900;
     line-height: 1;
+    display: inline-block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.topbar .topbar-menu ul li:hover {
+    background-color: #1c2023;   
+    
 }
 
 /*.topbar .topbar-menu {
@@ -7145,6 +7154,13 @@ table.list-produits-commands td, table.list-produits-commands th {
     text-decoration: none;
     color: #5fbd74;
 }
+
+/* .topbar-menu-desktop .topbar-menu a{
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 900;
+} */
 
 @media(max-width: 500px){
     .responsive-shit{
