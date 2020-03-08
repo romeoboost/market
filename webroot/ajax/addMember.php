@@ -83,19 +83,31 @@ if(!isset($_POST) || empty($_POST) ){
                                                    date_modification, sexe, statut)
                                     VALUES(:token, :nom, :prenoms, :email, :tel, :password, :date_creation, :date_modification,
                                      :sexe, :statut)');
-       
-        $req_insert->execute(array(
-                'token' => $Identifiant,
-                'nom' => $register_nom,
-                'prenoms' => $register_prenom,
-                'email' => $email,
-                'tel' => $register_tel,
-                'password' => $encrypt_password,
-                'date_creation' => $date,
-                'date_modification' => $date,
-                'sexe' => $id_sexe,
-                'statut' => $statut
-            ));
+
+        $req_insert->bindParam(':token', $Identifiant);
+        $req_insert->bindParam(':nom', $register_nom);
+        $req_insert->bindParam(':prenoms', $register_prenom);
+        $req_insert->bindParam(':email', $email);
+        $req_insert->bindParam(':tel', $register_tel);
+        $req_insert->bindParam(':password', $encrypt_password);
+        $req_insert->bindParam(':date_creation', $date);
+        $req_insert->bindParam(':date_modification', $date);
+        $req_insert->bindParam(':sexe', $id_sexe);
+        $req_insert->bindParam(':statut', $statut);
+
+        // $req_insert->execute(array(
+        //         ':token' => $Identifiant,
+        //         ':nom' => $register_nom,
+        //         ':' => $,
+        //         ':email' => $email,
+        //         ':tel' => $register_tel,
+        //         ':password' => $encrypt_password,
+        //         ':date_creation' => $date,
+        //         ':date_modification' => $date,
+        //         ':sexe' => $id_sexe,
+        //         ':statut' => $statut
+        //     ));
+        $req_insert->execute();
 
         $enregistrement = 'oui';
         $retour['enregistrement'] = $enregistrement;
@@ -109,10 +121,10 @@ if(!isset($_POST) || empty($_POST) ){
 
         $_SESSION['user']['id'] = $client->id;
         $_SESSION['user']['token'] = $client->token;
-        $_SESSION['user']['nom'] = $client->nom;
-        $_SESSION['user']['prenoms'] = $client->prenoms;
-        $_SESSION['user']['email'] = $client->email;
-        $_SESSION['user']['tel'] = $client->tel;
+        $_SESSION['user']['nom'] = htmlentities($client->nom);
+        $_SESSION['user']['prenoms'] = htmlentities($client->prenoms);
+        $_SESSION['user']['email'] = htmlentities($client->email);
+        $_SESSION['user']['tel'] = htmlentities($client->tel);
         $_SESSION['user']['date_creation'] = $client->date_creation;
         $_SESSION['user']['statut'] = $client->statut;
 

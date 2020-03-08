@@ -248,7 +248,7 @@
                       
                       //$("#login-button-valide").val("Patientez...");
                       //$('#errorRegisterForm').html(jqXHR.responseJSON['error_html']);
-                      console.log(jqXHR.responseJSON);
+                      // console.log(jqXHR);
                       $('#errorRegisterForm').html('');
                       $('#errorRegisterForm').prepend(jqXHR.responseJSON['error_html']);
                       if(jqXHR.responseJSON['field_error'] !== 'none'){

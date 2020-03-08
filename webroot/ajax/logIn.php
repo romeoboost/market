@@ -53,10 +53,10 @@ if ($_POST) {
                 if($client->statut==1){ // verifie si le client est actif
                     $_SESSION['user']['id'] = $client->id;
                     $_SESSION['user']['token'] = $client->token;
-                    $_SESSION['user']['nom'] = $client->nom;
-                    $_SESSION['user']['prenoms'] = $client->prenoms;
-                    $_SESSION['user']['email'] = $client->email;
-                    $_SESSION['user']['tel'] = $client->tel;
+                    $_SESSION['user']['nom'] = htmlentities($client->nom);
+                    $_SESSION['user']['prenoms'] = htmlentities($client->prenoms);
+                    $_SESSION['user']['email'] = htmlentities($client->email);
+                    $_SESSION['user']['tel'] = htmlentities($client->tel);
                     $_SESSION['user']['date_creation'] = $client->date_creation;
                     $_SESSION['user']['statut'] = $client->statut;
 
