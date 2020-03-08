@@ -862,7 +862,7 @@ form .row .form-wrap {
     position: absolute;
     min-width: 200px;
     top: 40px;
-    right: -20px;
+    right: 0px;
     background: #555;
     padding: 10px 20px;
     opacity: 0;
@@ -875,7 +875,7 @@ form .row .form-wrap {
     transition: all .5s;
 }
 .topbar .topbar-menu ul li:hover>.sub-menu {
-    top: 32px;
+    top: 45px;
     opacity: 1;
     visibility: visible;
 }
@@ -889,7 +889,7 @@ form .row .form-wrap {
     text-align: left;
     display: block;
     margin: 0;
-    padding: 5px 0;
+    padding: 5px 5px;
     border: 0;
 }
 .topbar > .container-fluid {
