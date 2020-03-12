@@ -67,11 +67,11 @@ if(!isset($_POST) || empty($_POST) ){
                   if( empty($produit) ){
                     $error_statut = true;
                     $error_text = "Oups, Erreur !";
-                    $error_text_second = 'Votre panier est vide.'.$token_produit;
+                    $error_text_second = 'Le produit d\'identfiant .'.$token_produit.' n\'existe pas.';
                   }else{
                     //-- verifier si le produite existe toujours en stock
                     //$nbreProduit_panier = intval($nbreProduit);
-                    $nbreProduit = isset( $_SESSION['cart']['products_list'][$token_produit]['qtite_cart'] ) ? intval($_SESSION['cart']['products_list'][$token_produit]['qtite_cart']) : 0 ;
+                    $nbreProduit = isset( $_SESSION['cart']['products_list'][$token_produit]['qtite_cart'] ) ? floatval($_SESSION['cart']['products_list'][$token_produit]['qtite_cart']) : 0 ;
                     if($produit->stock < $nbreProduit*$produit->quantite_unitaire || $produit->stock == 0){
                       $error_statut = true;
                       $error_text = "Oups, Erreur !";
@@ -98,6 +98,8 @@ if(!isset($_POST) || empty($_POST) ){
           }
 
           if(!$error_statut){
+                // debugger($panier);
+                // die();
                 $shipping_details = array();
 
                 // -- Verifier si le token destination n'est pas vide
@@ -281,5 +283,10 @@ echo $retour_json;
  * ALTER TABLE `shipping_infos` CHANGE `lagitude` `lagitude` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0', CHANGE `longitude` `longitude` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0';
  */
 
+ /*
+ * Modif DB (12-03-2020)
+ * ALTER TABLE `commandes_produits` CHANGE `qtte_unitaire` `qtte_unitaire` FLOAT NULL DEFAULT NULL;
+ * ALTER TABLE `produits` CHANGE `stock` `stock` FLOAT NOT NULL DEFAULT '0';
+ */
 
 

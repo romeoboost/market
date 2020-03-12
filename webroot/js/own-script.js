@@ -1171,7 +1171,9 @@ function add_to_cart(tokenProduit,nbreProduit){
            }
            
            if(data.cart.product.isNewInCart === true){
-            var newProductCart_html = '<li class="'+data.cart.product.token+'" id-product="'+data.cart.product.token+'"><a href="#" class="remove">×</a>';
+            var newProductCart_html = '<li class="'+data.cart.product.token+'" id-product="'+data.cart.product.token+'">';
+                    newProductCart_html +=' <a class="remove remove-product-cart" href="#" id-product="'+data.cart.product.token+'">';
+                    newProductCart_html +=' x</a>';
                     newProductCart_html +=' <a href="'+data.cart.product.link_to_details+'">';
                         newProductCart_html +=' <img src="'+data.cart.product.link_to_image+'" alt="" /> '+data.cart.product.nom+' &nbsp;';
                     newProductCart_html +=' </a>';

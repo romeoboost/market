@@ -4,7 +4,7 @@ class ProduitController extends Controller {
 	public function liste($categorie=null, $value_categorie=null, $search=null, $search_value=null){
 		$this->loadmodel('Produit');
 		$_SESSION['menu'] = 'Marche';
-
+    // debug($_SESSION);
         //$d['categorie_active'] = 'jjhshgfcbcjhj45hhd';
     $d['produits_plus_vendus'] = $this->Produit->findJoin(array(
         'fieldsmain' => array('id_produit'),
