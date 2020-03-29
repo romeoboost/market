@@ -126,7 +126,16 @@
                                 </tbody>
                             </table>
                             <div class="proceed-to-checkout">
-                                <a href="<?php echo BASE_URL.DS.'commande/details'; ?>">Commander</a>
+                                <?php if ( isset($_SESSION['user']) ): ?>
+                                    <a href="<?php echo BASE_URL.DS.'commande/details'; ?>" class="">
+                                        Commander
+                                    </a>
+                                <?php else: ?>
+                                    <a href="#" role="" data-toggle="modal" data-target="#login-modal" class="order-connect-btn checkout">
+                                        Commander
+                                    </a>
+                                <?php endif; ?>
+                                <!-- <a href="<?php echo BASE_URL.DS.'commande/details'; ?>">Commander</a> -->
                             </div>
                         </div>
                         

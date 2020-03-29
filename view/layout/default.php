@@ -326,7 +326,8 @@
                                                     Commander
                                                 </a>
                                             <?php else: ?>
-                                                <a href="#" role="" data-toggle="modal" data-target="#login-modal" class="checkout">
+                                                <a href="#" role="" data-toggle="modal" data-target="#login-modal" 
+                                                    class="order-connect-btn">
                                                     Commander
                                                 </a>
                                             <?php endif; ?>
