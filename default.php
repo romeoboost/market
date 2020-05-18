@@ -136,7 +136,6 @@
                     <div class="row">
                         <span id="linkToEspPerso" class="hidden"><?php echo BASE_URL.DS.'membre/espace_personnel'; ?></span>
                         <span id="linkToLogin" class="hidden"><?php echo WEBROOT_URL.'ajax/logIn.php'; ?></span>
-                        <span id="linkToLostPassword" class="hidden"><?php echo WEBROOT_URL.'ajax/lostPassword.php'; ?></span>
                         <span id="linkToAddMember" class="hidden"><?php echo WEBROOT_URL.'ajax/addMember.php'; ?></span>
                         <span id="linkToProductList" class="hidden"><?php echo WEBROOT_URL.'ajax/produitsList.php'; ?></span>
                         <span id="linkToProductRelated" class="hidden"><?php echo WEBROOT_URL.'ajax/produitsRelated.php'; ?></span>
@@ -148,7 +147,6 @@
                         <span id="linkToOrder" class="hidden"><?php echo WEBROOT_URL.'ajax/placeOrder.php'; ?></span>
                         <span id="linkToUpdateInfosUser" class="hidden"><?php echo WEBROOT_URL.'ajax/updateInfosUser.php'; ?></span>
                         <span id="linkToUpdatePassword" class="hidden"><?php echo WEBROOT_URL.'ajax/updatePassword.php'; ?></span>
-                        <span id="linkToUpdateLostPassword" class="hidden"><?php echo WEBROOT_URL.'ajax/updateLostPassword.php'; ?></span>
                         <span id="linkToCancelledOrder" class="hidden"><?php echo WEBROOT_URL.'ajax/cancelledOrder.php'; ?></span>
                         <span id="RooTlinkToSearch" class="hidden"><?php echo SITE_BASE_URL.'produit/liste/categorie/all/search/'; ?></span>
                         <span id="linkToQuickOrder" class="hidden"><?php echo WEBROOT_URL.'ajax/placeQuickOrder.php'; ?></span>
@@ -328,8 +326,7 @@
                                                     Commander
                                                 </a>
                                             <?php else: ?>
-                                                <a href="#" role="" data-toggle="modal" data-target="#login-modal" 
-                                                    class="order-connect-btn">
+                                                <a href="#" role="" data-toggle="modal" data-target="#login-modal" class="checkout">
                                                     Commander
                                                 </a>
                                             <?php endif; ?>
@@ -546,21 +543,15 @@
                     <!-- Begin | Lost Password Form -->
                     <form id="lost-form" style="display:none;">
                         <div class="modal-body">
+                            
                             <div class="login-form-title col-md-12 text-center">
                                 <i class="fa fa-unlock"></i> <span> MOT DE PASSE OUBLIE</span>
                             </div>
-                            <div id="errorLostForm" class="text-center small"></div> 
-                            <div id="lost-form-content">
-                                <input id="lost_email" class="form-control" type="text" placeholder="E-mail" name="lost_email" required>
-                            </div>
-                            
+                            <input id="lost_email" class="form-control" type="text" placeholder="E-mail" required>
                         </div>
                         <div class="modal-footer">
                             <div>
-                                <button id="loosing-password-button-valide" type="submit" 
-                                    class="btn btn-success btn-lg btn-block">
-                                        Envoyer
-                                </button>
+                                <button type="submit" class="btn btn-success btn-lg btn-block">Envoyer</button>
                             </div>
                             <div class="login-form-other-actions">
                                 <button id="lost_login_btn" type="button" class="btn btn-link">Se connecter</button>
@@ -622,57 +613,6 @@
                 </div>
                 <!-- End # DIV Form -->
                 
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="reinit-password-modal" tabindex="-1" role="dialog" 
-        aria-labelledby="reinit-password-modal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h5 class="modal-title text-uppercase" id="reinit-password-modal">
-                        REINITIALISATION MOT DE PASSE
-                    </h5>
-                </div>
-                <div class="modal-body reinit-password-body">
-                    <div class="row">                        
-                        <div class="col-sm-12 " id="reinit-password-body-content">
-                            <?php if( !empty( $client ) ){ ?>
-                                <form id="lost-password-confirm" action="">
-                                    <div class="row">
-                                        <div id="error-lost-password-confirm" class="text-center small col-md-12"></div>
-                                        <input type="hidden" name="email" value="<?php echo htmlentities($client->email); ?>">
-                                        <input type="hidden" name="token_reinit" value="<?php echo htmlentities($client->token_password_reinit); ?>">
-                                        <div class="col-md-10 mt-1">
-                                            <label>Nouveau Mot de passe <span class="required">*</span></label>
-                                            <div class="form-wrap">
-                                                <input type="password" name="password" value="" size="255" required />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-10 mt-3">
-                                            <label>Confirmer le nouveau Mot de passe <span class="required">*</span></label>
-                                            <div class="form-wrap">
-                                                <input type="password" name="confirm_password" value="" size="255" required />
-                                            </div>
-                                        </div>
-                                    </div> 
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <button id="btn-alt btn-border" class="btn btn-alt btn-border" type="submit">
-                                                    CONFIRMER
-                                                    <div class="ld ld-ring ld-spin"></div>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            <?php } ?>
-                        </div>                        
-                    </div>
-                </div>
             </div>
         </div>
     </div>

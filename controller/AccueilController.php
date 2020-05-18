@@ -1,11 +1,10 @@
 <?php
 class AccueilController extends Controller {
     
-    public function index(){
+    public function index($email_reinit=null, $token_reinit=null){
       $this->loadmodel('Accueil');
       $_SESSION['menu'] = 'Accueil';
-      //debug($_SERVER);
-      //die();
+
       $date = date("Y-m-d H:i:s");
       $d['pubs'] = $this->Accueil->find(array(
            'condition' => " statut=1 and date_debut < '$date' and  date_fin > '$date' ",
@@ -30,7 +29,7 @@ class AccueilController extends Controller {
 				'condition' => 'produits.statut=1 AND produits.page_accueil=1 AND categories_produits.statut=1',
 				'order' => array('champs' => 'prix_quantite_unitaire','param' => 'ASC'),
 				'limit' => '0,8'
-            ),'produits','categories_produits');
+    ),'produits','categories_produits');
       // die(debug($d['products']));
 
       $d['avis'] = $this->Accueil->find(array(
@@ -46,7 +45,18 @@ class AccueilController extends Controller {
       foreach ($unites_from_bd as $u) {
         $d['unites'][$u->id] = $u->symbole;
       }
+      $d['client'] = array();
 
+      if(isset($email_reinit) && isset($token_reinit) && !empty($email_reinit) && !empty($token_reinit) ){
+        $d['client'] = current($this->Accueil->find(array(
+          'condition' => array(
+            'email' => $email_reinit,
+            'token_password_reinit' => $token_reinit,
+            'token_password_reinit_status' => 3
+          )
+        ),'clients'));
+        
+      }
       // debug($_SESSION);
       $this->set($d);
 

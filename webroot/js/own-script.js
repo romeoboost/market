@@ -3,8 +3,10 @@
 	"use strict";
 
     //$("#myModal").modal();
+    
     var UrlToAddMember = $("#linkToAddMember").html();
     var UrlToLogin = $("#linkToLogin").html();
+    var UrlToLostPassword = $("#linkToLostPassword").html();
     var UrlToEspacePerso = $("#linkToEspPerso").html();
     var linkToProductList = $("#linkToProductList").html();
     var linkToProductRelated = $("#linkToProductRelated").html();
@@ -17,6 +19,7 @@
     var linkToQuickOrder = $("#linkToQuickOrder").html();
     var linkToUpdateInfosUser = $("#linkToUpdateInfosUser").html();
     var linkToUpdatePassword = $("#linkToUpdatePassword").html();
+    var linkToUpdateLostPassword = $("#linkToUpdateLostPassword").html();
     var linkToCancelledOrder = $("#linkToCancelledOrder").html();
 
     /** QUICK MENU ORDER HANDLE */
@@ -53,6 +56,33 @@
 
         $('.quick-menu-sidebar').toggleClass('quick-menu-sidebar-active');
 
+    });
+
+    //ouvrir le popu pour renseigner le nouveau mot de passe
+    if( document.getElementById("lost-password-confirm") ){
+      $('#reinit-password-modal').modal('show');
+    }
+
+    //REINITIALISER MOT DE PASSE
+    $('#lost-password-confirm').on('submit', function(e){ 
+      e.preventDefault();
+      console.log($(this).serialize());
+      $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: linkToUpdateLostPassword,
+        data: $(this).serialize(),
+        success: function (data, textStatus, jqXHR) {
+          // console.log(data);
+          $('#reinit-password-body-content').html(data.html_succes);
+          // location.reload(true);
+        },
+        error: function(jqXHR) {
+          // console.log(jqXHR.responseText);
+          $('#error-lost-password-confirm').prepend(jqXHR.responseJSON['error_html']);
+        }
+      });
+      return false;
     });
 
     //SUPPRIMER PRODUIT DE PANIER
@@ -188,14 +218,6 @@
         switch(this.id) {
             case "login-form":
                 e.preventDefault();
-                // var $lg_username=$('#login_username').val();
-                // var $lg_password=$('#login_password').val();
-                // if ($lg_username == "ERROR") {
-                //     msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "", "Login error");
-                // } else {
-                //     msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "", "Login OK");
-                // }
-                //console.log($(this).serialize());
                 $("#login-button-valide").val("Patientez...");
                 console.log($("#login-button-valide"));
                 $.ajax({
@@ -209,28 +231,52 @@
                        location.reload(true);
                     },
                     error: function(jqXHR) {
-                      $('#errorLoginForm').prepend(jqXHR.responseJSON['error_html']);
-                      $("#login-button-valide").val("Patientez...");
-                      //$('#errorLoginForm').prepend(jqXHR.responseText);
                       console.log(jqXHR);
+                      $('#errorLoginForm').prepend(jqXHR.responseJSON['error_html']);
+                      var $formLoginNew = $('#login-form');
+                      modalAnimate($formLogin, $formLoginNew);
+                      // $("#login-button-valide").val("Patientez...");
+                      //$('#errorLoginForm').prepend(jqXHR.responseText);
                       //console.log(data);
                     }
                 });
                 return false;
                 break;
             case "lost-form":
+                e.preventDefault();
+                $("#loosing-password-button-valide").html("Patientez...");
                 var $ls_email=$('#lost_email').val();
-                if ($ls_email == "ERROR") {
-                    msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "error", "glyphicon-remove", "Send error");
-                } else {
-                    msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "success", "glyphicon-ok", "Send OK");
-                }
+                console.log($(this).serialize());
+                $.ajax({
+                  type: "POST",
+                  dataType: "json",
+                  url: UrlToLostPassword,
+                  data: $(this).serialize(),
+                  success: function (data, textStatus, jqXHR) {
+                    console.log(data);
+                    $('#reinit-password-body-content').html(data.html_succes);
+                    $('#login-modal').modal('hide');
+                    $('#reinit-password-modal').modal('show');
+                    $("#loosing-password-button-valide").html("Envoyer");                                       
+                     //window.location.replace(UrlToEspacePerso);
+                    //  location.reload(true);
+                  },
+                  error: function(jqXHR) {
+                    console.log(jqXHR.responseText);
+                    $('#errorLostForm').html('');
+                    $('#errorLostForm').prepend(jqXHR.responseJSON.error_html);
+                    var $formLostNew = $('#lost-form');
+                    modalAnimate($formLost, $formLostNew);  
+                    $("#loosing-password-button-valide").html("Envoyer");                  
+                  }
+                });
+
                 return false;
                 break;
             case "register-form":
                 var $rg_username=$('#register_username').val();
                 var $rg_name=$('#register_name').val();
-                register_name
+                // register_name
                 var $rg_email=$('#register_email').val();
                 var $rg_password=$('#register_password').val();
                 //console.log($(this).serialize());
@@ -245,18 +291,15 @@
                        location.reload(true);
                     },
                     error: function(jqXHR) {
-                      
-                      //$("#login-button-valide").val("Patientez...");
-                      //$('#errorRegisterForm').html(jqXHR.responseJSON['error_html']);
-                      // console.log(jqXHR);
                       $('#errorRegisterForm').html('');
                       $('#errorRegisterForm').prepend(jqXHR.responseJSON['error_html']);
+                      var $formRegisterNew = $('#register-form');
+                      modalAnimate($formRegister, $formRegisterNew);
+                      //recalcul modal a l'affichage de l'erreur
                       if(jqXHR.responseJSON['field_error'] !== 'none'){
                         var field_error = jqXHR.responseJSON['field_error'];
                         $( "input[name='"+field_error+"']" ).addClass('input-error');
                       }
-                      
-                      //console.log(data);
                     }
                 });
                 // if ($rg_username == "ERROR") {

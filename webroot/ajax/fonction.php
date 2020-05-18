@@ -1,5 +1,74 @@
 <?php
 
+function get_reinit_password_mail_body($user_name, $token_reinit, $reinit_url_base){
+  $body = "
+  <h3>REINITIALISATION DE MOT DE PASSE</h3> <br> 
+  Bonjour $user_name,<br><br>
+  
+  Vous avez demandé à réinitialiser votre mot de passe. <br>
+  Vous pouvez maintenant valider cette demande en 
+  <a href='$reinit_url_base/$token_reinit' > <b>cliquant ici</b></a> ou via le lien 
+  ci-dessous : <br> $reinit_url_base/$token_reinit  
+  
+  <br><br>
+  Si vous rencontrez toujours un problème avec votre compte, n'hésitez pas à répondre à cet email ou 
+  à nous contacter sur afromart225@gmail.com :-)
+  
+  <br><br>  
+  À bientôt ! <br> 
+  L'équipe d'AFROMART.";
+
+  return $body;
+
+}
+
+function send_mail($to, $Subject, $message){
+  require_once('../phpmailer/class.phpmailer.php');
+  //include("class.smtp.php"); // optional, gets called from within class.phpmailer.php if not already loaded
+
+  $mail             = new PHPMailer();
+
+  // $body             = file_get_contents('contents.html');
+  // $body             = "TEST TEST";
+  $body             = str_replace("\\",'',$message);
+
+  $mail->IsSMTP(); // telling the class to use SMTP
+  // $mail->Host       = "mail.yourdomain.com"; // SMTP server
+  $mail->SMTPDebug  = 1;                     // enables SMTP debug information (for testing)
+                                             // 1 = errors and messages
+                                             // 2 = messages only
+  $mail->SMTPAuth   = true;                  // enable SMTP authentication
+  $mail->SMTPSecure = "tls";                 // sets the prefix to the servier
+  $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
+  $mail->Port       = 25;                   // set the SMTP port for the GMAIL server
+  //$mail->Username   = "test.ngser@gmail.com";  // GMAIL username
+  $mail->Username   = "afromart225@gmail.com"; //"test.application.ngser@gmail.com"; //
+  $mail->Password   = "afrovision225@"; //"@dtngser"; //"password2018#"; // GMAIL password
+
+  $mail->SetFrom('service.clients@afromart.com', 'SERVICE CLIENT AFROMART');
+
+  $mail->AddReplyTo("service.clients@afromart.com","SERVICE CLIENT");
+
+  $mail->Subject    = $Subject;
+
+  $mail->AltBody    = "Pour afficher le message, veuillez utiliser un client de méssagerie électronique compatible HTML!"; // optional, comment out and test
+
+  $mail->MsgHTML($body);
+
+  $address = $to;
+  $mail->AddAddress($address, $to);
+
+  // $mail->AddAttachment("images/phpmailer.gif");      // attachment
+  // $mail->AddAttachment("images/phpmailer_mini.gif"); // attachment
+
+  if(!$mail->Send()) {
+    return "Mailer Error: " . $mail->ErrorInfo;
+  } else {
+    return true;
+  }
+}
+
+
 
 function upload($file, $width, $height) {
   $img = $file['name'];
